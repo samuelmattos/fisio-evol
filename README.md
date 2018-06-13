@@ -9,3 +9,4 @@ Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.
 ## Frameworks PHP
 * Twig https://twig.symfony.com/
 * Symfony Routing https://symfony.com/routing
+## Considerações

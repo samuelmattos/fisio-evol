@@ -1,4 +1,6 @@
 {
+    "name": "fisio-evol",
+    "description": "Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.",
     "authors": [
         {
             "name": "Samuel Mattos",
@@ -6,8 +8,8 @@
             "role": "Developer"
         }
     ],
-    "require-dev" : {
-        "phpunit/phpunit" : "^7"
+    "require-dev": {
+        "phpunit/phpunit": "^7"
     },
     "require": {
         "symfony/routing": "^3.4",

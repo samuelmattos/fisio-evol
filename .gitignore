@@ -1,3 +1,7 @@
 vendor
 .vscode
+<<<<<<< HEAD
 composer.lock
+=======
+composer.phar
+>>>>>>> origin/master

@@ -23,18 +23,18 @@ class Controller
     public function loadView($viewName, $viewData = array())
     {
         extract($viewData);
-        include 'App/views/' . $viewName . '.php';
+        include 'src/App/Views/' . $viewName . '.php';
     }
 
     public function loadTemplate($viewName, $viewData = array())
     {
-        include 'App/views/template.php';
+        include 'src/App/Views/template.php';
     }
 
     public function loadViewInTemplate($viewName, $viewData = array())
     {
         extract($viewData);
-        include 'App/views/' . $viewName . '.php';
+        include 'src/App/Views/' . $viewName . '.php';
     }
 
     public function index()

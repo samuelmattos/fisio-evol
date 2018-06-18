@@ -1,6 +1,15 @@
 <?php
-   require 'vendor/autoload.php';
-   
-   $controller = new App\Core\Controller();
+ini_set('display_errors', 1);
 
-   $controller->index();
+ini_set('display_startup_erros', 1);
+
+error_reporting(E_ALL);
+
+require 'vendor/autoload.php';
+
+
+use App\Core\Core;
+
+$core = new App\Core\Core();
+
+$core->run();

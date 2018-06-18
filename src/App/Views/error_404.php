@@ -27,10 +27,14 @@
         </style>
     </head>
     <body>
-
-        <div class="box">
-            <p class="number_error">404</p>
-            <p class="error_msg">Página solicitada não foi encontrada!</p>
-        </div>
+    <div class="ui error message">
+  <i class="close icon"></i>
+  <div class="header">
+  404
+  </div>
+  <ul class="list">
+    <li>Página solicitada não foi encontrada!</li>
+  </ul>
+</div>
     </body>
 </html>

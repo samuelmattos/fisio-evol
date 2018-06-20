@@ -7,7 +7,6 @@ error_reporting(E_ALL);
 
 require 'vendor/autoload.php';
 
-
 use App\Core\Core;
 
 $core = new App\Core\Core();

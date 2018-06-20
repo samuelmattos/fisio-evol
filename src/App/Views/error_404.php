@@ -1,40 +1,9 @@
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Página não encontrada</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            .box{
-                background-color: #761c19;
-                width: 500px;
-                height: 300px;
-                margin: 0 auto;
-                padding: 50px;
-                text-align: center;
-                border: 1px solid #1b6d85;
-                border-radius: 10px;
-                box-shadow: 4px 4px 5px #888888;
-            }
-            .number_error{
-                color: red;
-                font-size: 7em;
-            }
-            .error_msg{
-                font-size: 2em;
-                color: #fff;
-            }
-        </style>
-    </head>
-    <body>
-    <div class="ui error message">
-  <i class="close icon"></i>
+<div class="ui error message">
   <div class="header">
-  404
+      404
   </div>
   <ul class="list">
-    <li>Página solicitada não foi encontrada!</li>
+    <li>Ops, algo de estranho aconteceu!</li>
+    <li> A página que você procura não foi encontrada!</li>
   </ul>
 </div>
-    </body>
-</html>

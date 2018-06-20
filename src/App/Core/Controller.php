@@ -28,7 +28,15 @@ class Controller
 
     public function loadTemplate($viewName, $viewData = array())
     {
-        include 'src/App/Views/template.php';
+        include 'src/App/Views/Template.php';
+    }
+    public function loadViewInFooter($viewName, $viewData = array())
+    {
+        include 'src/App/Views/Footer.html';
+    }
+    public function loadViewInMenu($viewName, $viewData = array())
+    {
+        include 'src/App/Views/Menu.html';
     }
 
     public function loadViewInTemplate($viewName, $viewData = array())

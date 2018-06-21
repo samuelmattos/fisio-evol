@@ -3,3 +3,4 @@ src/App/Storage/Cache
 .vscode
 composer.lock
 composer.phar
+config_fire.json

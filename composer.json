@@ -13,7 +13,8 @@
     },
     "require": {
         "symfony/routing": "^3.4",
-        "twig/twig": "^2.0"        
+        "twig/twig": "^2.0",
+        "kreait/firebase-php": "^4.10"        
     },
     "autoload": {
         "psr-4": {

@@ -21,7 +21,7 @@
             <div class="ui error message"></div>
         </form>
         <div class="ui message">
-            Novo aqui?
+            Novo aqui ?
             <a href="#">Cadastre-se</a>
         </div>
     </div>

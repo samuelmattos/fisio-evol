@@ -1,9 +1,12 @@
 <?php
 namespace App\Core;
+use Twig_Loader_Filesystem, Twig_Environment;
 
 class Controller
 {
     protected $data = [];
+    protected $views = 'src/App/Views/';
+    protected $cache = 'src/App/Storage/Cache/';
 
     public function __construct()
     {
@@ -23,32 +26,25 @@ class Controller
     public function loadView($viewName, $viewData = array())
     {
         extract($viewData);
-        include 'src/App/Views/' . $viewName . '.php';
+        $loader = new Twig_Loader_Filesystem($this->views);
+        $twig = new Twig_Environment($loader, array(
+            'cache' => $this->cache,
+        ));
+        echo $twig->render($viewName.'.php', $viewData);
     }
 
     public function loadTemplate($viewName, $viewData = array())
     {
         include 'src/App/Views/Template.php';
     }
-    public function loadViewInFooter($viewName, $viewData = array())
-    {
-        include 'src/App/Views/Footer.html';
-    }
-    public function loadViewInMenu($viewName, $viewData = array())
-    {
-        include 'src/App/Views/Menu.html';
-    }
 
-    public function loadViewInTemplate($viewName, $viewData = array())
+    public function loadViewInHtml($viewName, $viewData = array())
     {
         extract($viewData);
-        include 'src/App/Views/' . $viewName . '.php';
-    }
-
-    public function index()
-    {
-        $model = new Model;
-        $view = new View;
-        $view->render($model->getText());
+        $loader = new Twig_Loader_Filesystem($this->views);
+        $twig = new Twig_Environment($loader, array(
+            'cache' => $this->cache,
+        ));
+        echo $twig->render($viewName.'.html', $viewData);
     }
 }

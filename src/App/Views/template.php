@@ -7,14 +7,14 @@
         <title>Fisio Evol</title>
     </head>
     <body>
-  <?php $this->loadViewInMenu($viewName, $viewData);?>
+  <?php $this->loadViewInHtml('Menu', $viewData);?>
 <div class="ui container">
-  <?php $this->loadViewInTemplate($viewName, $viewData);?>
+  <?php $this->loadView($viewName, $viewData);?>
 </div>
-  <?php $this->loadViewInFooter($viewName, $viewData);?>
+  <?php $this->loadViewInHtml('Footer', $viewData);?>
  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="src/App/Assets/js/semantic.min.js">
     </script>
-    </body>
+  </body>
 </html>

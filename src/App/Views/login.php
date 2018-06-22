@@ -6,13 +6,13 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="Login">
+                        <input type="text" name="email-login" placeholder="E-mail">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password"
+                        <input type="password" name="password-login"
                             placeholder="Senha">
                     </div>
                 </div>
@@ -22,7 +22,7 @@
         </form>
         <div class="ui message">
             Novo aqui ?
-            <a href="Register">Cadastre-se</a>
+            <a href="register">Cadastre-se</a>
         </div>
     </div>
 </div>

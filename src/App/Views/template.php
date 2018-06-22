@@ -4,7 +4,6 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="src/App/Assets/css/semantic.min.css">
-        <link rel="shortcut icon" href="src/App/Assets/img/favicon.ico" type="image/x-icon" />
         <title>Fisio Evol</title>
     </head>
     <body>

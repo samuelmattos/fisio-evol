@@ -8,6 +8,6 @@ class sobreController extends Controller
     public function index()
     {
         $this->data['dados'] = 'sobre';
-        $this->loadTemplate('sobre', $this->getData());
+        $this->loadTemplate('Sobre', $this->getData());
     }
 }

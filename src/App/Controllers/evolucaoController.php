@@ -8,6 +8,6 @@ class evolucaoController extends Controller
     public function index()
     {
         $this->data['dados'] = 'evolucao';
-        $this->loadTemplate('evolucao', $this->getData());
+        $this->loadTemplate('Evolucao', $this->getData());
     }
 }

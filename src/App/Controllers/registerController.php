@@ -7,7 +7,7 @@ class registerController extends Controller
 {
     public function index()
     {
-        $this->data['dados'] = 'Registro';
-        $this->loadTemplate('register', $this->getData());
+        $this->data['dados'] = 'Register';
+        $this->loadTemplate('Register', $this->getData());
     }
 }

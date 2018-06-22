@@ -22,7 +22,7 @@
         </form>
         <div class="ui message">
             Novo aqui ?
-            <a href="#">Cadastre-se</a>
+            <a href="Register">Cadastre-se</a>
         </div>
     </div>
 </div>

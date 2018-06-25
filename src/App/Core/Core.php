@@ -5,6 +5,7 @@ class Core {
 	
 	private $Url = null;
 	
+	
 	private $Controller = '';
 	
 	private $Action = '';

@@ -27,9 +27,7 @@ class Controller
     {
         extract($viewData);
         $loader = new Twig_Loader_Filesystem($this->views);
-        $twig = new Twig_Environment($loader, array(
-            'cache' => $this->cache,
-        ));
+        $twig = new Twig_Environment($loader);
         echo $twig->render($viewName.'.php', $viewData);
     }
 

@@ -12,7 +12,7 @@ $c['notFoundHandler'] = function ($c) {
 };
 
 $app = new \Slim\App($c);
-$app->get('/error-page', '\App\Controllers\errorController:index');
+
 $app->get('/home', '\App\Controllers\homeController:index');
 $app->get('/sobre', '\App\Controllers\sobreController:index');
 $app->get('/login', '\App\Controllers\loginController:index');

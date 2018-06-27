@@ -7,12 +7,17 @@ require 'vendor/autoload.php';
 $c = new \Slim\Container(); //Create Your container
 
 //Override the default Not Found Handler
-$c['notFoundHandler'] = function ($c) {
-    return new \App\Controllers\errorController();
-};
+$c = [
+    'settings' => [
+        'displayErrorDetails' => true
+    ],
+    'notFoundHandler' => function ($c) {
+        return new \App\Controllers\errorController();
+    },
+];
 
 $app = new \Slim\App($c);
-
+$app->get('/', '\App\Controllers\homeController:index');
 $app->get('/home', '\App\Controllers\homeController:index');
 $app->get('/sobre', '\App\Controllers\sobreController:index');
 $app->get('/login', '\App\Controllers\loginController:index');

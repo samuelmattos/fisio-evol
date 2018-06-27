@@ -7,7 +7,6 @@ class sobreController extends Controller
 {
     public function index()
     {
-        $this->data['dados'] = 'sobre';
-        $this->loadTemplate('Sobre', $this->getData());
+        $this->view('sobre', ['title' => 'Sobre', 'dados' => 'Sobre']);
     }
 }

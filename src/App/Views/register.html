@@ -1,3 +1,5 @@
+{% extends 'master.html' %}
+{% block master %}
 <form class="ui form">
   <div class="field">
     <label>Nome</label>
@@ -7,7 +9,7 @@
     <label>Sobrenome</label>
     <input type="text" name="last-name" placeholder="Sobrenome">
   </div>
-  <div class="field">
+    <div class="field">
     <label>E-mail</label>
     <input type="text" name="email" placeholder="E-mail">
   </div>
@@ -26,3 +28,4 @@
   </div>
   <button class="ui button" type="submit">Cadastrar</button>
 </form>
+{% endblock%}

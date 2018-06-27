@@ -7,7 +7,6 @@ class registerController extends Controller
 {
     public function index()
     {
-        $this->data['dados'] = 'Register';
-        $this->loadTemplate('Register', $this->getData());
+        $this->view('register', ['title' => 'Registro', 'dados' => 'Register']);
     }
 }

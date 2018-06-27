@@ -7,7 +7,6 @@ class loginController extends Controller
 {
     public function index()
     {
-        $this->data['dados'] = 'login';
-        $this->loadTemplate('login', $this->getData());
+        $this->view('login', ['title' => 'Login', 'dados' => 'Login']);
     }
 }

@@ -7,7 +7,6 @@ class evolucaoController extends Controller
 {
     public function index()
     {
-        $this->data['dados'] = 'evolucao';
-        $this->loadTemplate('Evolucao', $this->getData());
+        $this->view('evolucao', ['title' => 'Evolução', 'dados' => 'Evolução']);
     }
 }

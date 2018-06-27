@@ -135,16 +135,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.9.8",
+            "version": "8.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "420621360d56499ac1b0e6293561ed8661017c6b"
+                "reference": "79a3ee64277b3c8f71dc379c7325155b945058d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/420621360d56499ac1b0e6293561ed8661017c6b",
-                "reference": "420621360d56499ac1b0e6293561ed8661017c6b",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/79a3ee64277b3c8f71dc379c7325155b945058d7",
+                "reference": "79a3ee64277b3c8f71dc379c7325155b945058d7",
                 "shasum": ""
             },
             "require": {
@@ -199,7 +199,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2018-06-14T11:25:48+00:00"
+            "time": "2018-06-27T13:04:37+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -299,16 +299,16 @@
         },
         {
             "name": "google/cloud-core",
-            "version": "v1.20.5",
+            "version": "v1.20.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GoogleCloudPlatform/google-cloud-php-core.git",
-                "reference": "d0fd6f49c92737746de23ab15e226922dba35110"
+                "reference": "bdef5b4e70ceb537e924b1e72a4cc423ef50bd08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GoogleCloudPlatform/google-cloud-php-core/zipball/d0fd6f49c92737746de23ab15e226922dba35110",
-                "reference": "d0fd6f49c92737746de23ab15e226922dba35110",
+                "url": "https://api.github.com/repos/GoogleCloudPlatform/google-cloud-php-core/zipball/bdef5b4e70ceb537e924b1e72a4cc423ef50bd08",
+                "reference": "bdef5b4e70ceb537e924b1e72a4cc423ef50bd08",
                 "shasum": ""
             },
             "require": {
@@ -354,7 +354,7 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "time": "2018-06-12T16:51:43+00:00"
+            "time": "2018-06-27T19:44:01+00:00"
         },
         {
             "name": "google/cloud-storage",

@@ -23,5 +23,6 @@ $app->get('/sobre', '\App\Controllers\sobreController:index');
 $app->get('/login', '\App\Controllers\loginController:index');
 $app->get('/evolucao', '\App\Controllers\evolucaoController:index');
 $app->get('/register', '\App\Controllers\registerController:index');
+$app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 
 $app->run();

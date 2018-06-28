@@ -2,11 +2,16 @@
 
 namespace App\Controllers;
 use App\Core\Controller;
+use App\Model\Pacientes;
 
 class evolucaoController extends Controller
 {
     public function index()
     {
-        $this->view('evolucao', ['title' => 'Evolução', 'dados' => 'Evolução']);
+        $pacientes = new Pacientes();
+        $pacientes = $pacientes->all();
+        $dados['pacientes'] = $pacientes;
+        $dados['title'] = 'Evolução';
+        $this->view('evolucao', $dados);
     }
 }

@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "80cd3df8dcd9c2e5951e55b0d7e8a219",
@@ -581,16 +581,16 @@
         },
         {
             "name": "kreait/firebase-php",
-            "version": "4.11.0",
+            "version": "4.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kreait/firebase-php.git",
-                "reference": "2a06069c336f2ea0a87557cc5042052fb7d1631d"
+                "reference": "8c5ea23693a0eeb2074417b3dc64fbcbebe0cc98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/2a06069c336f2ea0a87557cc5042052fb7d1631d",
-                "reference": "2a06069c336f2ea0a87557cc5042052fb7d1631d",
+                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/8c5ea23693a0eeb2074417b3dc64fbcbebe0cc98",
+                "reference": "8c5ea23693a0eeb2074417b3dc64fbcbebe0cc98",
                 "shasum": ""
             },
             "require": {
@@ -643,7 +643,7 @@
                 "google",
                 "sdk"
             ],
-            "time": "2018-06-26T14:59:54+00:00"
+            "time": "2018-06-28T15:09:42+00:00"
         },
         {
             "name": "kreait/firebase-tokens",

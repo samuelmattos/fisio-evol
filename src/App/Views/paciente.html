@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% block master %}
+<form class="ui form" method="POST" action="pacientes/cadastro">
+    <div class="field">
+        <label>Nome</label>
+        <input type="text" name="nome" placeholder="Nome" />
+    </div>
+    <div class="field">
+        <label>Documento</label>
+        <input type="text" name="documento" placeholder="CPF/RG" />
+    </div>
+    <div class="field">
+        <label>Telefone</label>
+        <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX" />
+    </div>
+    <button class="ui button green" type="submit">Cadastrar</button>
+</form>
+{% endblock%}

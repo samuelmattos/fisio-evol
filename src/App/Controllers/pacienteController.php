@@ -17,12 +17,13 @@ class pacienteController extends Controller
         $data = $validate->validate([
             'nome' => 'required',
             'documento' => 'required',
-            'telefone' => 'required:phone'
+            'telefone' => 'required:phone:max@14'
         ]);
+
         if($validate->hasErrors()){
             return back();
         }
        
-        dd($data);
+        dd('teste');
     }
 }

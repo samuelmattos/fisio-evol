@@ -22,7 +22,7 @@ function flash($index, $message){
 }
 
 function error($message){
-    return "<span class='alert-error'> * {$message} </span>";
+    return "<div class=\"ui pointing red basic label\" style=\"color: #ffffff!important\"> * {$message} </div>";
 }
 
 function success($message){

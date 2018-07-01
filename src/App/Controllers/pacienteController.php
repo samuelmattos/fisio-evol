@@ -13,16 +13,16 @@ class pacienteController extends Controller
     public function store()
     {
         $validate = new Validate;
+        
         $data = $validate->validate([
             'nome' => 'required',
             'documento' => 'required',
             'telefone' => 'required:phone'
         ]);
-
         if($validate->hasErrors()){
             return back();
         }
-
+       
         dd($data);
     }
 }

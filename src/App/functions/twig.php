@@ -1,14 +1,10 @@
 <?php
+use App\Core\Flash;
 
-$file_exists = new \Twig_SimpleFunction('file_existe', function($file){
-    return file_exists($file);
-});
-
-$teste = new \Twig_SimpleFunction('teste', function(){
-    echo 'teste';
+$message = new \Twig_SimpleFunction('message', function($index){
+    return Flash::get($index);
 });
 
 return [
-    $file_exists,
-    $teste
+    $message
 ];

@@ -4,14 +4,17 @@
     <div class="field">
         <label>Nome</label>
         <input type="text" name="nome" placeholder="Nome" />
+        {{ message('nome') | raw }}
     </div>
     <div class="field">
         <label>Documento</label>
         <input type="text" name="documento" placeholder="CPF/RG" />
+        {{ message('documento') | raw }}
     </div>
     <div class="field">
         <label>Telefone</label>
         <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX" />
+        {{ message('telefone') | raw }}
     </div>
     <button class="ui button green" type="submit">Cadastrar</button>
 </form>

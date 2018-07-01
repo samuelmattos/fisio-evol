@@ -1,5 +1,6 @@
 <?php
 use App\Core\Flash;
+use App\Core\Redirect;
 
 function dd($data){
     print_r($data);
@@ -16,7 +17,7 @@ function path(){
     return dirname($vendoDir);
 }
 
-function flash($index, $message){
+function flash($index, $message){   
     Flash::add($index, $message );
 }
 
@@ -25,5 +26,9 @@ function error($message){
 }
 
 function success($message){
-    return "<span class='alert-error'> * {$message} </span>";
+    return "<span class='alert-success'> * {$message} </span>";
+}
+
+function back(){
+    return Redirect::back();
 }

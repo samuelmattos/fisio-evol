@@ -14,4 +14,12 @@ class Model {
         $all->execute();
         return $all->fetchAll();
     }
+
+    public function find($field, $value){
+        $sql = "select * from {$this->table} where {$field} = :{$field} ";
+        $find = $this->db->prepare($sql);
+        $find->bindValue($field, $value);
+        $find->execute();
+        return $all->fetch();
+    }
 }

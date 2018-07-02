@@ -24,6 +24,6 @@ class pacienteController extends Controller
             return back();
         }
        
-        dd('teste');
+        dd($data);
     }
 }

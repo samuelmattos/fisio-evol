@@ -1,9 +1,10 @@
 <?php
 namespace App\Core;
 use App\traits\Validations;
+use App\traits\Sanitize;
 
 class Validate {
-    use Validations;
+    use Validations, Sanitize;
 
     public function validate($rules){
         
@@ -21,6 +22,8 @@ class Validate {
                 }
             }
         }
+
+        return (object) $this->sanitize();
     }
 
     public function validationWithParameter($field, $validation){

@@ -18,11 +18,20 @@ trait Validations {
     }
 
     protected function unique($field, $model){
+        $model = "App\\Model\\".ucfirst($model);
 
+        $model = new $model;
+
+        $find = $model->find($field, $_POST[$field]);
+        if($find and !empty($_POST[$field])){
+            $this->errors[$field][] = flash($field, error('Esse valor já está cadastrado no banco de dados.'));
+        }
     }
 
     protected function max($field, $max){
-
+        if(strlen($_POST[$field]) > $max){
+            $this->errors[$field][] = flash($field, error("O número de caracteres para esse campo não pode ser maior que $max."));
+        }
     }
     
     protected function phone($field){

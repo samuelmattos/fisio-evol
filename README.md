@@ -11,4 +11,13 @@ Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.
 ## Frameworks PHP
 * Twig https://twig.symfony.com/
 * Slim framework https://www.slimframework.com/
-## Considerações
+## Instalação
+Execute o comando do composer na pasta do projeto:
+```sh
+composer update
+```
+Para iniciar o servidor php execute o comando abaixo:
+
+```sh
+php -S localhost:8000
+```

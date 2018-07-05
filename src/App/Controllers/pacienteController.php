@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\Validate;
+use App\Model\Pacientes;
+
 class pacienteController extends Controller
 {
     public function create()
@@ -23,7 +25,11 @@ class pacienteController extends Controller
         if($validate->hasErrors()){
             return back();
         }
-       
-        dd($data);
+        
+        $paciente = new Pacientes();           
+        $paciente->create((array)$data);
+        if($paciente){
+           return back();
+        }
     }
 }

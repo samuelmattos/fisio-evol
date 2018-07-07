@@ -24,9 +24,9 @@ $app->get('/', '\App\Controllers\homeController:index');
 $app->get('/home', '\App\Controllers\homeController:index');
 $app->get('/sobre', '\App\Controllers\sobreController:index');
 $app->get('/login', '\App\Controllers\loginController:index');
-$app->get('/evolucao', '\App\Controllers\evolucaoController:index');
+$app->get('/pacientes', '\App\Controllers\pacienteController:index');
 $app->get('/register', '\App\Controllers\registerController:index');
-$app->get('/pacientes', '\App\Controllers\pacienteController:create');
+$app->get('/paciente', '\App\Controllers\pacienteController:create');
 $app->post('/pacientes/cadastro', '\App\Controllers\pacienteController:store');
 $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 

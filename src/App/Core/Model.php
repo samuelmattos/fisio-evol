@@ -12,6 +12,9 @@ class Model {
     use Create, Read, Update, Delete;
     
     protected $connect;
+    protected $field;
+    protected $value;
+
     public function __construct() {
         $this->connect = Connection::connect();
     }
@@ -24,10 +27,8 @@ class Model {
     }
 
     public function find($field, $value){
-        $sql = "select * from {$this->table} where {$field} = :{$field} ";
-        $find = $this->connect->prepare($sql);
-        $find->bindValue($field, $value);
-        $find->execute();
-        return $all->fetch();
+       $this->field = $field;
+       $this->value = $value;
+       return $this;
     }
 }

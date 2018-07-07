@@ -3,38 +3,41 @@
 <h1>{{ title }}</h1>
 <div class="ui form">
   <div class="two fields">
-    <div class="field"> 
-            <a id="btn_cad_viw_paciente" class="ui button blue"
-             href="paciente">
-             <i class="icon user"></i>
-             Cadastrar Paciente</a>
-         </div>
     <div class="field">
-        <div class="ui icon input">
-            <input type="text" placeholder="Buscar Paciente...">
-            <i class="inverted circular search link icon"></i>
-          </div>
+      <a id="btn_cad_viw_paciente" class="ui button blue"
+        href="paciente">
+        <i class="icon user"></i>
+        Cadastrar Paciente</a>
     </div>
-</div>
+    <div class="field">
+      <div class="ui icon input">
+        <input type="text" placeholder="Buscar Paciente...">
+        <i class="inverted circular search link icon"></i>
+      </div>
+    </div>
+  </div>
   <div class="field">
-      <div class="ui middle aligned divided list">
-          {% for paciente in pacientes %}
-          <div class="item">
-              <div class="right floated content">
-                <a class="ui button green" href="evolucao/cadastro/{{paciente.id}}" > 
-                  <i class="chart line icon"></i>Evoluir
-                </a>
-                <a class="ui button orange" href="paciente/edit/{{paciente.id}}">
-                  <i class="edit outline icon"></i>Editar
-                </a>
-              </div>
-              <i class="large icon user circle"></i>
-              <div class="content">
-                  {{paciente.nome}}
-              </div>
-            </div>
-           {% endfor %}
+    <div class="ui middle aligned divided list">
+      {% for paciente in pacientes %}
+      <div class="item">
+        <div class="right floated content">
+          <a class="ui icon button green" alt="Evoluir" href="evolucao/cadastro/{{paciente.idpacientes}}">
+            <i class="chart line icon"></i>
+          </a>
+          <a class="ui icon button orange" href="pacientes/edit/{{paciente.idpacientes}}">
+            <i class="edit outline icon"></i>
+          </a>
+          <a class="ui icon button red" href="pacientes/remove/{{paciente.idpacientes}}">
+            <i class="ban icon"></i>
+          </a>
         </div>
-  </div>  
+        <i class="large icon user circle"></i>
+        <div class="content">
+          {{paciente.nome}}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 {% endblock%}

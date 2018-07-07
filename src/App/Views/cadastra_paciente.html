@@ -1,5 +1,21 @@
 {% extends 'master.html' %}
 {% block master %}
+
+<div class="ui two column grid ">
+    <div class="column">
+        <h1>
+            {{title}}
+        </h1>
+    </div>
+    <div class="column">
+        <a class="ui animated button yellow" href="{{constant('Config::HOST_APP')}}pacientes" tabindex="0">
+            <div class="visible content">Voltar</div>
+            <div class="hidden content">
+                <i class="left arrow icon"></i>
+            </div>
+        </a>
+    </div>
+</div>
 <form class="ui form" method="POST" action="pacientes/cadastro">
     <div class="field">
         <label>Nome</label>
@@ -14,15 +30,15 @@
     <div class="field">
         <label>Telefone</label>
         <input type="text"
-          data-mask="(00)00000-0000"
-          name="telefone"
-          maxlength="14"
-          required 
-          placeholder="(XX)XXXXX-XXXX" />
+            data-mask="(00)00000-0000"
+            name="telefone"
+            maxlength="14"
+            required
+            placeholder="(XX)XXXXX-XXXX" />
         {{ message('telefone') | raw }}
     </div>
     <button class="ui button green" type="submit">Cadastrar</button>
 </form>
-<script type="text/javascript" src="src/App/Assets/js/jquery.mask.min.js"/></script>
+<script type="text/javascript" src="src/App/Assets/js/jquery.mask.min.js" /></script>
 <script type="text/javascript">$(".telefone").mask("(00)0000-00009");</script>
 {% endblock%}

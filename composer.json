@@ -14,7 +14,8 @@
     "require": {
         "twig/twig": "^2.0",
         "kreait/firebase-php": "^4.10",
-        "slim/slim": "3.0"        
+        "slim/slim": "3.0",
+        "dopesong/slim-whoops": "^2.3"        
     },
     "autoload": {
         "psr-4": {

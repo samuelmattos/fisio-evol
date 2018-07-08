@@ -1,25 +1,29 @@
 {% extends 'master.html' %}
 {% block master %}
 <div class="ui grid">
-    <div class="left ten wide column">
-        <h2 class="ui large header">
-            {{title}}
-        </h2>
-    </div>
-    <div class="right floated six wide column">
-      <a class="ui right floated small primary labeled icon button"
-        href="paciente">
-        <i class="user icon"></i> Cadastrar Paciente
-      </a>
-    </div>
+  <div class="left ten wide column">
+    <h2 class="ui large header">
+      {{title}}
+    </h2>
+  </div>
+  <div class="right floated six wide column">
+    <a class="ui right floated small primary labeled icon button"
+      href="paciente">
+      <i class="user icon"></i> Cadastrar Paciente
+    </a>
+  </div>
 </div>
-  <table class="ui celled table unstackable">
-    <thead>
-      <tr>
-        <th colspan="2"><div class="ui icon input">
-            <input type="text" placeholder="Buscar...">
-            <i class="inverted circular search link icon"></i>
-          </div></th>
+<table class="ui celled table unstackable">
+  <thead>
+    <tr>
+      <th colspan="2"><div class="ui icon input">
+          <form action="">
+            <div class="ui action input">
+              <input type="text" name="s" placeholder="Buscar...">
+              <button class="ui button" type="submit">Procurar</button>
+            </div>
+          </form>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -55,4 +59,4 @@
     </tfoot>
   </table>
 
-{% endblock%}
+  {% endblock%}

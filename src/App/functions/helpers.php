@@ -2,33 +2,45 @@
 use App\Core\Flash;
 use App\Core\Redirect;
 
-function dd($data){
+function dd($data)
+{
     var_dump($data);
     die();
 }
 
-function json($data){
+function json($data)
+{
     headr('Content-Type: applictaion/json');
     echo json_encode($data);
 }
 
-function path(){
+function path()
+{
     $vendoDir = dirname(dirname(__FILE__));
     return dirname($vendoDir);
 }
 
-function flash($index, $message){   
-    Flash::add($index, $message );
+function flash($index, $message)
+{
+    Flash::add($index, $message);
 }
 
-function error($message){
+function error($message)
+{
     return "<div class=\"ui pointing red basic label\" style=\"color: #ffffff!important\"> * {$message} </div>";
 }
 
-function success($message){
+function success($message)
+{
     return "<span class='alert-success'> * {$message} </span>";
 }
 
-function back(){
+function back()
+{
     return Redirect::back();
+}
+
+function busca()
+{
+    return filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING);
 }

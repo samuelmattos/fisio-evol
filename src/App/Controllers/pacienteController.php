@@ -19,7 +19,10 @@ class pacienteController extends Controller
     public function index()
     {
         //$pacientes = $pacientes->select()->where('id_paciente', '=', '2')->get();
-        $pacientes = $this->paciente->select()->paginate(5)->get();
+        $pacientes = $this->paciente->
+                    select()->
+                    busca('nome,telefone')->
+                    paginate(5)->get();
         $dados['pacientes'] = $pacientes;
         $dados['title'] = 'Pacientes';
         $dados['links'] = $this->paciente->links();

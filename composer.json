@@ -22,7 +22,8 @@
             "App\\": "src/App"
         },
         "files": [
-            "src/App/functions/helpers.php"
+            "src/App/functions/helpers.php",
+            "config/Config.php"
         ]
     }
 }

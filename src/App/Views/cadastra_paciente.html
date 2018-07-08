@@ -1,13 +1,12 @@
 {% extends 'master.html' %}
 {% block master %}
-
-<div class="ui two column grid ">
-    <div class="column">
-        <h1>
+<div class="ui grid ">
+    <div class="left ten wide column">
+        <h2 class="ui large header">
             {{title}}
-        </h1>
+        </h2>
     </div>
-    <div class="column">
+    <div class="right floated six wide column">
         <a class="ui animated button yellow" href="{{constant('Config::HOST_APP')}}pacientes" tabindex="0">
             <div class="visible content">Voltar</div>
             <div class="hidden content">
@@ -19,17 +18,18 @@
 <form class="ui form" method="POST" action="pacientes/cadastro">
     <div class="field">
         <label>Nome</label>
-        <input type="text" name="nome" placeholder="Nome" required />
+        <input type="text" name="nome" value="{{paciente.nome}}" placeholder="Nome" required />
         {{ message('nome') | raw }}
     </div>
     <div class="field">
         <label>Documento</label>
-        <input type="text" name="documento" required placeholder="CPF/RG" />
+        <input type="text" name="documento" value="{{paciente.documento}}" required placeholder="CPF/RG" />
         {{ message('documento') | raw }}
     </div>
     <div class="field">
         <label>Telefone</label>
         <input type="text"
+            value="{{paciente.telefone}}"
             data-mask="(00)00000-0000"
             name="telefone"
             maxlength="14"

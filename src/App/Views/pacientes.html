@@ -21,13 +21,13 @@
       {% for paciente in pacientes %}
       <div class="item">
         <div class="right floated content">
-          <a class="ui icon button green" alt="Evoluir" href="evolucao/cadastro/{{paciente.idpacientes}}">
+          <a class="ui icon button green" alt="Evoluir" href="evolucao/cadastro/{{paciente.id_paciente}}">
             <i class="chart line icon"></i>
           </a>
-          <a class="ui icon button orange" href="pacientes/edit/{{paciente.idpacientes}}">
+          <a class="ui icon button orange" href="pacientes/edit/{{paciente.id_paciente}}">
             <i class="edit outline icon"></i>
           </a>
-          <a class="ui icon button red" href="pacientes/remove/{{paciente.idpacientes}}">
+          <a class="ui icon button red" href="pacientes/remove/{{paciente.id_paciente}}">
             <i class="ban icon"></i>
           </a>
         </div>

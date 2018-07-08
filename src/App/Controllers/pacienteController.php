@@ -19,7 +19,7 @@ class pacienteController extends Controller
     public function index()
     {
 
-        //$pacientes = $pacientes->select()->where('idpacientes', '=', '2')->get();
+        //$pacientes = $pacientes->select()->where('id_paciente', '=', '2')->get();
         $pacientes = $this->paciente->select()->get();
         $dados['pacientes'] = $pacientes;
         $dados['title'] = 'Pacientes';
@@ -53,7 +53,7 @@ class pacienteController extends Controller
     public function edit($request, $response, $args)
     {
         $paciente = $this->paciente;
-        $paciente = $paciente->select()->where('idpacientes', $args['id'])->first();
+        $paciente = $paciente->select()->where('id_paciente', $args['id'])->first();
 
         $this->view('cadastra_paciente', [
             'title' => 'Editar Paciente',
@@ -74,7 +74,7 @@ class pacienteController extends Controller
             return back();
         }
 
-        $update = $this->paciente->find('idpacientes', $args['id'])->update((array) $data);
+        $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data);
 
         if ($update) {
             return back();
@@ -83,7 +83,7 @@ class pacienteController extends Controller
 
     public function destroy($request, $response, $args)
     {
-        $deleted = $this->paciente->find('idpacientes', $args['id'])->delete();
+        $deleted = $this->paciente->find('id_paciente', $args['id'])->delete();
         if ($deleted) {
             return back();
         }

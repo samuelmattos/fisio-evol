@@ -7,7 +7,7 @@ use App\traits\Create;
 use App\traits\Delete;
 use App\traits\Update;
 
-class Model {
+abstract class Model {
 
     use Create, Read, Update, Delete;
     

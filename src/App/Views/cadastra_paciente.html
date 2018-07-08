@@ -7,7 +7,7 @@
         </h2>
     </div>
     <div class="right floated six wide column">
-        <a class="ui animated button yellow" href="{{constant('Config::HOST_APP')}}pacientes" tabindex="0">
+        <a class="ui right floated animated button yellow" href="{{constant('Config::HOST_APP')}}pacientes" tabindex="0">
             <div class="visible content">Voltar</div>
             <div class="hidden content">
                 <i class="left arrow icon"></i>
@@ -37,7 +37,7 @@
             placeholder="(XX)XXXXX-XXXX" />
         {{ message('telefone') | raw }}
     </div>
-    <button class="ui button green" type="submit">Cadastrar</button>
+    <button class="ui button green" type="submit">{{acao}}</button>
 </form>
 <script type="text/javascript" src="src/App/Assets/js/jquery.mask.min.js" /></script>
 <script type="text/javascript">$(".telefone").mask("(00)0000-00009");</script>

@@ -18,16 +18,18 @@ class pacienteController extends Controller
 
     public function index()
     {
-
         //$pacientes = $pacientes->select()->where('id_paciente', '=', '2')->get();
-        $pacientes = $this->paciente->select()->get();
+        $pacientes = $this->paciente->select()->paginate(5)->get();
         $dados['pacientes'] = $pacientes;
         $dados['title'] = 'Pacientes';
+        $dados['links'] = $this->paciente->links();
         $this->view('pacientes', $dados);
     }
     public function create()
     {
-        $this->view('cadastra_paciente', ['title' => 'Cadastrar Paciente']);
+        $this->view('cadastra_paciente', 
+        ['title' => 'Cadastrar Paciente',
+        'acao' => 'Cadastrar']);
     }
 
     public function store()
@@ -57,6 +59,7 @@ class pacienteController extends Controller
 
         $this->view('cadastra_paciente', [
             'title' => 'Editar Paciente',
+            'acao' => 'Editar',
             'paciente' => $paciente,
         ]);
 

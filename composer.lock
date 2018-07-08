@@ -409,16 +409,16 @@
         },
         {
             "name": "google/cloud-core",
-            "version": "v1.20.6",
+            "version": "v1.20.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GoogleCloudPlatform/google-cloud-php-core.git",
-                "reference": "bdef5b4e70ceb537e924b1e72a4cc423ef50bd08"
+                "reference": "2f0d4d6ac4683c56e2dbc3712cc634eb56b539bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GoogleCloudPlatform/google-cloud-php-core/zipball/bdef5b4e70ceb537e924b1e72a4cc423ef50bd08",
-                "reference": "bdef5b4e70ceb537e924b1e72a4cc423ef50bd08",
+                "url": "https://api.github.com/repos/GoogleCloudPlatform/google-cloud-php-core/zipball/2f0d4d6ac4683c56e2dbc3712cc634eb56b539bc",
+                "reference": "2f0d4d6ac4683c56e2dbc3712cc634eb56b539bc",
                 "shasum": ""
             },
             "require": {
@@ -464,7 +464,7 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "time": "2018-06-27T19:44:01+00:00"
+            "time": "2018-07-03T15:31:33+00:00"
         },
         {
             "name": "google/cloud-storage",
@@ -691,16 +691,16 @@
         },
         {
             "name": "kreait/firebase-php",
-            "version": "4.12.0",
+            "version": "4.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kreait/firebase-php.git",
-                "reference": "8c5ea23693a0eeb2074417b3dc64fbcbebe0cc98"
+                "reference": "d16c885be1af667bfeabe3723a1a07fa15695acb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/8c5ea23693a0eeb2074417b3dc64fbcbebe0cc98",
-                "reference": "8c5ea23693a0eeb2074417b3dc64fbcbebe0cc98",
+                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/d16c885be1af667bfeabe3723a1a07fa15695acb",
+                "reference": "d16c885be1af667bfeabe3723a1a07fa15695acb",
                 "shasum": ""
             },
             "require": {
@@ -753,7 +753,7 @@
                 "google",
                 "sdk"
             ],
-            "time": "2018-06-28T15:09:42+00:00"
+            "time": "2018-07-08T10:14:10+00:00"
         },
         {
             "name": "kreait/firebase-tokens",

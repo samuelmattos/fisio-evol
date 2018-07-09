@@ -1,0 +1,9 @@
+{% extends 'master.html' %}
+{% block master %}
+{{admin().nome}}
+<h1>Painel Administrativo</h1>
+<button id="btn_insecrever" onclick="" class="ui large button red">Increver</button>
+<script type="text/javascript"
+src="{{constant('Config::HOST_APP')}}src/App/Assets/js/inscrever.js" >
+</script>
+{% endblock%}

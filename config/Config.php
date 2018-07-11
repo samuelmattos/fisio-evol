@@ -13,7 +13,7 @@ class Config
             'login' => [
                 'admin' => [
                     'loggedIn' => 'admin_login',
-                    'redirect' => '/admin',
+                    'redirect' => '/login',
                     'idLoggedIn' => 'id_admin'
                 ],
                 'user' => [

@@ -37,6 +37,7 @@ $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 
 $app->post('/access', '\App\controllers\admin\adminController:store');
 $app->get('/admin', '\App\Controllers\admin\adminController:index');
+$app->get('/admin/logout', 'App\Controllers\admin\adminController:destroy');
 $app->get('/painel', '\App\Controllers\admin\painelController:index');
 
 $app->run();

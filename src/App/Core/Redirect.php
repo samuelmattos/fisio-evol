@@ -1,9 +1,11 @@
 <?php
 namespace App\Core;
+use Config;
 
 class Redirect{
 
     public static function redirect($target){
+        $target = Config::HOST_APP.$target;
         return header("location:{$target}");
     }
 

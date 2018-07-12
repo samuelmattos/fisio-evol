@@ -7,6 +7,9 @@ error_reporting(E_ALL);
 require 'vendor/autoload.php';
 use Dopesong\Slim\Error\Whoops as WhoopsError;
 
+use App\core\Middlewares;
+
+$middleware = new Middlewares;
 $c = new \Slim\Container(); //Create Your container
 
 //Override the default Not Found Handler
@@ -37,7 +40,9 @@ $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 
 $app->post('/access', '\App\controllers\admin\adminController:store');
 $app->get('/admin', '\App\Controllers\admin\adminController:index');
-$app->get('/admin/logout', 'App\Controllers\admin\adminController:destroy');
-$app->get('/painel', '\App\Controllers\admin\painelController:index');
 
+$app->group('/admin', function() use($app){
+    $app->get('/painel', '\App\Controllers\admin\painelController:index');
+    $app->get('/logout', '\App\Controllers\admin\adminController:destroy');
+})->add($middleware->admin());
 $app->run();

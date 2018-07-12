@@ -50,6 +50,7 @@ class pacienteController extends Controller
         }
 
         $this->paciente->create((array) $data);
+        
         if ($paciente) {
             return back();
         }

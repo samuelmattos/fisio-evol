@@ -6,7 +6,8 @@ class Redirect{
 
     public static function redirect($target){
         $target = Config::HOST_APP.$target;
-        return header("location:{$target}");
+        
+        header("location:{$target}");
     }
 
     public static function back(){

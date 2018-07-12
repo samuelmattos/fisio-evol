@@ -13,12 +13,12 @@ class Config
             'login' => [
                 'admin' => [
                     'loggedIn' => 'admin_login',
-                    'redirect' => 'login',
+                    'redirect' => '/login',
                     'idLoggedIn' => 'id_admin'
                 ],
                 'user' => [
                     'loggedIn' => 'user_login',
-                    'redirect' => 'user',
+                    'redirect' => '/user',
                     'idLoggedIn' => 'id_user'
                 ]
             ],

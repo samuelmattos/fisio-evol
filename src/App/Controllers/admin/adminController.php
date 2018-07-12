@@ -34,8 +34,9 @@ class adminController extends Controller
 		
         $login = new Login('admin');
         $loggedIn = $login->login($data, new Admin());
+       
         if ($loggedIn) {
-            Redirect::redirect('painel');
+            Redirect::redirect('admin/painel');
         }
     }
 

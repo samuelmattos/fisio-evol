@@ -20,7 +20,7 @@
           <form action="">
             <div class="ui action input">
               <input type="text" name="s" placeholder="Buscar...">
-              <button class="ui button" type="submit">Procurar</button>
+              <button class="ui button" type="submit" alt="Procurar">Procurar</button>
             </div>
           </form>
         </th>
@@ -32,15 +32,15 @@
         <td> <i class="large icon user circle"></i>{{paciente.nome}}</td>
         <td class="right aligned">
           <div class="ui buttons">
-            <a class="ui icon button green" alt="Evoluir"
+            <a class="ui icon button green" title="Evoluir"
               href="evolucao/cadastro/{{paciente.id_paciente}}">
               <i class="chart line icon"></i>
             </a>
-            <a class="ui icon button orange"
+            <a class="ui icon button orange" title="Editar"
               href="pacientes/edit/{{paciente.id_paciente}}">
               <i class="edit outline icon"></i>
             </a>
-            <a class="ui icon button red"
+            <a class="ui icon button red" title="Remover"
               href="pacientes/remove/{{paciente.id_paciente}}">
               <i class="ban icon"></i>
             </a>

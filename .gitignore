@@ -4,3 +4,4 @@ src/App/Storage/Cache
 composer.lock
 composer.phar
 config_fire.json
+config/Config.php

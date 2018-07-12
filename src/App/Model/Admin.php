@@ -11,6 +11,7 @@ class Admin extends Model
     {
 
         if(!isset($_SESSION['id_admin'])){
+            return false;
             throw new \Exception("Você não pode acessar essa página");            
         }
         $id = $_SESSION['id_admin'];

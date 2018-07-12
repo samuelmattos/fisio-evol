@@ -2,11 +2,26 @@
 namespace App\Controllers\admin;
 
 use App\Core\Controller;
+use App\Model\User;
 
 class painelController extends Controller
 {
+
+    private $user;
+
+    public function __construct()
+    {
+        $this->user = new User;
+    }
     public function index()
     {
-        $this->view('admin.painel', []);
+        $users = $this->user->
+            select()->
+            busca('nome,telefone')->
+            paginate(5)->get();
+        $dados['users'] = $users;
+        $dados['title'] = 'Fisioterapeutas';
+        $dados['links'] = $this->user->links();
+        $this->view('admin.painel', $dados);
     }
 }

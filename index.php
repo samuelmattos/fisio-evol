@@ -37,9 +37,7 @@ $app->get('/paciente', '\App\Controllers\pacienteController:create');
 $app->get('/pacientes/edit/{id}', '\App\Controllers\pacienteController:edit');
 $app->get('/pacientes/remove/{id}', '\App\Controllers\pacienteController:destroy');
 $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
-
 $app->post('/access', '\App\controllers\admin\adminController:store');
-$app->get('/admin', '\App\Controllers\admin\adminController:index');
 
 $app->group('/admin', function() use($app){
     $app->get('/painel', '\App\Controllers\admin\painelController:index');

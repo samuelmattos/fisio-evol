@@ -112,6 +112,16 @@ trait Read
         return $this->paginate->links();
     }
 
+    public function orderBY($fields, $value){
+        $fields = explode(',', $fields);
+        $this->sql .= ' ORDER BY ';
+        foreach ($fields as $field) {
+            $this->sql .= "{$field}";
+        }
+        $this->sql .= " {$value} ";
+        return $this;
+    }
+
     public function busca($fields)
     {
         $fields = explode(',', $fields);

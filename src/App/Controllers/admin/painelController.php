@@ -16,8 +16,9 @@ class painelController extends Controller
     public function index()
     {
         $users = $this->user->
-            select()->
-            busca('nome,telefone')->
+            select()->            
+            busca('nome,email,telefone,documento')->
+            orderBY('nome', 'DESC')->
             paginate(5)->get();
         $dados['users'] = $users;
         $dados['title'] = 'Fisioterapeutas';

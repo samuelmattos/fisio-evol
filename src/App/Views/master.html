@@ -17,16 +17,28 @@
             src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-        
         <div class="pusher">
             <div class="ui sticky menu" id="top-menu">
                 <a class="item mobile-button" id="menu">
                     <i class="sidebar icon"></i> Menu
                 </a>
                 {% if admin() == true %}
-                <div class="right item">
-                    <a href="{{constant('Config::HOST_APP')}}admin/logout"
-                        class="ui button blue">Logout</a>
+                <div class="right menu">
+                    <div class="ui dropdown item">
+                        {{admin().nome}}
+                        <i class="large icon user circle"></i>
+                        <div class="menu">
+                            <a
+                                href="{{constant('Config::HOST_APP')}}admin/painel"
+                                class="item">Usuários</a>
+                            <a
+                                href="{{constant('Config::HOST_APP')}}admin/painel"
+                                class="item">Perfil</a>
+                            <a
+                                href="{{constant('Config::HOST_APP')}}admin/logout"
+                                class="item">Sair</a>
+                        </div>
+                    </div>
                 </div>
                 {% endif %}
             </div>
@@ -45,6 +57,9 @@
             .sidebar('setting',  'transition', 'overlay')
             .sidebar('attach events', '.mobile-button');
         $('#top-menu').sticky({});
+        $('.ui.dropdown')
+  .dropdown()
+;
         </script>
     </body>
 </html>

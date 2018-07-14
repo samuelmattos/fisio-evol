@@ -22,32 +22,12 @@
                 <a class="item mobile-button" id="menu">
                     <i class="sidebar icon"></i> Menu
                 </a>
-                {% if admin() == true %}
-                <div class="right menu">
-                    <div class="ui dropdown item">
-                        {{admin().nome}}
-                        <i class="large icon user circle"></i>
-                        <div class="menu">
-                            <a
-                                href="{{constant('Config::HOST_APP')}}admin/painel"
-                                class="item">Usuários</a>
-                            <a
-                                href="{{constant('Config::HOST_APP')}}admin/painel"
-                                class="item">Perfil</a>
-                            <a
-                                href="{{constant('Config::HOST_APP')}}admin/logout"
-                                class="item">Sair</a>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
+                {% include 'logged.html' %}
             </div>
             <div class="ui container">
                 {% block master %}
                 {% endblock%}
             </div>
-
-            {% include 'footer.html' %}
         </div>
         <script type="text/javascript"
             src="{{constant('Config::HOST_APP')}}src/App/Assets/js/semantic.min.js">

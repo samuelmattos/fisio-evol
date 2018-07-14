@@ -1,8 +1,25 @@
-<?php 
+<?php
 namespace App\Model;
+
 use App\Core\Model;
 
-class Pacientes extends Model{
+class Pacientes extends Model
+{
 
     protected $table = 'pacientes';
+
+    public function get_pacientes()
+    {
+        $this->sql .= "select p.* from {$this->table} as p ";
+        $this->sql .= "INNER JOIN paciente_user pu
+        ON pu.id_paciente = p.id_paciente
+        INNER JOIN users u
+        ON u.id_user = 1";
+        $this->busca('p.nome,p.telefone');
+        $this->orderBY('nome,id_paciente', 'ASC');
+        
+        $this->paginate(5);
+      
+        return $this->get();
+    }
 }

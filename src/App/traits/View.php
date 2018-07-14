@@ -1,7 +1,7 @@
 <?php
 
 namespace App\traits;
-use App\load\load;
+use App\load\Load;
 trait View
 {
     protected $twig;

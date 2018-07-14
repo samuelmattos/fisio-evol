@@ -25,13 +25,13 @@ class Login
     {
         if (!isset($this->type)) {
 			throw new \Exception("Para fazer o login, verifique se esta passando o tipo");
-        }       
+        }
         $user = $model->findBy('email', $data->email);
         if (!$user) {
 			return false;
         }
-        if (Password::verify($data->password, $user->password)) {
-            $_SESSION[$this->config->idLoggedIn] = $user->idadmin;
+        if (Password::verify($data->password, $user->password)) {            
+            $_SESSION[$this->config->idLoggedIn] = ($this->type == 'admin') ? $user->idadmin : $user->id_user;
             $_SESSION[$this->config->loggedIn] = true;
             return true;
         }

@@ -9,4 +9,9 @@ class loginController extends Controller
     {
         $this->view('login', ['title' => 'Login', 'dados' => 'Login']);
     }
+
+    public function user()
+    {
+        $this->view('login_user', ['title' => 'Login', 'dados' => 'Login']);
+    }
 }

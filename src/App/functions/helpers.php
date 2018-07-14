@@ -4,7 +4,7 @@ use App\Core\Redirect;
 
 function dd($data)
 {
-    var_dump($data);
+    echo ($data);
     die();
 }
 

@@ -14,6 +14,7 @@ class Paginate extends Model{
     private $pages;
 
     private function current(){
+       
         $this->page = $_GET['page'] ?? 1;
     }
 
@@ -37,8 +38,8 @@ class Paginate extends Model{
         return " limit {$this->perPage} offset {$this->offset}";
     }
 
-    public function paginate($perPage){
-        $this->current();
+    public function paginate($perPage){        
+        $this->current();       
         $this->perPage($perPage);
         $this->offset();
         $this->pages();

@@ -3,12 +3,12 @@
 <h1>Login</h1>
 <div class="ui center aligned grid">
     <div class="eight column">
-        <form class="ui large form" action="access" method="POST">
+        <form class="ui large form" action="userAccess" method="POST">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="Login">                        
+                        <input type="text" name="email" placeholder="Login">
                     </div>
                     {{ message('email') | raw }}
                 </div>
@@ -16,19 +16,20 @@
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
                         <input type="password" name="password"
-                            placeholder="Senha">                            
+                            placeholder="Senha">
                     </div>
                     {{ message('password') | raw }}
                 </div>
-                <button class="ui fluid large blue submit button" type="submit">Acessar</button>
+                <div class="ui small buttons">
+                    <button class="ui blue submit button"
+                        type="submit">Acessar</button>
+                    <div class="or" data-text="ou"></div>                   
+                    <a class="ui grey button" href="remenber">
+                        Esqueci minha senha
+                    </a>
+                </div>
             </div>
-            <div class="ui error message"></div>
         </form>
-        <div class="ui message">
-            <a href="remenber">
-            Esqueci minha senha ?
-            </a>
-        </div>
     </div>
 </div>
 {% endblock%}

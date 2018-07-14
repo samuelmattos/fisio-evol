@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\user;
 
 use App\Core\Controller;
 use App\Core\Validate;
@@ -18,11 +18,7 @@ class pacienteController extends Controller
 
     public function index()
     {
-        //$pacientes = $pacientes->select()->where('id_paciente', '=', '2')->get();
-        $pacientes = $this->paciente->
-                    select()->
-                    busca('nome,telefone')->
-                    paginate(5)->get();
+        $pacientes = $this->paciente->get_pacientes();
         $dados['pacientes'] = $pacientes;
         $dados['title'] = 'Pacientes';
         $dados['links'] = $this->paciente->links();
@@ -30,9 +26,9 @@ class pacienteController extends Controller
     }
     public function create()
     {
-        $this->view('cadastra_paciente', 
-        ['title' => 'Cadastrar Paciente',
-        'acao' => 'Cadastrar']);
+        $this->view('cadastra_paciente',
+            ['title' => 'Cadastrar Paciente',
+                'acao' => 'Cadastrar']);
     }
 
     public function store()
@@ -50,7 +46,7 @@ class pacienteController extends Controller
         }
 
         $this->paciente->create((array) $data);
-        
+
         if ($paciente) {
             return back();
         }

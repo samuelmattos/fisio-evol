@@ -69,7 +69,7 @@ trait Read
     }
 
     public function get()
-    {
+    {      
         $select = $this->bindAndExecute();
 
         return $select->fetchAll();
@@ -84,10 +84,9 @@ trait Read
 
     private function bindAndExecute()
     {
-        if ($this->isPaginate) {
+        if ($this->isPaginate) {           
             $this->sql = $this->sql . $this->paginate->sqlPaginate();
         }
-
         $select = $this->connect->prepare($this->sql);
         $select->execute($this->binds);
 
@@ -96,12 +95,13 @@ trait Read
 
     public function paginate($perPage)
     {
+        
         $this->paginate = new Paginate;
-
+      
         $this->paginate->records(count($this->get()));
-
+       
         $this->paginate->paginate($perPage);
-
+        
         $this->isPaginate = true;
 
         return $this;
@@ -116,8 +116,9 @@ trait Read
         $fields = explode(',', $fields);
         $this->sql .= ' ORDER BY ';
         foreach ($fields as $field) {
-            $this->sql .= "{$field}";
+            $this->sql .= "{$field}, ";
         }
+        $this->sql = rtrim($this->sql, ', ');
         $this->sql .= " {$value} ";
         return $this;
     }
@@ -127,8 +128,10 @@ trait Read
         $fields = explode(',', $fields);
         $this->sql .= ' where ';
         foreach ($fields as $field) {
-            $this->sql .= " {$field} like :{$field} or";
-            $this->binds[$field] = '%'.busca().'%';
+            $arg = explode('.', $field);
+            $arg = (isset($arg[1]) ? $arg[1] : $field);
+            $this->sql .= " {$field} like :{$arg} or";
+            $this->binds[$arg] = '%'.busca().'%';
         }
         $this->sql = rtrim($this->sql, 'or');
         return $this;

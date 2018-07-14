@@ -36,7 +36,9 @@ class userController extends Controller
      
         if ($loggedIn) {
             Redirect::redirect('user/pacientes');
-        }
+        }else{
+            return back();
+        }        
     }
 
     public function destroy()

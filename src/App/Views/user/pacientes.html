@@ -1,0 +1,57 @@
+{% extends 'master.html' %}
+{% block master %}
+<div class="ui grid">
+  <div class="left ten wide column">
+    <h2 class="ui large header">
+      {{title}}
+    </h2>
+  </div>
+  <div class="right floated six wide column">
+    <a class="ui right floated small primary labeled icon button"
+      href="paciente">
+      <i class="user icon"></i> Cadastrar Paciente
+    </a>
+  </div>
+</div>
+<table class="ui celled table unstackable">
+  <thead>
+    <tr>
+      <th colspan="2"><div class="ui icon input">
+          <form action="">
+            <div class="ui action input">
+              <input type="text" name="s" placeholder="Buscar...">
+              <button class="ui button" type="submit" alt="Procurar">Procurar</button>
+            </div>
+          </form>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for paciente in pacientes %}
+      <tr>
+        <td> <i class="icon user circle"></i>{{paciente.nome}}</td>
+        <td class="right aligned">
+          <div class="ui small buttons">
+            <a class="ui icon button green" title="Evoluir"
+              href="evolucao/{{paciente.id_paciente}}">
+              <i class="chart line icon"></i>
+            </a>
+            <a class="ui icon button orange" title="Editar"
+              href="pacientes/edit/{{paciente.id_paciente}}">
+              <i class="edit outline icon"></i>
+            </a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr><th colspan="3">
+          <div class="ui right small floated pagination menu">
+            {{links | raw}}
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+  {% endblock%}

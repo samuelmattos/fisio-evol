@@ -1,15 +1,21 @@
 {% extends 'master.html' %}
 {% block master %}
 <div class="ui grid">
-  <div class="left ten wide column">
+  <div class="left six wide column">
     <h2 class="ui large header">
       {{title}}
     </h2>
   </div>
-  <div class="right floated six wide column">
-    <a class="ui right floated small primary labeled icon button"
-      href="paciente">
-      <i class="user icon"></i> Cadastrar Paciente
+  <div class="right floated ten wide column">
+    <a class="item ui small green labeled icon button"
+      href="cadastrar/evolucao">
+      <i class="chart line icon"></i> Cadastrar evolução
+    </a>
+    <a class="item ui small animated button yellow" href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
+        <div class="visible content">Voltar</div>
+        <div class="hidden content">
+            <i class="left arrow icon"></i>
+        </div>
     </a>
   </div>
 </div>
@@ -27,13 +33,13 @@
       </tr>
     </thead>
     <tbody>
-      {% for paciente in pacientes %}
+      {% for evolucao in evolucoes %}
       <tr>
         <td> <i class="icon user circle"></i>{{paciente.nome}}</td>
         <td class="right aligned">
           <div class="ui small buttons">
             <a class="ui icon button green" title="Evoluir"
-              href="evolucao/cadastro/{{paciente.id_paciente}}">
+              href="evolucao/{{paciente.id_paciente}}">
               <i class="chart line icon"></i>
             </a>
             <a class="ui icon button orange" title="Editar"

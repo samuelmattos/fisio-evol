@@ -45,7 +45,7 @@ $app->group('/user', function () use ($app) {
     $app->get('/pacientes', '\App\Controllers\user\pacienteController:index');
     $app->post('/pacientes/cadastro', '\App\Controllers\user\pacienteController:store');
     $app->get('/pacientes/edit/{id}', '\App\Controllers\user\pacienteController:edit');
-    $app->get('/pacientes/remove/{id}', '\App\Controllers\user\pacienteController:destroy');
+    $app->get('/evolucao/{id}', '\App\Controllers\user\evolucaoController:index');
     $app->get('/logout', '\App\Controllers\user\userController:destroy');
 })->add($middleware->user());
 

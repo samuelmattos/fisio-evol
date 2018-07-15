@@ -22,11 +22,11 @@ class pacienteController extends Controller
         $dados['pacientes'] = $pacientes;
         $dados['title'] = 'Pacientes';
         $dados['links'] = $this->paciente->links();
-        $this->view('pacientes', $dados);
+        $this->view('user.pacientes', $dados);
     }
     public function create()
     {
-        $this->view('cadastra_paciente',
+        $this->view('user.cadastra_paciente',
             ['title' => 'Cadastrar Paciente',
                 'acao' => 'Cadastrar']);
     }
@@ -57,7 +57,7 @@ class pacienteController extends Controller
         $paciente = $this->paciente;
         $paciente = $paciente->select()->where('id_paciente', $args['id'])->first();
 
-        $this->view('cadastra_paciente', [
+        $this->view('user.cadastra_paciente', [
             'title' => 'Editar Paciente',
             'acao' => 'Editar',
             'paciente' => $paciente,

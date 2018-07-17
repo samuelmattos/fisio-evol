@@ -25,4 +25,10 @@ class evolucaoController extends Controller
         $dados['evolucoes'] = array();
         $this->view('user.evolucao', $dados);
     }
+
+    public function create()
+    {
+        //alem do paciente tenho que encaminhar as evolucao
+        $this->view('user.cadastra_evolucao', array());
+    }
 }

@@ -5,7 +5,7 @@ Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.
 * PHP
 * Jquery
 * Axios
-* React
+* Vue.js
 * MySQL
 * Semantic UI
 ## Frameworks PHP

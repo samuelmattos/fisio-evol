@@ -1,4 +1,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/fb66fa9b-f354-4637-b1b0-3a8dd635ef3e/mini.png)](https://insight.sensiolabs.com/projects/fb66fa9b-f354-4637-b1b0-3a8dd635ef3e)
+[![Build Status](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/build.png?b=master)](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 # Fisio  Evol
 Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.
 ## Tecnologias

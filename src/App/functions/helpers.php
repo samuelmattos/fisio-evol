@@ -10,7 +10,7 @@ function dd($data)
 
 function json($data)
 {
-    headr('Content-Type: applictaion/json');
+    header('Content-Type: applictaion/json');
     echo json_encode($data);
 }
 

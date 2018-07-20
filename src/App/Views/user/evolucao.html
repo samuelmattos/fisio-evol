@@ -1,74 +1,38 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui grid">
-  <div class="left six wide column">
+<div class="ui two column doubling stackable grid container">
+  <div class="ui left aligned column">
     <h2 class="ui large header">
-      {{title}}
+      {{paciente.nome}}
     </h2>
+    <input type="hidden" id="id_paciente" value="{{paciente.id_paciente}}" />
   </div>
-  <input type="hidden" id="id_paciente" value="{{paciente.id_paciente}}" />
-  <div class="right floated ten wide column">
-    <a id="nova_evolucao" class="item ui small green labeled icon button"
-      href="#">
-      <i class="chart line icon"></i> Nova evolução
-    </a>
-    <a class="item ui small animated button yellow"
-      href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
-      <div class="visible content">Voltar</div>
-      <div class="hidden content">
-        <i class="left arrow icon"></i>
-      </div>
-    </a>
+  <div class="ui right aligned column">
+    <div class="ui buttons">
+      <a id="nova_evolucao" class="ui small green icon
+        button"
+        href="#">
+        <i class="chart line icon"></i>
+      </a>
+      <a id="chart_evolucao" class="ui small violet icon
+        button"
+        href="#">
+        <i class="clipboard icon"></i>
+      </a>
+      <a class="ui small animated button yellow"
+        href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
+        <div class="visible content">Voltar</div>
+        <div class="hidden content">
+          <i class="left arrow icon"></i>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 <div id="control">
-  <table class="ui celled table unstackable">
-    <thead>
-      <tr>
-        <th colspan="2"><div class="ui icon input">
-            <form action="">
-              <div class="ui action input">
-                <input type="text" name="s" placeholder="Buscar...">
-                <button class="ui button" type="submit" alt="Procurar">Procurar</button>
-              </div>
-            </form>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for evolucao in evolucoes %}
-        <tr>
-          <td> <i class="icon user circle"></i>{{paciente.nome}}</td>
-          <td class="right aligned">
-            <div class="ui small buttons">
-              <a class="ui icon button green" title="Evoluir"
-                href="evolucao/{{paciente.id_paciente}}">
-                <i class="chart line icon"></i>
-              </a>
-              <a class="ui icon button orange" title="Editar"
-                href="pacientes/edit/{{paciente.id_paciente}}">
-                <i class="edit outline icon"></i>
-              </a>
-              <a class="ui icon button red" title="Remover"
-                href="pacientes/remove/{{paciente.id_paciente}}">
-                <i class="ban icon"></i>
-              </a>
-            </div>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-      <tfoot>
-        <tr><th colspan="3">
-            <div class="ui right small floated pagination menu">
-              {{links | raw}}
-            </div>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-  <script type="text/javascript"
-    src="{{constant('Config::HOST_APP')}}src/App/Assets/js/evolucao.js">
+  {% include 'user/table_evolucoes.html' %}
+</div>
+<script type="text/javascript"
+  src="{{constant('Config::HOST_APP')}}src/App/Assets/js/evolucao.js">
   </script>
-  {% endblock%}
+{% endblock%}

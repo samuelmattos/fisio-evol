@@ -8,13 +8,13 @@ class Evolucao extends Model
 
     protected $table = 'evolucoes';
 
-    public function get_evolucoes()
-    {       
-        $this->select();
-        $this->busca('nome,telefone');
-        $this->orderBY('data,id_evolucao', 'ASC');
-        $this->paginate(5);
+    public function get_evolucoes($id_paciente, $id_user)
+    {   
 
+        $this->select();
+        $this->sql .= " where id_paciente = $id_paciente AND id_user = $id_user ";
+        $this->orderBY('data,descricao', 'ASC');
+        $this->paginate(5);
         return $this->get();
     }
 }

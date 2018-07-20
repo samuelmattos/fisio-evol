@@ -1,0 +1,45 @@
+<table class="ui celled striped table">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th> Data </th>
+            <th> Eva </th>
+            <th> Descrição </th>
+            <th> Ação </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for evolucao in evolucoes %}
+        <tr>
+            <td>{{evolucao.id_evolucao}}</td>
+            <td>{{evolucao.data
+                |
+                date("d/m/Y")}}</td>
+            <td>
+                {{evolucao.eva}}
+            </td>
+            <td>{{evolucao.descricao}}</td>
+            <td class="right aligned">
+                <div class="ui small buttons">
+                    <a class="ui icon button orange" title="Editar"
+                        href="edit/{{evolucao.id_evolucao}}">
+                        <i class="edit outline icon"></i>
+                    </a>
+                    <a class="ui icon button red" title="Remover"
+                        onclick="confirmaRemocao({{evolucao.id_evolucao}},{{evolucao.id_paciente}})">
+                        <i class="ban icon"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr><th colspan="5">
+                <div class="ui right small floated pagination menu">
+                    {{links | raw}}
+                </div>
+            </th>
+        </tr>
+    </tfoot>
+</table>

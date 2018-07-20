@@ -42,19 +42,7 @@
                             <i class="edit outline icon"></i>
                         </a>
                         <a class="ui icon button red" title="Remover"
-                            onclick="$('.ui.basic.modal')
-                            .modal({
-                            closable : false,
-                            onDeny : function(){
-                            $('.ui.basic.modal').modal('hide');
-                            return false;
-                            },
-                            onApprove : function() {
-                            return true;
-                            }
-                            })
-                            .modal('show')
-                            ; return false; "href="user/remoave/{{user.id_user}}">
+                            onclick="return false; "href="user/remoave/{{user.id_user}}">
                             <i class="ban icon"></i>
                         </a>
                     </div>
@@ -71,27 +59,4 @@
             </tr>
         </tfoot>
     </table>
-    <div class="ui basic modal">
-        <div class="ui icon header">
-            <i class="archive icon"></i>
-            Aviso
-        </div>
-        <div class="content">
-            <p>Tem certeza que deseja remover esse usuário do sistema?</p>
-        </div>
-        <div class="actions">
-            <div class="ui red basic cancel inverted button">
-                <i class="remove icon"></i>
-                Não
-            </div>
-            <div class="ui green ok inverted button">
-                <i class="checkmark icon"></i>
-                Sim
-            </div>
-        </div>
-    </div>
-    <script>
-            $( document ).ready(function() {
-                $('.ui.basic.modal').modal();});
-        </script>
     {% endblock%}

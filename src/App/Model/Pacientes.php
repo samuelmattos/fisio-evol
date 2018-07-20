@@ -2,6 +2,7 @@
 namespace App\Model;
 
 use App\Core\Model;
+use App\Model\User;
 
 class Pacientes extends Model
 {
@@ -10,11 +11,12 @@ class Pacientes extends Model
 
     public function get_pacientes()
     {
+        $user = (new User)->user();
         $this->sql .= "select p.* from {$this->table} as p ";
         $this->sql .= "INNER JOIN paciente_user pu
         ON pu.id_paciente = p.id_paciente
         INNER JOIN users u
-        ON u.id_user = 1";
+        ON u.id_user =  $user->id_user";
         $this->busca('p.nome,p.telefone');
         $this->orderBY('nome,id_paciente', 'ASC');
         

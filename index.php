@@ -45,7 +45,7 @@ $app->group('/user', function () use ($app) {
     $app->get('/pacientes', '\App\Controllers\user\pacienteController:index');
     $app->post('/pacientes/cadastro', '\App\Controllers\user\pacienteController:store');
     $app->get('/pacientes/edit/{id}', '\App\Controllers\user\pacienteController:edit');
-    $app->get('/evolucao/cadastrar/{id}', '\App\Controllers\user\evolucaoController:create');
+    $app->get('/evolucao/cadastrar/{id_paciente}/{id}', '\App\Controllers\user\evolucaoController:create');
     $app->post('/evolucao/salvar', '\App\Controllers\user\evolucaoController:store');
     $app->get('/evolucao/{id}', '\App\Controllers\user\evolucaoController:index');
     $app->get('/evolucao/edit/{id}', '\App\Controllers\user\evolucaoController:edit');    

@@ -84,8 +84,15 @@ class evolucaoController extends Controller
         }
     }
 
-    public function edit()
+    public function edit($request, $response, $args)
     {
+        
+        $evolucao = $this->evolucao;
+        $evolucao = $evolucao->select()->where('id_evolucao', $args['id'])->first();
+        $this->view('user.cadastra_evolucao', [
+            'acao' => 'Editar',
+            'evolucao' => $evolucao,
+        ]);
 
     }
 }

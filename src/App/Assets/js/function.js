@@ -10,34 +10,27 @@ function getFormData($form) {
 function popError(title, message) {
     $(".ui.modal").remove();
     var modal = '<div class="ui modal">' +
-        '           <i class="close icon"></i>' +
         '  <div class="header">' +
         title +
         ' </div>' +
-        ' <div class="image content">' +
-        '       <div class="description">' +
+        '       <div class="content">' +
         message +
-        '       </div>' +
         '        </div>' +
         '        <div class="actions">' +
-        ' <div class="ui negative button">OK</div>' +
-        ' </div>' +
+        '           <div class="ui negative button">OK</div>' +
+        '       </div>' +
         ' </div> ';
     $("body").append(modal);
     $('.ui.modal').modal('show');
 }
 
-function popRemove(title, message, acao) {
-    $(".ui.modal").remove();
+function popRemove(title, message, acao) {   
     var modal = '<div class="ui modal">' +
-        '   <i class="close icon"></i>' +
         '  <div class="header">' +
         title +
         ' </div>' +
-        ' <div class="image content">' +
-        '       <div class="description">' +
+        ' <div class="content">' +
         message +
-        '       </div>' +
         '        </div>' +
         '   <div class="actions">' +
         '  <div class="ui green basic ok button"><i class="checkmark icon"></i>Sim</div>' +
@@ -47,15 +40,39 @@ function popRemove(title, message, acao) {
     $("body").append(modal);
     $('.ui.modal')
         .modal({
-            closable: false,
-            onDeny: function () {
+            onDeny: function (e) {
                 $('.ui.modal').modal('hide');
+                $(".ui.modal").remove();
                 return false;
             },
             onApprove: function () {
                 if (typeof (acao) == "function")
-                   return acao.call();
+                    return acao.call();
             }
         })
-        .modal('show')
+        .modal('show', { transition: 'fade' })
+}
+
+var SCROLL_TOP
+
+function disableScroll() {
+    SCROLL_TOP = $(document).scrollTop()
+
+    $("body").css({
+        "position": "fixed",
+        "left": "0px",
+        "right": "0px",
+        "top": `${SCROLL_TOP * -1}px`
+    })
+}
+
+function enableScroll() {
+    $("body").css({
+        "position": "",
+        "left": "",
+        "right": "",
+        "top": ""
+    })
+
+    $(document).scrollTop(SCROLL_TOP)
 }

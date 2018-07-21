@@ -1,21 +1,24 @@
 <form class="ui form" method="POST" id="cad_evolucao"
     action="javascript:cadastrarEvolucao();">
-    <input type="hidden" name="id_paciente" value="{{id}}">
+    <input type="hidden" name="id_paciente" value="{{id_paciente}}">
     <div class="two fields">
         <div class="field">
             <label>Data</label>
-            <input type="date" placeholder="Data da evolução" name="data" required>
+            <input type="date" placeholder="Data da evolução"
+                value="{{evolucao.data | date("Y-m-d")}}" name="data" required>
             {{ message('data') | raw }}
         </div>
         <div class="field">
             <label>Eva</label>
-            <input type="number" name="eva" placeholder="Eva" max="10" min="0" required>
+            <input type="number" name="eva" placeholder="Eva"
+                value="{{evolucao.eva}}" max="10" min="0" required>
             {{ message('eva') | raw }}
         </div>
     </div>
     <div class="field">
         <label>Descrição</label>
-        <textarea rows="5" maxlength="500" placeholder="Descrição da evolução" name="descricao" required></textarea>
+        <textarea rows="5" maxlength="500" placeholder="Descrição da evolução"
+             name="descricao" required>{{evolucao.descricao}}</textarea>
         {{ message('descricao') | raw }}
     </div>
     <input class="ui submit blue button" value="Evoluir" type="submit">

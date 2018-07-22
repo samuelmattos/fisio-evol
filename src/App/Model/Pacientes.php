@@ -19,9 +19,19 @@ class Pacientes extends Model
         ON u.id_user =  $user->id_user";
         $this->busca('p.nome,p.telefone');
         $this->orderBY('nome,id_paciente', 'ASC');
-        
+
         $this->paginate(5);
-      
+
         return $this->get();
+    }
+
+    public function add_paciente_user($id_paciente)
+    {
+        $user = (new User)->user();
+
+        $sql = " INSERT INTO paciente_user (id_user, id_paciente) VALUES ($user->id_user, $id_paciente)";
+        $coon = $this->connect->prepare($sql);
+
+        return $coon->execute();
     }
 }

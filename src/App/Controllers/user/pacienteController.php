@@ -10,7 +10,7 @@ class pacienteController extends Controller
 {
 
     private $paciente;
-
+    private $user;
     public function __construct()
     {
         $this->paciente = new Pacientes;
@@ -28,6 +28,7 @@ class pacienteController extends Controller
     {
         $this->view('user.cadastra_paciente',
             ['title' => 'Cadastrar Paciente',
+                'form' => 'pacientes/cadastro',
                 'acao' => 'Cadastrar']);
     }
 
@@ -45,9 +46,10 @@ class pacienteController extends Controller
             return back();
         }
 
-        $this->paciente->create((array) $data);
+        $id_paciente = $this->paciente->create((array) $data);
 
-        if ($paciente) {
+        if ($id_paciente) {
+            $this->paciente->add_paciente_user($id_paciente);
             return back();
         }
     }
@@ -59,6 +61,7 @@ class pacienteController extends Controller
 
         $this->view('user.cadastra_paciente', [
             'title' => 'Editar Paciente',
+            'form' => 'editar/'. $paciente->id_paciente,
             'acao' => 'Editar',
             'paciente' => $paciente,
         ]);
@@ -67,6 +70,8 @@ class pacienteController extends Controller
 
     public function update($request, $response, $args)
     {
+        $validate = new Validate;
+
         $data = $validate->validate([
             'nome' => 'required',
             'documento' => 'required',
@@ -76,7 +81,7 @@ class pacienteController extends Controller
         if ($validate->hasErrors()) {
             return back();
         }
-
+        
         $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data);
 
         if ($update) {

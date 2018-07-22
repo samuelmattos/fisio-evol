@@ -76,8 +76,8 @@ class evolucaoController extends Controller
         $this->view('user.table_evolucoes', $dados);
     }
     public function destroy($request, $response, $args)
-    {   
-       
+    {
+
         $deleted = $this->evolucao->find('id_evolucao', $args['id'])->delete();
         if ($deleted) {
             $id_paciente = $args['id_paciente'];
@@ -87,13 +87,31 @@ class evolucaoController extends Controller
 
     public function edit($request, $response, $args)
     {
-        
+
         $evolucao = $this->evolucao;
         $evolucao = $evolucao->select()->where('id_evolucao', $args['id'])->first();
         $this->view('user.cadastra_evolucao', [
             'acao' => 'Editar',
             'evolucao' => $evolucao,
         ]);
+    }
 
+    public function update($request, $response, $args)
+    {
+        $data = $validate->validate([
+            'nome' => 'required',
+            'documento' => 'required',
+            'telefone' => 'required:phone:max@14',
+        ]);
+
+        if ($validate->hasErrors()) {
+            return back();
+        }
+
+        $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data);
+
+        if ($update) {
+            return back();
+        }
     }
 }

@@ -13,18 +13,17 @@ trait Update{
         $sql = "update {$this->table} set ";
 
         foreach($attributes as $field => $value){
-            $sql.= $field."= :{$field},";
+            $sql.= $field." = :{$field}, ";
         }
 
-        $sql = rtrim($sql,',');
+        $sql = rtrim($sql,', ');
 
-        $sql.= " where {$this->field} = :{$this->field}";
+        $sql .= " where {$this->field} = :{$this->field} ";
 
-        $attributes['id'] = $this->value;
-
+        $attributes['id_paciente'] = $this->value;
         $update = $this->connect->prepare($sql);
         $update->execute($attributes);
-
+       
         return $update->rowCount();
 
     }

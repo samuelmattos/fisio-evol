@@ -21,5 +21,6 @@
              name="descricao" required>{{evolucao.descricao}}</textarea>
         {{ message('descricao') | raw }}
     </div>
-    <input class="ui submit blue button" value="Evoluir" type="submit">
+    <input class="ui submit blue button" value="{{acao}}" type="submit">
+    <a class="ui button yellow" href="{{id_paciente}}">Cancelar</a>
 </form>

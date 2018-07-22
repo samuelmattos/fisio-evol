@@ -52,27 +52,3 @@ function popRemove(title, message, acao) {
         })
         .modal('show', { transition: 'fade' })
 }
-
-var SCROLL_TOP
-
-function disableScroll() {
-    SCROLL_TOP = $(document).scrollTop()
-
-    $("body").css({
-        "position": "fixed",
-        "left": "0px",
-        "right": "0px",
-        "top": `${SCROLL_TOP * -1}px`
-    })
-}
-
-function enableScroll() {
-    $("body").css({
-        "position": "",
-        "left": "",
-        "right": "",
-        "top": ""
-    })
-
-    $(document).scrollTop(SCROLL_TOP)
-}

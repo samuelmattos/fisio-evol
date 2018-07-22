@@ -39,6 +39,7 @@ class evolucaoController extends Controller
     public function create($request, $response, $args)
     {
         //alem do paciente tenho que encaminhar as evolucao
+        $args['acao'] = 'Salvar';
         $this->view('user.cadastra_evolucao', $args);
     }
 

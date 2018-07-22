@@ -49,7 +49,7 @@ $app->group('/user', function () use ($app) {
     $app->post('/evolucao/salvar', '\App\Controllers\user\evolucaoController:store');
     $app->get('/evolucao/{id}', '\App\Controllers\user\evolucaoController:index');
     $app->get('/evolucao/edit/{id}', '\App\Controllers\user\evolucaoController:edit');    
-    $app->get('/evolucao/remove/{id}/{id_paciente}', '\App\Controllers\user\evolucaoController:destroy');    
+    $app->get('/evolucao/remove/{id}/{id_paciente}', '\App\Controllers\user\evolucaoController:destroy');  
     $app->get('/logout', '\App\Controllers\user\userController:destroy');
 })->add($middleware->user());
 

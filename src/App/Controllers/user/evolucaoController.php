@@ -40,6 +40,7 @@ class evolucaoController extends Controller
     {
         //alem do paciente tenho que encaminhar as evolucao
         $args['acao'] = 'Salvar';
+        $args['action'] = 'javascript:cadastrarEvolucao();';
         $this->view('user.cadastra_evolucao', $args);
     }
 
@@ -75,6 +76,7 @@ class evolucaoController extends Controller
         $dados['evolucoes'] = $evolucoes;
         $this->view('user.table_evolucoes', $dados);
     }
+
     public function destroy($request, $response, $args)
     {
 
@@ -92,26 +94,26 @@ class evolucaoController extends Controller
         $evolucao = $evolucao->select()->where('id_evolucao', $args['id'])->first();
         $this->view('user.cadastra_evolucao', [
             'acao' => 'Editar',
+            'action' => "javascript:editarEvolucao(" . $args['id'] . ");",
             'evolucao' => $evolucao,
         ]);
     }
 
     public function update($request, $response, $args)
     {
+        $validate = new Validate;
         $data = $validate->validate([
-            'nome' => 'required',
-            'documento' => 'required',
-            'telefone' => 'required:phone:max@14',
+            'descricao' => 'required',
+            'data' => 'required',
         ]);
 
         if ($validate->hasErrors()) {
             return back();
         }
+        $data->id_user = $this->user->id_user;
+        $update = $this->evolucao->find('id_evolucao', $args['id'])->update((array) $data, 'id_evolucao');
 
-        $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data);
-
-        if ($update) {
-            return back();
-        }
+        $id_paciente = $data->id_paciente;
+        $this->listEvolucao($id_paciente);
     }
 }

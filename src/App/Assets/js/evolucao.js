@@ -25,11 +25,26 @@ function cadastrarEvolucao() {
         popError('Erro', error.response.data.error.message);
     });
 };
+
+function editarEvolucao(id_evolucao) {
+    var formData = getFormData($("#cad_evolucao"));
+    $("#cad_evolucao").addClass("loading");
+    axios.post('update/' + id_evolucao, formData).then((response) => {
+        $('#control').text('');
+        $('#control').append(response.data);
+        $("#cad_evolucao").removeClass("loading");
+    }).catch(error => {
+        $("#cad_evolucao").removeClass("loading");
+        popError('Erro', error.response.data.error.message);
+    });
+};
+
 function confirmaRemocao(id, id_paciente) {
     popRemove('Atenção', 'Deseja remover a evolução do sistema?', function () {
         return removeEvolucao(id, id_paciente);
     });
-}
+};
+
 function removeEvolucao(id, id_paciente) {
     $("#cad_evolucao").addClass("loading");
     axios.get('remove/' + id + '/' + id_paciente).then((response) => {
@@ -37,7 +52,8 @@ function removeEvolucao(id, id_paciente) {
         $('#control').append(response.data);
         $("#cad_evolucao").removeClass("loading");
     });
-}
+};
+
 function viewEditEvolucao(id_evolucao) {
     $("#cad_evolucao").addClass("loading");
     axios.get('edit/' + id_evolucao).then((response) => {
@@ -45,4 +61,4 @@ function viewEditEvolucao(id_evolucao) {
         $('#control').append(response.data);
         $("#cad_evolucao").removeClass("loading");
     });
-}
+};

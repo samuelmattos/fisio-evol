@@ -1,6 +1,6 @@
 <form class="ui form" method="POST" id="cad_evolucao"
-    action="javascript:cadastrarEvolucao();">
-    <input type="hidden" name="id_paciente" value="{{id_paciente}}">
+    action="{{action}}">
+    <input type="hidden" name="id_paciente" value="{{evolucao.id_paciente}}">
     <div class="two fields">
         <div class="field">
             <label>Data</label>
@@ -22,5 +22,5 @@
         {{ message('descricao') | raw }}
     </div>
     <input class="ui submit blue button" value="{{acao}}" type="submit">
-    <a class="ui button yellow" href="{{id_paciente}}">Cancelar</a>
+    <a class="ui button yellow" href="{{evolucao.id_paciente}}">Cancelar</a>
 </form>

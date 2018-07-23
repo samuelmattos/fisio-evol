@@ -82,7 +82,7 @@ class pacienteController extends Controller
             return back();
         }
         
-        $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data);
+        $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data, 'id_paciente');
 
         if ($update) {
             return back();

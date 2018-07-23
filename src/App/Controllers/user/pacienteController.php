@@ -38,7 +38,6 @@ class pacienteController extends Controller
 
         $data = $validate->validate([
             'nome' => 'required',
-            'documento' => 'required',
             'telefone' => 'required:phone:max@14',
         ]);
 
@@ -74,7 +73,6 @@ class pacienteController extends Controller
 
         $data = $validate->validate([
             'nome' => 'required',
-            'documento' => 'required',
             'telefone' => 'required:phone:max@14',
         ]);
 

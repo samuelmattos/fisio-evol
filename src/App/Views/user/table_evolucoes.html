@@ -1,7 +1,6 @@
 <table class="ui celled striped table" id="table_evolucoes">
     <thead>
         <tr>
-            <th> ID </th>
             <th> Data </th>
             <th> Eva </th>
             <th> Descrição </th>
@@ -11,7 +10,6 @@
     <tbody>
         {% for evolucao in evolucoes %}
         <tr>
-            <td>{{evolucao.id_evolucao}}</td>
             <td>{{evolucao.data
                 |
                 date("d/m/Y")}}</td>

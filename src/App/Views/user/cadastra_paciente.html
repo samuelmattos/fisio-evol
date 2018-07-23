@@ -1,13 +1,14 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui grid ">
+<div class="ui grid">
     <div class="left ten wide column">
         <h2 class="ui large header">
             {{title}}
         </h2>
     </div>
     <div class="right floated six wide column">
-        <a class="ui right floated animated button yellow" href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
+        <a class="ui right floated animated button yellow"
+            href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
             <div class="visible content">Voltar</div>
             <div class="hidden content">
                 <i class="left arrow icon"></i>
@@ -18,13 +19,19 @@
 <form class="ui form" method="POST" action="{{form}}">
     <div class="field">
         <label>Nome</label>
-        <input type="text" name="nome" value="{{paciente.nome}}" placeholder="Nome" required />
+        <input type="text" name="nome" value="{{paciente.nome}}"
+            placeholder="Nome" required />
         {{ message('nome') | raw }}
     </div>
     <div class="field">
         <label>Documento</label>
-        <input type="text" name="documento" value="{{paciente.documento}}" required placeholder="CPF/RG" />
-        {{ message('documento') | raw }}
+        <input type="text" name="documento" value="{{paciente.documento}}"
+            placeholder="CPF/RG" />
+    </div>
+    <div class="field">
+        <label>Email</label>
+        <input type="text" name="email" value="{{paciente.email}}"
+            placeholder="email@fisioevol.com.br" />
     </div>
     <div class="field">
         <label>Telefone</label>
@@ -39,6 +46,8 @@
     </div>
     <button class="ui button green" type="submit">{{acao}}</button>
 </form>
-<script type="text/javascript" src="{{constant('Config::HOST_APP')}}src/App/Assets/js/jquery.mask.min.js" /></script>
+<script type="text/javascript"
+    src="{{constant('Config::HOST_APP')}}src/App/Assets/js/jquery.mask.min.js"
+    /></script>
 <script type="text/javascript">$(".telefone").mask("(00)0000-00009");</script>
 {% endblock%}

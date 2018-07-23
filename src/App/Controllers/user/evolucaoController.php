@@ -116,4 +116,18 @@ class evolucaoController extends Controller
         $id_paciente = $data->id_paciente;
         $this->listEvolucao($id_paciente);
     }
+
+    public function rel($request, $response, $args)
+    {
+        $paciente = $this->paciente;
+        $user = $this->user;
+        $evolucao = $this->evolucao;
+        $paciente = $paciente->select()->where('id_paciente', $args['id'])->first();
+
+        $evolucoes = $evolucao->get_evolucoes($paciente->id_paciente, $user->id_user);
+        $dados['paciente'] = $paciente;
+        $dados['title'] = 'Evolução';
+        $dados['evolucoes'] = $evolucoes;
+        return json_encode($dados);
+    }
 }

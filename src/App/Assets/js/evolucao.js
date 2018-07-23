@@ -1,4 +1,7 @@
 let nova_evolucao = document.querySelector('#nova_evolucao');
+var vm = new Vue({
+    delimiters: ['${', '}']
+})
 
 nova_evolucao.onclick = function () {
     var id_paciente = $("#id_paciente").val();
@@ -62,3 +65,13 @@ function viewEditEvolucao(id_evolucao) {
         $("#cad_evolucao").removeClass("loading");
     });
 };
+
+function viewRelatorio() {
+    var id_paciente = $("#id_paciente").val();
+    $("#control").addClass("ui loading");
+    axios.get('relatorio/' + id_paciente).then((response) => {
+        $('#control').text('');
+        $('#control').append(response.data.evolucoes);
+        $("#control").removeClass("loading");
+    });
+}

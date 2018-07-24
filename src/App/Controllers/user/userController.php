@@ -40,7 +40,11 @@ class userController extends Controller
             return back();
         }        
     }
-
+    public function perfil()
+    {
+        $login = new Login('user');
+        $this->view('user.perfil',[]);
+    }
     public function destroy()
     {
         $login = new Login('user');

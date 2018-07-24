@@ -40,6 +40,7 @@ class evolucaoController extends Controller
     {
         //alem do paciente tenho que encaminhar as evolucao
         $args['acao'] = 'Salvar';
+        $args['id_paciente']= $args['id_paciente'];
         $args['action'] = 'javascript:cadastrarEvolucao();';
         $this->view('user.cadastra_evolucao', $args);
     }
@@ -94,6 +95,7 @@ class evolucaoController extends Controller
         $evolucao = $evolucao->select()->where('id_evolucao', $args['id'])->first();
         $this->view('user.cadastra_evolucao', [
             'acao' => 'Editar',
+            'id_paciente' => $evolucao->id_paciente,
             'action' => "javascript:editarEvolucao(" . $args['id'] . ");",
             'evolucao' => $evolucao,
         ]);
@@ -111,6 +113,7 @@ class evolucaoController extends Controller
             return back();
         }
         $data->id_user = $this->user->id_user;
+       
         $update = $this->evolucao->find('id_evolucao', $args['id'])->update((array) $data, 'id_evolucao');
 
         $id_paciente = $data->id_paciente;

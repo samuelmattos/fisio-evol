@@ -1,0 +1,31 @@
+{% extends 'master.html' %}
+{% block master %}
+<form class="ui form">
+    <div class="field">
+        <label>Nome Completo</label>
+        <input type="text" name="nome" value="{{user().nome}}" required
+            placeholder="Nome">
+    </div>
+    <div class="field">
+        <label>E-mail</label>
+        <input type="text" name="email" value="{{user().email}}" required
+            placeholder="E-mail">
+    </div>
+    <div class="field">
+        <label>Crefito</label>
+        <input type="text" name="crefito" value="{{user().crefito}}"
+            placeholder="Crefito">
+    </div>
+    <div class="field">
+        <label>Telefone</label>
+        <input type="text" name="telefone" value="{{user().telefone}}"
+            placeholder="Telefone">
+    </div>
+    <div class="field">
+        <label>Documento</label>
+        <input type="text" name="documento" value="{{user().documento}}"
+            placeholder="Cpf ou RG">
+    </div>
+    <button class="ui button blue" type="submit">Atualizar</button>
+</form>
+{% endblock%}

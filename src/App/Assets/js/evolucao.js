@@ -1,16 +1,20 @@
-let nova_evolucao = document.querySelector('#nova_evolucao');
-var vm = new Vue({
-    delimiters: ['${', '}']
+var evolucoes_vue = new Vue({
+    delimiters: ['%{', '}'],
+    el: '#evolucoes_vue',
+    data: {
+        evolucoes: []
+    }
 })
 
+let nova_evolucao = document.querySelector('#nova_evolucao');
 nova_evolucao.onclick = function () {
     var id_paciente = $("#id_paciente").val();
     $("#nova_evolucao").addClass("loading");
     axios.get('cadastrar/' + id_paciente + '/' + null).then((response) => {
-        $('#control').text('');
         $('#control').append(response.data);
         $("#nova_evolucao").removeClass("loading");
     }).catch(error => {
+        w
         $("#nova_evolucao").removeClass("loading");
         popError('Erro', error);
     });
@@ -20,7 +24,6 @@ function cadastrarEvolucao() {
     var formData = getFormData($("#cad_evolucao"));
     $("#cad_evolucao").addClass("loading");
     axios.post('salvar', formData).then((response) => {
-        $('#control').text('');
         $('#control').append(response.data);
         $("#cad_evolucao").removeClass("loading");
     }).catch(error => {
@@ -70,8 +73,7 @@ function viewRelatorio() {
     var id_paciente = $("#id_paciente").val();
     $("#control").addClass("ui loading");
     axios.get('relatorio/' + id_paciente).then((response) => {
-        $('#control').text('');
-        $('#control').append(response.data.evolucoes);
+        evolucoes_vue.evolucoes = response.data.evolucoes;
         $("#control").removeClass("loading");
     });
 }

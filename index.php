@@ -41,6 +41,7 @@ $app->group('/admin', function () use ($app) {
 $app->get('/userLogin', '\App\Controllers\loginController:user');
 $app->post('/userAccess', '\App\controllers\user\userController:store');
 $app->group('/user', function () use ($app) {
+    $app->get('/perfil', '\App\Controllers\user\userController:perfil');
     include('src/App/Rotas/paciente_route.php');
     include('src/App/Rotas/evolucao_route.php');   
     $app->get('/logout', '\App\Controllers\user\userController:destroy');

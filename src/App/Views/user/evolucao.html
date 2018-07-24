@@ -30,9 +30,26 @@
   </div>
 </div>
 <div id="control">
-  {% include 'user/table_evolucoes.html' %}
+  <div id="evolucoes_vue">
+    <div class="column" v-for="(evolucoes, index) in evolucoes">
+      <div class="ui segment">
+        <div class="ui blue ribbon label">%{ evolucoes.data }</div>
+        Eva %{ evolucoes.eva }
+        <p>%{ evolucoes.descricao }</p>
+        <a class="ui orange ribbon label"
+          onclick="viewEditEvolucao( %{evolucoes.id_evolucao} )">Editar </a>
+        <p></p>
+        <a class="ui red right ribbon label"
+          onclick="confirmaRemocao(%{evolucoes.id_evolucao },%{evolucoes.id_paciente })">Remover
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript"
   src="{{constant('Config::HOST_APP')}}src/App/Assets/js/evolucao.js">
-  </script>
+</script>
+<script>  	
+  evolucoes_vue.evolucoes = {{ evolucoes|json_encode()  | raw }};
+</script>
 {% endblock%}

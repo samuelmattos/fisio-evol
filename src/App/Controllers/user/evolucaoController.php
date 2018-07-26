@@ -64,9 +64,9 @@ class evolucaoController extends Controller
         $data->id_user = $user->id_user;
         $evolucao = $this->evolucao->create((array) $data);
         if ($evolucao) {
-            $arg = (array) $data;
-            $id_paciente = $arg['id_paciente'];
-            $this->listEvolucao($id_paciente);
+            $evolucao = $this->evolucao->findBy('id_evolucao', $evolucao);
+            $dados['evolucao'] = $evolucao;
+            return json_encode($dados);
         }
     }
 

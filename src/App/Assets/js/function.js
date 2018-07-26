@@ -7,6 +7,12 @@ function getFormData($form) {
     return formdata;
 }
 
+function popCadastro(body) {
+    $(".ui.modal").remove();
+    $("body").append(body);
+    $('.ui.modal').modal('show');
+}
+
 function popError(title, message) {
     $(".ui.modal").remove();
     var modal = '<div class="ui modal">' +
@@ -24,7 +30,7 @@ function popError(title, message) {
     $('.ui.modal').modal('show');
 }
 
-function popRemove(title, message, acao) {   
+function popRemove(title, message, acao) {
     var modal = '<div class="ui modal">' +
         '  <div class="header">' +
         title +

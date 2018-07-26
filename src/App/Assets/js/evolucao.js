@@ -11,10 +11,9 @@ nova_evolucao.onclick = function () {
     var id_paciente = $("#id_paciente").val();
     $("#nova_evolucao").addClass("loading");
     axios.get('cadastrar/' + id_paciente + '/' + null).then((response) => {
-        $('#control').append(response.data);
+        popCadastro(response.data);
         $("#nova_evolucao").removeClass("loading");
     }).catch(error => {
-        w
         $("#nova_evolucao").removeClass("loading");
         popError('Erro', error);
     });
@@ -24,10 +23,15 @@ function cadastrarEvolucao() {
     var formData = getFormData($("#cad_evolucao"));
     $("#cad_evolucao").addClass("loading");
     axios.post('salvar', formData).then((response) => {
-        $('#control').append(response.data);
         $("#cad_evolucao").removeClass("loading");
+        $('.ui.modal').modal('hide');
+        $(".ui.modal").remove();
+        var avaliacao = response.data.evolucao;
+        evolucoes_vue.evolucoes.push(avaliacao);
     }).catch(error => {
         $("#cad_evolucao").removeClass("loading");
+        $('.ui.modal').modal('hide');
+        $(".ui.modal").remove();
         popError('Erro', error.response.data.error.message);
     });
 };
@@ -36,8 +40,7 @@ function editarEvolucao(id_evolucao) {
     var formData = getFormData($("#cad_evolucao"));
     $("#cad_evolucao").addClass("loading");
     axios.post('update/' + id_evolucao, formData).then((response) => {
-        $('#control').text('');
-        $('#control').append(response.data);
+        popCadastro(response.data);
         $("#cad_evolucao").removeClass("loading");
     }).catch(error => {
         $("#cad_evolucao").removeClass("loading");
@@ -63,6 +66,7 @@ function removeEvolucao(id, id_paciente) {
 function viewEditEvolucao(id_evolucao) {
     $("#cad_evolucao").addClass("loading");
     axios.get('edit/' + id_evolucao).then((response) => {
+        $(".ui.modal").remove();
         $('#control').text('');
         $('#control').append(response.data);
         $("#cad_evolucao").removeClass("loading");

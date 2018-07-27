@@ -54,12 +54,13 @@ function confirmaRemocao(id, id_paciente) {
     });
 };
 
-function removeEvolucao(id, id_paciente) {
-    $("#cad_evolucao").addClass("loading");
+function removeEvolucao(id, id_paciente, index) {
     axios.get('remove/' + id + '/' + id_paciente).then((response) => {
-        $('#control').text('');
-        $('#control').append(response.data);
-        $("#cad_evolucao").removeClass("loading");
+        if (response.data) {
+            evolucoes_vue.evolucoes.splice(index, 1);
+        }
+    }).catch(error => {
+        popError('Erro', error.response.data.error.message);
     });
 };
 

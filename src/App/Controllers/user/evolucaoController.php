@@ -39,7 +39,7 @@ class evolucaoController extends Controller
     public function create($request, $response, $args)
     {
         //alem do paciente tenho que encaminhar as evolucao
-        $args['acao'] = 'Salvar';
+        $args['acao'] = 'Cadastrar';
         $args['id_paciente'] = $args['id_paciente'];
         $args['action'] = 'javascript:cadastrarEvolucao();';
         $this->view('user.cadastra_evolucao', $args);
@@ -65,7 +65,7 @@ class evolucaoController extends Controller
         $evolucao = $this->evolucao->create((array) $data);
         if ($evolucao) {
             $evolucao = $this->evolucao->findBy('id_evolucao', $evolucao);
-            $evolucao->data = date('d/m/Y', strtotime($evolucao->data));;
+            $evolucao->data = date('d/m/Y', strtotime($evolucao->data));
             $dados['evolucao'] = $evolucao;
             return json_encode($dados);
         }
@@ -97,7 +97,7 @@ class evolucaoController extends Controller
         $this->view('user.cadastra_evolucao', [
             'acao' => 'Editar',
             'id_paciente' => $evolucao->id_paciente,
-            'action' => "javascript:editarEvolucao(" . $args['id'] . ");",
+            'action' => "javascript:editarEvolucao(" . $args['id'] . ", " . $args['index'] . ");",
             'evolucao' => $evolucao,
         ]);
     }
@@ -116,9 +116,7 @@ class evolucaoController extends Controller
         $data->id_user = $this->user->id_user;
 
         $update = $this->evolucao->find('id_evolucao', $args['id'])->update((array) $data, 'id_evolucao');
-
-        $id_paciente = $data->id_paciente;
-        $this->listEvolucao($id_paciente);
+        return json_encode(array($update));
     }
 
     public function rel($request, $response, $args)

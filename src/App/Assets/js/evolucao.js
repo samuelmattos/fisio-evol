@@ -36,11 +36,20 @@ function cadastrarEvolucao() {
     });
 };
 
-function editarEvolucao(id_evolucao) {
+function editarEvolucao(id_evolucao, index) {
     var formData = getFormData($("#cad_evolucao"));
     $("#cad_evolucao").addClass("loading");
     axios.post('update/' + id_evolucao, formData).then((response) => {
-        popCadastro(response.data);
+        if (response.data == 1) {
+
+            evol = [];
+            getFormData($("#cad_evolucao")).forEach(function (value, key) {
+                evol[key] = value;
+            });
+            evolucoes_vue.evolucoes.splice(index, 1, evol)
+            $('.ui.modal').modal('hide');
+            $(".ui.modal").remove();
+        }
         $("#cad_evolucao").removeClass("loading");
     }).catch(error => {
         $("#cad_evolucao").removeClass("loading");
@@ -64,12 +73,10 @@ function removeEvolucao(id, id_paciente, index) {
     });
 };
 
-function viewEditEvolucao(id_evolucao) {
+function viewEditEvolucao(id_evolucao, index) {
     $("#cad_evolucao").addClass("loading");
-    axios.get('edit/' + id_evolucao).then((response) => {
-        $(".ui.modal").remove();
-        $('#control').text('');
-        $('#control').append(response.data);
+    axios.get('viewEdit/' + id_evolucao + '/' + index).then((response) => {
+        popCadastro(response.data);
         $("#cad_evolucao").removeClass("loading");
     });
 };

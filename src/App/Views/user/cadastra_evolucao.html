@@ -1,5 +1,5 @@
 <div class="ui modal">
-    <div class="header">Cadastro Evolução</div>
+    <div class="header">{{acao}} Evolução</div>
     <form class="content" method="POST" id="cad_evolucao"
         action="{{action}}">
         <div class="ui container form">
@@ -7,7 +7,7 @@
             <div class="two fields">
                 <div class="field">
                     <input type="date" placeholder="Data da evolução"
-                        value="{{evolucao.data | date(" Y-m-d" )}}" name="data"
+                        value="{{evolucao.data | date("Y-m-d" )}}" name="data"
                         required>
                     {{ message('data') | raw }}
                 </div>

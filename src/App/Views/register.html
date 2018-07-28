@@ -1,22 +1,35 @@
 {% extends 'master.html' %}
 {% block master %}
-<form class="ui form">
+<form class="ui form" action="register" method="POST">
   <div class="field">
     <label>Nome Completo</label>
     <input type="text" name="nome" required placeholder="Nome">
   </div>
   <div class="field">
     <label>E-mail</label>
-    <input type="text" name="email" required placeholder="E-mail">
+    <input type="email" name="email" required placeholder="E-mail">
   </div>
   <div class="field">
     <label>Crefito</label>
     <input type="text" name="crefito" placeholder="Crefito">
   </div>
   <div class="field">
+    <label>Senha</label>
+    <input type="password" name="password" required placeholder="Senha">
+  </div>
+  <div class="field">
+    <label>Telefone</label>
+    <input type="text" name="telefone" placeholder="(xx) xxxxx-xxxx">
+  </div>
+  <div class="field">
+    <label>Documento</label>
+    <input type="text" name="documento" placeholder="CPF">
+  </div>
+  <div class="field">
     <div class="ui slider checkbox">
-      <input type="checkbox" id="public" name="public">
-      <label for="public">By signing up, you agree to the Terms of Service and Privacy Policy</label>
+      <input type="checkbox" id="public" required>
+      <label for="public">Ao se inscrever, você concorda com os Termos de
+        Serviço e Política de Privacidade</label>
     </div>
   </div>
   <button class="ui button blue" type="submit">Cadastrar</button>

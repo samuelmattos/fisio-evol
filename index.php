@@ -40,6 +40,7 @@ $app->group('/admin', function () use ($app) {
 
 $app->get('/userLogin', '\App\Controllers\loginController:user');
 $app->post('/userAccess', '\App\controllers\user\userController:store');
+$app->post('/register', '\App\controllers\user\userController:register');
 $app->group('/user', function () use ($app) {
     $app->get('/perfil', '\App\Controllers\user\userController:perfil');
     include('src/App/Rotas/paciente_route.php');

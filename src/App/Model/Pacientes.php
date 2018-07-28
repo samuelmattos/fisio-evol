@@ -15,8 +15,9 @@ class Pacientes extends Model
         $this->sql .= "select p.* from {$this->table} as p ";
         $this->sql .= "INNER JOIN paciente_user pu
         ON pu.id_paciente = p.id_paciente
+        AND pu.id_user =  $user->id_user
         INNER JOIN users u
-        ON u.id_user =  $user->id_user";
+		on u.id_user = pu.id_user";
         $this->busca('p.nome,p.telefone');
         $this->orderBY('nome,id_paciente', 'ASC');
 

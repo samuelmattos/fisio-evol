@@ -48,8 +48,8 @@ class pacienteController extends Controller
         $id_paciente = $this->paciente->create((array) $data);
 
         if ($id_paciente) {
-            $this->paciente->add_paciente_user($id_paciente);
-            return back();
+            $this->paciente->add_paciente_user($id_paciente);           
+            $this->index();
         }
     }
 

@@ -1,0 +1,22 @@
+{% extends 'master.html' %}
+{% block master %}
+<h1>{{ dados }}</h1>
+<form class="ui form" method="POST" action="contato/store">
+    <div class="field">
+        <input type="text" placeholder="Nome" required name="nome">
+    </div>
+    <div class="field">
+        <input type="email" placeholder="E-mail" required name="email">
+    </div>
+    <div class="field">
+        <input type="text" placeholder="telefone" name="telefone">
+    </div>
+    <div class="field">
+        <textarea name="mensagem" required placeholder="Mensagem"></textarea>
+    </div>
+    <button class="huge ui button blue">Enviar</button>
+</form>
+<script type="text/javascript"
+    src="{{constant('Config::HOST_APP')}}src/App/Assets/js/contato.js">
+</script>
+{% endblock%}

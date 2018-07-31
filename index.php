@@ -28,6 +28,8 @@ $container['phpErrorHandler'] = $container['errorHandler'] = function ($c) {
 $app->get('/', '\App\Controllers\homeController:index');
 $app->get('/home', '\App\Controllers\homeController:index');
 $app->get('/sobre', '\App\Controllers\sobreController:index');
+$app->get('/contato', '\App\Controllers\contatoController:index');
+$app->post('/contato/store', '\App\Controllers\contatoController:store');
 $app->get('/register', '\App\Controllers\registerController:index');
 $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 
@@ -43,8 +45,8 @@ $app->post('/userAccess', '\App\controllers\user\userController:store');
 $app->post('/register', '\App\controllers\user\userController:register');
 $app->group('/user', function () use ($app) {
     $app->get('/perfil', '\App\Controllers\user\userController:perfil');
-    include('src/App/Rotas/paciente_route.php');
-    include('src/App/Rotas/evolucao_route.php');   
+    include ('src/App/Rotas/paciente_route.php');
+    include ('src/App/Rotas/evolucao_route.php');
     $app->get('/logout', '\App\Controllers\user\userController:destroy');
 })->add($middleware->user());
 

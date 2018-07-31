@@ -3,8 +3,9 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Core\Validate;
 use App\Core\Email;
+use App\Core\Validate;
+
 class contatoController extends Controller
 {
     public function index($request, $response)
@@ -26,11 +27,12 @@ class contatoController extends Controller
         }
         $email = new Email;
         $email->data([
-            'fromName'=> $data->nome,
-            'fromEmail'=> $data->email,
-            'toName' => 'Samuel Mattos',
-            'toEmail' => 'muka@outlook.com',
+            'toName' => $data->nome,
+            'toEmail' => $data->email,
+            'fromName' => 'Fisio Evol',
+            'fromEmail' => 'contato@fisio.com',
             'mensagem' => $data->mensagem,
         ])->send();
+        return back();
     }
 }

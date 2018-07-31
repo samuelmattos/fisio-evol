@@ -23,5 +23,16 @@ class Config
                 ]
             ],
         ];
-    } 
+    }
+    public static function config_email()
+    {
+        return [
+            'email' => [
+                'host' => 'smtp.mailtrap.io',
+                'user' => '7f21a8e1602cbf',
+                'password' => '181f5a2787f369',
+                'port' => 465,
+            ],
+        ];
+    }
 }

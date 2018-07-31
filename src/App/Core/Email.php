@@ -30,7 +30,7 @@ class Email
         $this->config = (object)$arr['email'];
         $mailer = new PHPMailer;
         //Server settings
-        $mailer->SMTPDebug = 2; // Enable verbose debug output
+        $mailer->SMTPDebug = 1; // Enable verbose debug output
         $mailer->isSMTP(); // Set mailer to use SMTP
         $mailer->Host = $this->config->host; // Specify main and backup SMTP servers
         $mailer->SMTPAuth = true; // Enable SMTP authentication
@@ -45,8 +45,8 @@ class Email
 
         //Content
         $mailer->isHTML(true); // Set email format to HTML
-        $mailer->Subject = 'Assunto';
-        $mailer->Body = 'Template';
+        $mailer->Subject = 'Contato Fisio Evol';
+        $mailer->Body = 'Teste de envio do contato';
         $mailer->AltBody = 'Obrigado pelo contato';
 
         $mailer->send();

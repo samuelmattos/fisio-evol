@@ -9,7 +9,7 @@
         }
     ],
     "require-dev": {
-        "phpunit/phpunit": "^7"
+        "phpunit/phpunit": "^6.3"
     },
     "require": {
         "twig/twig": "^2.0",
@@ -25,5 +25,8 @@
             "src/App/functions/helpers.php",
             "config/Config.php"
         ]
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }

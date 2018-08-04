@@ -30,7 +30,7 @@ class contatoController extends Controller
             'toName' => $data->nome,
             'toEmail' => $data->email,
             'fromName' => 'Fisio Evol',
-            'fromEmail' => 'contato@fisio.com',
+            'fromEmail' => 'contato@fisioevol.com.br',
             'mensagem' => $data->mensagem,
         ])->send();
         return back();

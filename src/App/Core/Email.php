@@ -30,7 +30,7 @@ class Email
         $this->config = (object)$arr['email'];
         $mailer = new PHPMailer;
         //Server settings
-        $mailer->SMTPDebug = 1; // Enable verbose debug output
+        $mailer->SMTPDebug = 0; // Enable verbose debug output
         $mailer->isSMTP(); // Set mailer to use SMTP
         $mailer->Host = $this->config->host; // Specify main and backup SMTP servers
         $mailer->SMTPAuth = true; // Enable SMTP authentication

@@ -33,7 +33,7 @@ class userController extends Controller
 		
         $login = new Login('user');
         $loggedIn = $login->login($data, new User());
-     
+        
         if ($loggedIn) {
             Redirect::redirect('user/pacientes');
         }else{
@@ -50,7 +50,7 @@ class userController extends Controller
 
         if ($validate->hasErrors()) {
             return back();		
-        }
+        }        
         $old_pass = $data->password;
         $data->password = Password::make($old_pass);
         $user = new User();
@@ -60,7 +60,7 @@ class userController extends Controller
             $login = new Login('user');
             $loggedIn = $login->login($data, new User());
 
-            if ($loggedIn) {
+            if ($loggedIn) {                
                 Redirect::redirect('user/pacientes');
             }else{
                 return back();

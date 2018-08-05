@@ -10,6 +10,7 @@ class Email
 
     private $data;
     private $config;
+    private $template;
     public function data(array $data)
     {
         $this->data = (object) $data;
@@ -22,10 +23,16 @@ class Email
         if (!isset($this->data)) {
             throw new \Exception("Antes de chamar o template, passe os dados através do método data");
         }
+        $this->template = $template->run($this->data);
+
+        return $this;
     }
 
     public function send()
     {
+        if(!isset($this->template)){
+            throw new \Exception("Favor selecione um template", 1);
+        }
         $arr = Config::config_email();
         $this->config = (object)$arr['email'];
         $mailer = new PHPMailer;
@@ -45,8 +52,8 @@ class Email
 
         //Content
         $mailer->isHTML(true); // Set email format to HTML
-        $mailer->Subject = 'Contato Fisio Evol';
-        $mailer->Body = 'Teste de envio do contato';
+        $mailer->Subject = $this->data->assunto;
+        $mailer->Body = $this->template;
         $mailer->AltBody = 'Obrigado pelo contato';
 
         $mailer->send();

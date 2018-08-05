@@ -1,9 +1,13 @@
 {% extends 'master.html' %}
 {% block master %}
-
-<h1>{{ dados }}</h1>
-<button id="btn_insecrever" onclick="" class="ui large button red">Increver</button>
-<script type="text/javascript"
-src="{{constant('Config::HOST_APP')}}src/App/Assets/js/inscrever.js" >
-</script>
+<div class="ui segment">    
+    <h1>Fisio evol ajuda o fisioterapeuta na gestão de seus pacientes.
+    </h1>
+    <img class="ui small centered image" src="src/App/Assets/img/logo.png">
+    <h2>
+        Cadastre os pacientes e suas respectivas evoluções, tenha acesso a relatórios de todas as evoluções,
+        receba por e-mail e repasse ao CREFITO quando solicitado.
+    </h2>
+</div>
+<a id="btn_insecrever" href="/register" class="ui large button green">Cadastre-se</a>
 {% endblock%}

@@ -5,7 +5,7 @@ namespace App\Controllers\user;
 use App\Core\Controller;
 use App\Core\Validate;
 use App\Model\Pacientes;
-
+use App\Core\Redirect;
 class pacienteController extends Controller
 {
 
@@ -48,8 +48,8 @@ class pacienteController extends Controller
         $id_paciente = $this->paciente->create((array) $data);
 
         if ($id_paciente) {
-            $this->paciente->add_paciente_user($id_paciente);           
-            $this->index();
+            $this->paciente->add_paciente_user($id_paciente);
+            Redirect::redirect('user/pacientes'); 
         }
     }
 

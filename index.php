@@ -34,15 +34,15 @@ $app->get('/register', '\App\Controllers\registerController:index');
 $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 
 $app->get('/login', '\App\Controllers\loginController:index');
-$app->post('/access', '\App\controllers\admin\adminController:store');
+$app->post('/access', '\App\Controllers\admin\adminController:store');
 $app->group('/admin', function () use ($app) {
     $app->get('/painel', '\App\Controllers\admin\painelController:index');
     $app->get('/logout', '\App\Controllers\admin\adminController:destroy');
 })->add($middleware->admin());
 
 $app->get('/userLogin', '\App\Controllers\loginController:user');
-$app->post('/userAccess', '\App\controllers\user\userController:store');
-$app->post('/register', '\App\controllers\user\userController:register');
+$app->post('/userAccess', '\App\Controllers\user\userController:store');
+$app->post('/register', '\App\Controllers\user\userController:register');
 $app->group('/user', function () use ($app) {
     $app->get('/perfil', '\App\Controllers\user\userController:perfil');
     include ('src/App/Rotas/paciente_route.php');

@@ -2,7 +2,7 @@
 
 class Config
 {
-    const HOST_APP = 'http://localhost/fisio-evol/';
+    const HOST_APP = '/';
     const HOST_DB = 'localhost';
     const NAME_DB = 'fisioevol';
     const PORT_DB = '3306';
@@ -28,9 +28,9 @@ class Config
     {
         return [
             'email' => [
-                'host' => 'smtp.mailtrap.io',
-                'user' => '7f21a8e1602cbf',
-                'password' => '181f5a2787f369',
+                'host' => '',
+                'user' => '',
+                'password' => '',
                 'port' => 465,
             ],
         ];

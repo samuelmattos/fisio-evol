@@ -1,32 +1,30 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui two column doubling stackable grid container">
-  <div class="ui left aligned column">
-    <h2 class="ui large header">
-      {{paciente.nome}}
-    </h2>
-    <input type="hidden" id="id_paciente" value="{{paciente.id_paciente}}" />
-  </div>
-  <div class="ui right aligned column">
-    <div class="ui buttons">
-      <a id="nova_evolucao" title="Evoluir" class="ui small green icon
-        button"
-        href="#">
-        <i class="chart line icon"></i>
-      </a>
-      <a id="chart_evolucao" title="Relatório" class="ui small violet icon
-        button"
-        onclick="viewRelatorio()">
-        <i class="clipboard icon"></i>
-      </a>
-      <a class="ui small animated button yellow"
-        href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
-        <div class="visible content">Voltar</div>
-        <div class="hidden content">
-          <i class="left arrow icon"></i>
-        </div>
-      </a>
-    </div>
+<div class="ui row">
+  <h2 class="ui large header">
+    {{paciente.nome}}
+  </h2>
+  <input type="hidden" id="id_paciente" value="{{paciente.id_paciente}}" />
+</div>
+<div class="ui row">
+  <div class="ui buttons">
+    <a id="nova_evolucao" title="Evoluir" class="ui small green icon
+      button"
+      href="#">
+      <i class="chart line icon"></i>Nova
+    </a>
+    <a id="chart_evolucao" title="Relatório" class="ui small violet icon
+      button"
+      onclick="viewRelatorio()">
+      <i class="clipboard icon"></i>PDF
+    </a>
+    <a class="ui small animated button yellow"
+      href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
+      <div class="visible content">Voltar</div>
+      <div class="hidden content">
+        <i class="left arrow icon"></i>
+      </div>
+    </a>
   </div>
 </div>
 <div id="control">
@@ -41,7 +39,8 @@
         %{ evolucoes.descricao }
         <p></p>
         <a class="ui red ribbon label"
-          @click="confirmaRemocao(evolucoes.id_evolucao ,evolucoes.id_paciente, index)">Remover
+          @click="confirmaRemocao(evolucoes.id_evolucao ,evolucoes.id_paciente,
+          index)">Remover
         </a>
       </div>
     </div>

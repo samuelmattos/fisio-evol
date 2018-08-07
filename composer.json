@@ -15,7 +15,8 @@
         "twig/twig": "^2.0",
         "slim/slim": "3.0",
         "dopesong/slim-whoops": "^2.3",
-        "phpmailer/phpmailer": "^6.0"        
+        "phpmailer/phpmailer": "^6.0",
+        "dompdf/dompdf": "^0.8.2"        
     },
     "autoload": {
         "psr-4": {

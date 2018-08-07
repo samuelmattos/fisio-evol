@@ -31,16 +31,14 @@
       <tr>
         <td> <i class="icon user circle"></i>{{paciente.nome}}</td>
         <td class="right aligned">
-          <div class="ui small buttons">
             <a class="ui icon button green" title="Evoluir"
               href="evolucao/{{paciente.id_paciente}}">
-              <i class="chart line icon"></i>
+              <i class="chart line icon"></i> Evoluir
             </a>
             <a class="ui icon button orange" title="Editar"
               href="pacientes/edit/{{paciente.id_paciente}}">
-              <i class="edit outline icon"></i>
+              <i class="edit outline icon"></i> Editar
             </a>
-          </div>
         </td>
       </tr>
       {% endfor %}

@@ -1,35 +1,29 @@
 {% extends 'master.html' %}
 {% block master %}
-<h1>Login</h1>
-<div class="ui center aligned grid">
-    <div class="eight column">
-        <form class="ui large form" action="userAccess" method="POST">
-            <div class="ui raised segment">
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="Login">
-                    </div>
-                    {{ message('email') | raw }}
+<div class="ui center aligned grid">       
+    <form class="ui five column " action="userAccess" method="POST">
+        <div class="ui large form raised segment">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" name="email" required placeholder="Login">
                 </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password"
-                            placeholder="Senha">
-                    </div>
-                    {{ message('password') | raw }}
-                </div>
-                <div class="ui small buttons">
-                    <button class="ui blue submit button"
-                        type="submit">Acessar</button>
-                    <div class="or" data-text="ou"></div>                   
-                    <a class="ui grey button" href="remenber">
-                        Esqueci minha senha
-                    </a>
-                </div>
+                {{ message('email') | raw }}
             </div>
-        </form>
-    </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" required name="password"
+                        placeholder="Senha">
+                </div>
+                {{ message('password') | raw }}
+            </div>
+            <button class="field fluid ui blue submit button large"
+                type="submit">Acessar</button>
+            <a class="field fluid ui teal button large" href="remenber">
+                Esqueci minha senha
+            </a>
+        </div>
+    </form>
 </div>
 {% endblock%}

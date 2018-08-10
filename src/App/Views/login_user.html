@@ -1,13 +1,22 @@
 {% extends 'master.html' %}
 {% block master %}
 <!--develope-->
-<div class="ui center aligned grid">       
-    <form class="ui five column " action="userAccess" method="POST">
+<div class="ui center aligned grid">
+    <form class="ui five column" action="userAccess" method="POST">
         <div class="ui large form raised segment">
+            <a class="field fluid ui red button large" href="#">
+                <i class="home icon"></i>
+                Google
+            </a>
+            <a class="field fluid ui blue button large" href="#">
+                <i class="home icon"></i>
+                Facebook
+            </a>
             <div class="field">
                 <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="text" name="email" required placeholder="Login">
+                    <input type="text" name="email" required
+                        placeholder="Login">
                 </div>
                 {{ message('email') | raw }}
             </div>
@@ -19,7 +28,7 @@
                 </div>
                 {{ message('password') | raw }}
             </div>
-            <button class="field fluid ui blue submit button large"
+            <button class="field fluid ui orange submit button large"
                 type="submit">Acessar</button>
             <a class="field fluid ui teal button large" href="remenber">
                 Esqueci minha senha

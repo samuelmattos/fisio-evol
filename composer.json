@@ -23,6 +23,7 @@
             "App\\": "src/App"
         },
         "files": [
+            "config/Config.php",
             "src/App/functions/helpers.php"
         ]
     },

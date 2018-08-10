@@ -5,11 +5,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_erros', 1);
 error_reporting(E_ALL);
 require 'vendor/autoload.php';
-if(file_exists("config/Config.php")){
-    require "config/Config.php";
-}else{
-    require "config/Config.bkp.php";
-}
 
 use App\Core\Middlewares;
 use Dopesong\Slim\Error\Whoops as WhoopsError;

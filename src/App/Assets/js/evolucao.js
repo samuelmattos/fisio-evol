@@ -85,7 +85,8 @@ function viewRelatorio() {
     var id_paciente = $("#id_paciente").val();
     $("#control").addClass("ui loading");
     axios.get('relatorio/' + id_paciente).then((response) => {
-        evolucoes_vue.evolucoes = response.data.evolucoes;
+        // evolucoes_vue.evolucoes = response.data.evolucoes;
+        popCadastro(response.data);
         $("#control").removeClass("loading");
     });
 }

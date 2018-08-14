@@ -133,11 +133,13 @@ class evolucaoController extends Controller
         $dados['paciente'] = $paciente;
         $dados['title'] = 'Evolução';
         $dados['evolucoes'] = $evolucoes;
-        //$dompdf->loadHtml($this->view('user.evolocao_rel', $dados));
-        $dompdf->loadHtml('Aqui vai o PDF com os dados dos pacientes');  
+        //$html = $this->viewPdf('user.evolucao_rel', $dados);
+        $html = "Evolução";
+        $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-        $dompdf->stream();
+        $nm_pdf = $paciente->nome.'.pdf';
+        $dompdf->stream($nm_pdf);
         return $response;
     }
 }

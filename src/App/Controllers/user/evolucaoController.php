@@ -7,6 +7,7 @@ use App\Core\Validate;
 use App\Model\Evolucao;
 use App\Model\Pacientes;
 use App\Model\User;
+use Dompdf\Dompdf;
 
 class evolucaoController extends Controller
 {
@@ -121,6 +122,8 @@ class evolucaoController extends Controller
 
     public function rel($request, $response, $args)
     {
+       // $response->withHeader( 'Content-type', 'application/pdf' );
+        $dompdf = new Dompdf();
         $paciente = $this->paciente;
         $user = $this->user;
         $evolucao = $this->evolucao;
@@ -130,6 +133,13 @@ class evolucaoController extends Controller
         $dados['paciente'] = $paciente;
         $dados['title'] = 'Evolução';
         $dados['evolucoes'] = $evolucoes;
-        return json_encode($dados);
+        //$html = $this->viewPdf('user.evolucao_rel', $dados);
+        $html = "Evolução";
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $nm_pdf = $paciente->nome.'.pdf';
+        $dompdf->stream($nm_pdf);
+        return $response;
     }
 }

@@ -80,12 +80,3 @@ function viewEditEvolucao(id_evolucao, index) {
         $("#cad_evolucao").removeClass("loading");
     });
 };
-
-function viewRelatorio() {
-    var id_paciente = $("#id_paciente").val();
-    $("#control").addClass("ui loading");
-    axios.get('relatorio/' + id_paciente).then((response) => {
-        evolucoes_vue.evolucoes = response.data.evolucoes;
-        $("#control").removeClass("loading");
-    });
-}

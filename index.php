@@ -46,6 +46,7 @@ $app->post('/userAccess', '\App\Controllers\user\userController:store');
 $app->post('/register', '\App\Controllers\user\userController:register');
 $app->group('/user', function () use ($app) {
     $app->get('/perfil', '\App\Controllers\user\userController:perfil');
+    $app->post('/perfil/update', '\App\Controllers\user\userController:update');
     include ('src/App/Rotas/paciente_route.php');
     include ('src/App/Rotas/evolucao_route.php');
     $app->get('/logout', '\App\Controllers\user\userController:destroy');

@@ -122,7 +122,7 @@ class evolucaoController extends Controller
 
     public function rel($request, $response, $args)
     {
-       // $response->withHeader( 'Content-type', 'application/pdf' );
+        $response->withHeader('Content-type', 'application/pdf');
         $dompdf = new Dompdf();
         $paciente = $this->paciente;
         $user = $this->user;
@@ -133,13 +133,11 @@ class evolucaoController extends Controller
         $dados['paciente'] = $paciente;
         $dados['title'] = 'Evolução';
         $dados['evolucoes'] = $evolucoes;
-        //$html = $this->viewPdf('user.evolucao_rel', $dados);
-        $html = "Evolução";
+        $html = $this->viewPdf('user.evolucao_rel', $dados);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-        $nm_pdf = $paciente->nome.'.pdf';
-        $dompdf->stream($nm_pdf);
-        return $response;
+        $filename = sprintf($paciente->nome . '-%s.pdf', date('Y-m-d'));
+        $dompdf->stream($filename);
     }
 }

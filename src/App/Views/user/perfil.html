@@ -1,6 +1,6 @@
 {% extends 'master.html' %}
 {% block master %}
-<form class="ui form">
+<form class="ui form" method="POST" action="perfil/update">
     <div class="field">
         <label>Nome Completo</label>
         <input type="text" name="nome" value="{{user().nome}}" required

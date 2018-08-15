@@ -34,4 +34,11 @@ trait View
         $template = $this->twig->loadTemplate(str_replace('.', '/', $view).'.html');
         return $template->display($data);
     }
+
+    protected function viewPdf($view, $data)
+    {
+        $this->load();
+        $template = $this->twig->render(str_replace('.', '/', $view).'.html', $data);
+        return $template;
+    }
 }

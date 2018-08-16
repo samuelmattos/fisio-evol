@@ -32,8 +32,9 @@ class evolucaoController extends Controller
         $evolucoes = $evolucao->get_evolucoes($paciente->id_paciente, $user->id_user);
         $dados['paciente'] = $paciente;
         $dados['title'] = 'Evolução';
-        $dados['evolucoes'] = $evolucoes;
-        $dados['links'] = $this->evolucao->links();
+        $evolucoes = json_encode($evolucoes);
+        $dados['evolucoes'] = html_entity_decode($evolucoes, ENT_QUOTES, "utf-8");
+        $dados['links'] = $this->evolucao->links();       
         $this->view('user.evolucao', $dados);
     }
 
@@ -91,8 +92,7 @@ class evolucaoController extends Controller
     }
 
     public function edit($request, $response, $args)
-    {
-
+    {      
         $evolucao = $this->evolucao;
         $evolucao = $evolucao->select()->where('id_evolucao', $args['id'])->first();
         $this->view('user.cadastra_evolucao', [
@@ -105,17 +105,18 @@ class evolucaoController extends Controller
 
     public function update($request, $response, $args)
     {
+       
         $validate = new Validate;
         $data = $validate->validate([
             'descricao' => 'required',
             'data' => 'required',
         ]);
-
+        
         if ($validate->hasErrors()) {
             return back();
         }
         $data->id_user = $this->user->id_user;
-
+     
         $update = $this->evolucao->find('id_evolucao', $args['id'])->update((array) $data, 'id_evolucao');
         return json_encode(array($update));
     }

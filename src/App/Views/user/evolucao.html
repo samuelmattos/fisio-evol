@@ -6,8 +6,8 @@
   </h2>
   <input type="hidden" id="id_paciente" value="{{paciente.id_paciente}}" />
 </div>
-<div class="ui row">
-  <div class="ui buttons">
+<div class="ui vertical  segment ">
+  <div class="ui buttons column">
     <a id="nova_evolucao" title="Evoluir" class="ui small green icon
       button"
       href="#">
@@ -30,8 +30,7 @@
 </div>
 <div id="control">
   <div id="evolucoes_vue">
-    <div class="column" v-for="(evolucoes, index) in evolucoes">
-      <div class="ui segment">
+    <div class="ui segment" v-for="(evolucoes, index) in evolucoes">      
         <div class="ui blue ribbon label">%{ evolucoes.data }</div>
         Eva %{ evolucoes.eva }
         <p></p>
@@ -42,8 +41,7 @@
         <a class="ui red ribbon label"
           @click="confirmaRemocao(evolucoes.id_evolucao ,evolucoes.id_paciente,
           index)">Remover
-        </a>
-      </div>
+        </a>      
     </div>
   </div>
 </div>
@@ -51,6 +49,6 @@
   src="{{constant('Config::HOST_APP')}}src/App/Assets/js/evolucao.js">
 </script>
 <script>  	
-  evolucoes_vue.evolucoes = {{ evolucoes|json_encode()  | raw }};
+  evolucoes_vue.evolucoes = {{ evolucoes| raw }};
 </script>
 {% endblock%}

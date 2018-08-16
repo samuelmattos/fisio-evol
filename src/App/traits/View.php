@@ -11,7 +11,7 @@ trait View
         $loader = new \Twig_Loader_Filesystem('src/App/Views');
         $this->twig = new \Twig_Environment($loader, array(
             'debug' => true,
-        ));
+        ));        
     }
 
     protected function functions()

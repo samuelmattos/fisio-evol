@@ -14,6 +14,10 @@ $user = new \Twig_SimpleFunction('user', function(){
     return (new User)->user();
 });
 
+$html_entity_decode = new \Twig_SimpleFunction('html_entity_decode', function ($string) {
+    return html_entity_decode($string, ENT_QUOTES, "utf-8");
+});
+
 return [
-    $message, $admin, $user
+    $message, $admin, $user, $html_entity_decode
 ];

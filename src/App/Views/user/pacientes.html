@@ -16,7 +16,7 @@
 <table class="ui celled table unstackable">
   <thead>
     <tr>
-      <th colspan="2"><div class="ui icon input">
+      <th colspan="3"><div class="ui icon input">
           <form action="">
             <div class="ui action input">
               <input type="text" name="s" placeholder="Buscar...">
@@ -30,15 +30,17 @@
       {% for paciente in pacientes %}
       <tr>
         <td> <i class="icon user circle"></i>{{paciente.nome}}</td>
+        <td><a href="https://wa.me/55{{paciente.telefone}}" target="_blank">
+            <i class="icon phone circle"></i>{{paciente.telefone}}</a></td>
         <td class="right aligned">
-            <a class="ui icon button green" title="Evoluir"
-              href="evolucao/{{paciente.id_paciente}}">
-              <i class="chart line icon"></i> Evoluir
-            </a>
-            <a class="ui icon button orange" title="Editar"
-              href="pacientes/edit/{{paciente.id_paciente}}">
-              <i class="edit outline icon"></i> Editar
-            </a>
+          <a class="ui icon button green" title="Evoluir"
+            href="evolucao/{{paciente.id_paciente}}">
+            <i class="chart line icon"></i> Evoluir
+          </a>
+          <a class="ui icon button orange" title="Editar"
+            href="pacientes/edit/{{paciente.id_paciente}}">
+            <i class="edit outline icon"></i> Editar
+          </a>
         </td>
       </tr>
       {% endfor %}

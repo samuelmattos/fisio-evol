@@ -3,9 +3,9 @@ namespace App\Controllers\admin;
 
 use App\Core\Controller;
 use App\Core\Login;
+use App\Core\Redirect;
 use App\Core\Validate;
 use App\Model\Admin;
-use App\Core\Redirect;
 
 class adminController extends Controller
 {
@@ -30,16 +30,26 @@ class adminController extends Controller
 
         if ($validate->hasErrors()) {
             return back();
-		}
-		
+        }
+
         $login = new Login('admin');
         $loggedIn = $login->login($data, new Admin());
-       
+
         if ($loggedIn) {
             Redirect::redirect('admin/painel');
+        } else {
+            return back();
         }
     }
+    public function userEdit($request, $response, $args)
+    {
 
+    }
+
+    public function userUpdate()
+    {
+
+    }
     public function destroy()
     {
         $login = new Login('admin');

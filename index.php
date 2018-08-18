@@ -38,6 +38,8 @@ $app->get('/login', '\App\Controllers\loginController:index');
 $app->post('/access', '\App\Controllers\admin\adminController:store');
 $app->group('/admin', function () use ($app) {
     $app->get('/painel', '\App\Controllers\admin\painelController:index');
+    $app->get('/user/edit/{id}', '\App\Controllers\admin\adminController:userEdit');
+    $app->post('/user/update', '\App\Controllers\admin\adminController:userUpdate');
     $app->get('/logout', '\App\Controllers\admin\adminController:destroy');
 })->add($middleware->admin());
 

@@ -8,19 +8,20 @@ class Config
     const PORT_DB = '3306';
     const USER_DB = 'user';
     const PASS_DB = '';
-    public static function login_key(){
+    public static function login_key()
+    {
         return [
             'login' => [
                 'admin' => [
                     'loggedIn' => 'admin_login',
                     'redirect' => '/login',
-                    'idLoggedIn' => 'id_admin'
+                    'idLoggedIn' => 'id_admin',
                 ],
                 'user' => [
                     'loggedIn' => 'user_login',
                     'redirect' => '/user',
-                    'idLoggedIn' => 'id_user'
-                ]
+                    'idLoggedIn' => 'id_user',
+                ],
             ],
         ];
     }

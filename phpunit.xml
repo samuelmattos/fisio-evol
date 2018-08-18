@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<phpunit bootstrap="vendor/autoload.php" colors="true" verbose="true" stopOnFailure="false">
+<phpunit bootstrap="test/autoload_teste.php" colors="true" verbose="true" stopOnFailure="false">
     <testsuites>
         <testsuite name="fisioevol">
             <directory suffix=".php">src/App/tests/</directory>

@@ -31,3 +31,11 @@ php -S localhost:8000
 ```
 ## Contribuição de imagem
 [Rasul Hasanov](https://www.iconfinder.com/rasulh)
+
+## Paleta de cor
+
+#FFFFFF
+#FF7400
+#2D7DD2
+#292F36
+#23CE6B

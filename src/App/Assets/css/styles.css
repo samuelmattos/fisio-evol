@@ -1,3 +1,12 @@
-*{
-    font-family: 'Montserrat', sans-serif;
+.ui.menu {
+    border-radius: 0%;
 }
+.ui.sticky, .ui.visible.uncover.sidebar, .ui.menu .dropdown.item .menu {
+ background: #2D7DD2;
+ border: none;
+}
+
+.ui.menu .item, .ui.menu .active.item, .ui.sidebar.menu .item, .ui.menu .ui.dropdown .menu>.item {
+    color: #FFFFFF !important;
+   }
+   

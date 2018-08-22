@@ -1,0 +1,23 @@
+{% extends 'master.html' %}
+{% block master %}
+<div class="ui fluid segment">
+    <p>
+        Enviaremos um e-mail para com um link para gerar uma nova senha.
+    </p>
+    <form class="ui large form" action="sendEmail" method="POST">
+        <div class="ui raised segment">
+            <div class="field">
+                <div class="ui left icon input huge">
+                    <i class="envelope icon"></i>
+                    <input type="text" name="email" placeholder="E-mail">
+                </div>
+                {{ message('email') | raw }}
+            </div>
+            <button class="ui fluid huge green submit button" type="submit">Enviar
+                E-mail</button>
+        </div>
+        <div class="ui error message"></div>
+    </form>
+</div>
+
+{% endblock%}

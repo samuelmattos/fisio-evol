@@ -10,4 +10,9 @@ class homeController extends Controller
     {
         $this->view('home', ['title' => 'home', 'dados' => 'home']);
     }
+    
+    public function remenber()
+    {
+        $this->view('remenber');
+    }
 }

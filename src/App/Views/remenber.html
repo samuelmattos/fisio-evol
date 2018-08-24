@@ -1,23 +1,28 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui fluid segment">
-    <p>
-        Enviaremos um e-mail para com um link para gerar uma nova senha.
-    </p>
-    <form class="ui large form" action="sendEmail" method="POST">
-        <div class="ui raised segment">
+<div class="ui container">
+    <div class="ui fliud segment">
+        <h2 class="ui header">
+            <img src="src/App/Assets/img/icons/medical_info.svg">
+            <div class="content">
+                Atenção
+                <div class="sub header"> Enviaremos um e-mail com uma nova senha</div>
+            </div>
+        </h2>
+        <form class="ui large form" action="sendEmail" method="POST">
             <div class="field">
-                <div class="ui left icon input huge">
+                <div class="ui left icon input large">
                     <i class="envelope icon"></i>
-                    <input type="text" name="email" placeholder="E-mail">
+                    <input type="text" name="email" placeholder="E-mail"
+                        required>
                 </div>
                 {{ message('email') | raw }}
             </div>
-            <button class="ui fluid huge green submit button" type="submit">Enviar
-                E-mail</button>
-        </div>
-        <div class="ui error message"></div>
-    </form>
+            <button class="ui fluid large green submit button"
+                type="submit">Enviar</button>
+            <div class="ui error message"></div>
+        </form>
+    </div>
 </div>
 
 {% endblock%}

@@ -9,7 +9,7 @@
                 <div class="sub header"> Enviaremos um e-mail com uma nova senha</div>
             </div>
         </h2>
-        <form class="ui large form" action="sendEmail" method="POST">
+        <form class="ui large form" id="remember_form" action="javascript:remember();" method="POST">
             <div class="field">
                 <div class="ui left icon input large">
                     <i class="envelope icon"></i>
@@ -24,5 +24,7 @@
         </form>
     </div>
 </div>
-
+<script type="text/javascript"
+    src="{{constant('Config::HOST_APP')}}src/App/Assets/js/home.js">
+</script>
 {% endblock%}

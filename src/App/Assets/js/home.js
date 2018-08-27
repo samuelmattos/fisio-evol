@@ -3,14 +3,9 @@ function remember() {
     $("#remember_form").addClass("loading");
     axios.post('send_email', formData).then((response) => {
         $("#remember_form").removeClass("loading");
-        $('.ui.modal').modal('hide');
-        $(".ui.modal").remove();
-        var avaliacao = response.data.evolucao;
-        evolucoes_vue.evolucoes.push(avaliacao);
+        console.log(response);
     }).catch(error => {
         $("#remember_form").removeClass("loading");
-        $('.ui.modal').modal('hide');
-        $(".ui.modal").remove();
         popError('Erro', error.response.data.error.message);
     });
 };

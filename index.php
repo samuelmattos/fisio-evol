@@ -29,6 +29,9 @@ $container['phpErrorHandler'] = $container['errorHandler'] = function ($c) {
 $app->get('/', '\App\Controllers\homeController:index');
 $app->get('/home', '\App\Controllers\homeController:index');
 $app->get('/remenber', '\App\Controllers\homeController:remenber');
+$app->post('/send_email', '\App\Controllers\homeController:mail_send');
+
+
 $app->get('/sobre', '\App\Controllers\sobreController:index');
 $app->get('/contato', '\App\Controllers\contatoController:index');
 $app->post('/contato/store', '\App\Controllers\contatoController:store');

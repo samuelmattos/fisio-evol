@@ -41,7 +41,6 @@ function editarEvolucao(id_evolucao, index) {
     $("#cad_evolucao").addClass("loading");
     axios.post('update/' + id_evolucao, formData).then((response) => {
         if (response.data == 1) {
-
             evol = [];
             getFormData($("#cad_evolucao")).forEach(function (value, key) {
                 evol[key] = value;

@@ -1,9 +1,9 @@
 <?php
 session_start();
-
 ini_set('display_errors', 1);
 ini_set('display_startup_erros', 1);
 error_reporting(E_ALL);
+require 'config/Config.php';
 require 'vendor/autoload.php';
 
 use App\Core\Middlewares;
@@ -28,6 +28,9 @@ $container['phpErrorHandler'] = $container['errorHandler'] = function ($c) {
 
 $app->get('/', '\App\Controllers\homeController:index');
 $app->get('/home', '\App\Controllers\homeController:index');
+$app->get('/remenber', '\App\Controllers\homeController:remenber');
+$app->post('/send_email', '\App\Controllers\homeController:mail_send');
+
 $app->get('/sobre', '\App\Controllers\sobreController:index');
 $app->get('/contato', '\App\Controllers\contatoController:index');
 $app->post('/contato/store', '\App\Controllers\contatoController:store');
@@ -38,6 +41,8 @@ $app->get('/login', '\App\Controllers\loginController:index');
 $app->post('/access', '\App\Controllers\admin\adminController:store');
 $app->group('/admin', function () use ($app) {
     $app->get('/painel', '\App\Controllers\admin\painelController:index');
+    $app->get('/user/edit/{id}', '\App\Controllers\admin\adminController:userEdit');
+    $app->post('/user/update', '\App\Controllers\admin\adminController:userUpdate');
     $app->get('/logout', '\App\Controllers\admin\adminController:destroy');
 })->add($middleware->admin());
 

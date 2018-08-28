@@ -28,7 +28,7 @@ trait View
         $this->functions();
     }
 
-    protected function view($view, $data)
+    protected function view($view, $data = [])
     {
         $this->load();
         $template = $this->twig->loadTemplate(str_replace('.', '/', $view).'.html');

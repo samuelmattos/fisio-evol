@@ -1,0 +1,30 @@
+{% extends 'master.html' %}
+{% block master %}
+<div class="ui container">
+    <div class="ui fliud segment">
+        <h2 class="ui header">
+            <img src="src/App/Assets/img/icons/medical_info.svg">
+            <div class="content">
+                Atenção
+                <div class="sub header"> Enviaremos um e-mail com uma nova senha</div>
+            </div>
+        </h2>
+        <form class="ui large form" id="remember_form" action="javascript:remember();" method="POST">
+            <div class="field">
+                <div class="ui left icon input large">
+                    <i class="envelope icon"></i>
+                    <input type="text" name="email" placeholder="E-mail"
+                        required>
+                </div>
+                {{ message('email') | raw }}
+            </div>
+            <button class="ui fluid large green submit button"
+                type="submit">Enviar</button>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript"
+    src="{{constant('Config::HOST_APP')}}src/App/Assets/js/home.js">
+</script>
+{% endblock%}

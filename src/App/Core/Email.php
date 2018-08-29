@@ -45,7 +45,7 @@ class Email
         $mailer->Password = $this->config->password; // SMTP password
         $mailer->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
         $mailer->Port = $this->config->port; // TCP port to connect to
-
+        $mailer->CharSet = 'UTF-8';
         //Recipients
         $mailer->setFrom($this->data->fromEmail, $this->data->fromName);
         $mailer->addAddress($this->data->toEmail, $this->data->toName); // Add a recipient

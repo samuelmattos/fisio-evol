@@ -46,7 +46,7 @@ class userController extends Controller
         if ($loggedIn) {
             Redirect::redirect('user/pacientes');
         } else {
-            return back();
+            Redirect::redirect('userLogin');
         }
     }
     public function register()
@@ -94,6 +94,8 @@ class userController extends Controller
         if ($validate->hasErrors()) {
             return back();
         }
+        $old_pass = $data->password;
+        $data->password = Password::make($old_pass);
         $user = new User();
         $update = $user->find('id_user', $this->user->id_user)->update((array) $data, 'id_user');
         Redirect::redirect('user/perfil');

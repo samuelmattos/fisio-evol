@@ -26,6 +26,17 @@
         <input type="text" name="documento" value="{{user().documento}}"
             placeholder="Cpf ou RG">
     </div>
+    <div class="field">
+        <label>Senha</label>
+        <input type="password" name="password" placeholder="Senha" id="password">
+    </div>
+    <div class="field">
+        <label>Confirmar senha</label>
+        <input type="password" placeholder="Confirme a senha" id="confirm_password">
+    </div>
     <button class="ui button blue" type="submit">Atualizar</button>
 </form>
+<script type="text/javascript"
+    src="{{constant('Config::HOST_APP')}}src/App/Assets/js/user.js">
+</script>
 {% endblock%}

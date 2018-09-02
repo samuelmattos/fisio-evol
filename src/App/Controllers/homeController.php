@@ -50,6 +50,6 @@ class homeController extends Controller
             'fromEmail' => 'contato@fisioevol.com.br',
             'pass' => $nova_senha,
         ])->template(new Pass)->send();
-        return json_encode(['dados'=>'Verifique sua caixa de entrada.']);
+        return json_encode(['Verifique sua caixa de entrada.']);
     }
 }

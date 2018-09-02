@@ -27,7 +27,7 @@ composer update
 
 4. Para iniciar o servidor php execute o comando abaixo:
 ```sh
-php -S localhost:8000
+php -S localhost:8000 -t public
 ```
 ## Contribuição de imagem
 [Rasul Hasanov](https://www.iconfinder.com/rasulh)

@@ -8,7 +8,7 @@
                 <div class="sub header"> Entrar usando sua conta</div>
             </div>
         </h2>
-        <form class="ui large form" action="userAccess" method="POST">
+        <form class="ui large form {{ message('form_error') | raw }}" action="userAccess" method="POST">
             <div class="field">
                 <div class="ui left icon input">
                     <i class="user icon"></i>
@@ -28,6 +28,10 @@
             <div class="field">
                 <button class="field fluid ui orange submit button large"
                     type="submit">Acessar</button>
+            </div>
+            <div class="ui error message">
+                <div class="header">Atenção</div>
+                <p>{{ message('form_error_msg') | raw }}</p>
             </div>
             <div class="ui two column very relaxed grid">
                 <a class="column vertical divider" href="remenber">

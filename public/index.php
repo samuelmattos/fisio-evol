@@ -3,8 +3,8 @@ session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_erros', 1);
 error_reporting(E_ALL);
-require 'config/Config.php';
-require 'vendor/autoload.php';
+require '../config/Config.php';
+require '../vendor/autoload.php';
 
 use App\Core\Middlewares;
 use Dopesong\Slim\Error\Whoops as WhoopsError;
@@ -52,8 +52,8 @@ $app->post('/register', '\App\Controllers\user\userController:register');
 $app->group('/user', function () use ($app) {
     $app->get('/perfil', '\App\Controllers\user\userController:perfil');
     $app->post('/perfil/update', '\App\Controllers\user\userController:update');
-    include ('src/App/Rotas/paciente_route.php');
-    include ('src/App/Rotas/evolucao_route.php');
+    include ('../src/App/Rotas/paciente_route.php');
+    include ('../src/App/Rotas/evolucao_route.php');
     $app->get('/logout', '\App\Controllers\user\userController:destroy');
 })->add($middleware->user());
 

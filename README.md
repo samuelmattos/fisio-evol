@@ -3,7 +3,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 # Fisio  Evol
-![Logo Fisio Evol](https://raw.githubusercontent.com/samuelmattos/fisio-evol/develop/src/App/Assets/img/logo.png)
+![Logo Fisio Evol](https://raw.githubusercontent.com/samuelmattos/fisio-evol/develop/public/Assets/img/logo.png)
 
 Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.
 ## Tecnologias
@@ -27,7 +27,7 @@ composer update
 
 4. Para iniciar o servidor php execute o comando abaixo:
 ```sh
-php -S localhost:8000
+php -S localhost:8000 -t public
 ```
 ## Contribuição de imagem
 [Rasul Hasanov](https://www.iconfinder.com/rasulh)

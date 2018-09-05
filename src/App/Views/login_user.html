@@ -1,9 +1,14 @@
 {% extends 'master.html' %}
 {% block master %}
-<!--develope-->
 <div class="ui center aligned grid">
-    <form class="ui five column" action="userAccess" method="POST">
-        <div class="ui large form raised segment">
+    <div class="eight column">
+        <h2 class="ui center aligned icon header">
+            <img src="Assets/img/logo.png">
+            <div class="content">
+                <div class="sub header"> Entrar usando sua conta</div>
+            </div>
+        </h2>
+        <form class="ui large form {{ message('form_error') | raw }}" action="userAccess" method="POST">
             <div class="field">
                 <div class="ui left icon input">
                     <i class="user icon"></i>
@@ -20,12 +25,24 @@
                 </div>
                 {{ message('password') | raw }}
             </div>
-            <button class="field fluid ui orange submit button large"
-                type="submit">Acessar</button>
-            <a class="field fluid ui teal button large" href="remenber">
-                Esqueci minha senha
-            </a>
-        </div>
-    </form>
+            <div class="field">
+                <button class="field fluid ui orange submit button large"
+                    type="submit">Acessar</button>
+            </div>
+            <div class="ui error message">
+                <div class="header">Atenção</div>
+                <p>{{ message('form_error_msg') | raw }}</p>
+            </div>
+            <div class="ui two column very relaxed grid">
+                <a class="column vertical divider" href="remenber">
+                    Esqueci minha senha
+                </a>
+                <a class="column vertical divider" href="register">
+                    Registrar
+                </a>
+            </div>
+
+        </form>
+    </div>
 </div>
 {% endblock%}

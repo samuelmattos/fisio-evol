@@ -2,6 +2,7 @@
 namespace App\Controllers\user;
 
 use App\Core\Controller;
+use App\Core\Flash;
 use App\Core\Login;
 use App\Core\Password;
 use App\Core\Redirect;
@@ -11,7 +12,7 @@ use App\Model\User;
 class userController extends Controller
 {
     private $user;
-    
+
     public function __construct()
     {
         $this->user = (new User)->user();
@@ -44,9 +45,13 @@ class userController extends Controller
         $loggedIn = $login->login($data, new User());
 
         if ($loggedIn) {
+            Flash::add('form_error', '');
+            Flash::add('form_error_msg', '');
             Redirect::redirect('user/pacientes');
         } else {
-            Redirect::redirect('userLogin');
+            Flash::add('form_error', 'error');
+            Flash::add('form_error_msg', 'Usuário ou senha incorretos');
+            back();
         }
     }
     public function register()

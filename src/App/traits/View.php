@@ -8,7 +8,7 @@ trait View
 
     protected function twig()
     {
-        $loader = new \Twig_Loader_Filesystem('src/App/Views');
+        $loader = new \Twig_Loader_Filesystem('../src/App/Views');
         $this->twig = new \Twig_Environment($loader, array(
             'debug' => true,
         ));        

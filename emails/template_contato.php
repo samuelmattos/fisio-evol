@@ -65,7 +65,7 @@ table[class="fulltable"], td[class="fulltd"] {
                         <tr>
                             <td width="100%" bgcolor="#ffffff" style="text-align:center;">
                                 <a href="#">
-                                <img src="https://fisioevol.com.br/src/App/Assets/img/logo.png" alt="Main banner image and link" style="display:inline-block; max-width:100% !important; width:92px !important; height:auto !important;" border="0">
+                                <img src="https://fisioevol.com.br/Assets/img/logo.png" alt="Main banner image and link" style="display:inline-block; max-width:100% !important; width:92px !important; height:auto !important;" border="0">
                                 </a>
                             </td>
                         </tr>

@@ -9,7 +9,6 @@ class Admin extends Model
 
     public function user()
     {
-
         if(!isset($_SESSION['id_admin'])){
             return false;
             throw new \Exception("Você não pode acessar essa página");            

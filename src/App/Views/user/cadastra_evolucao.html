@@ -1,31 +1,30 @@
 <div class="ui modal">
     <div class="header">{{acao}} Evolução</div>
-    <form class="content" method="POST" id="cad_evolucao"
-        action="{{action}}">
-        <div class="ui container form">
+    <div class="content">
+        <form class="ui form" method="POST" id="cad_evolucao"
+            action="{{action}}">
             <input type="hidden" name="id_paciente" value="{{id_paciente}}">
-            <div class="two fields">
-                <div class="field">
-                    <input type="date" placeholder="Data da evolução"
-                        value="{{evolucao.data | date("Y-m-d" )}}" name="data"
-                        required>
-                    {{ message('data') | raw }}
-                </div>
-                <div class="field">
-                    <input type="number" name="eva" placeholder="Eva"
-                        value="{{evolucao.eva}}" max="10" min="0" required>
-                    {{ message('eva') | raw }}
-                </div>
+            <div class="field">
+                <input type="date" placeholder="Data da evolução"
+                    value="{{evolucao.data | date("Y-m-d" )}}" name="data"
+                    required>
+                {{ message('data') | raw }}
+            </div>
+            <div class="field">
+                <input type="number" name="eva" placeholder="Eva"
+                    value="{{evolucao.eva}}" max="10" min="0" required>
+                {{ message('eva') | raw }}
             </div>
             <div class="field">
                 <textarea rows="5" maxlength="500" placeholder="Descrição da evolução"
                     name="descricao" required>{{html_entity_decode(evolucao.descricao)}}</textarea>
                 {{ message('descricao') | raw }}
             </div>
-        </div>
-        <div class="actions">
-            <input class="ui submit blue button" value="{{acao}}" type="submit">
-            <a class="ui negative button yellow">Cancelar</a>
-        </div>
-    </form>
+            <div class="actions">
+                <input class="ui submit blue button" value="{{acao}}"
+                    type="submit">
+                <a class="ui negative button yellow">Cancelar</a>
+            </div>
+        </form>
+    </div>
 </div>

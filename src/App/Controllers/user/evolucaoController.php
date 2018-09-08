@@ -69,7 +69,7 @@ class evolucaoController extends Controller
             $evolucao = $this->evolucao->findBy('id_evolucao', $evolucao);
             $evolucao->data = date('d/m/Y', strtotime($evolucao->data));
             $dados['evolucao'] = $evolucao;
-            return json_encode($dados);
+            return $response->withJson($dados);
         }
     }
 
@@ -118,7 +118,7 @@ class evolucaoController extends Controller
         $data->id_user = $this->user->id_user;
      
         $update = $this->evolucao->find('id_evolucao', $args['id'])->update((array) $data, 'id_evolucao');
-        return json_encode(array($update));
+        return $response->withJson(array($update));
     }
 
     public function rel($request, $response, $args)

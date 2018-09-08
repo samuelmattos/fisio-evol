@@ -1,5 +1,16 @@
 <?php
+use App\Core\Middlewares;
 use Dopesong\Slim\Error\Whoops as WhoopsError;
+
+$middleware = new Middlewares;
+$c = new \Slim\Container(); //Create Your container
+$c = [
+    'notFoundHandler' => function ($c) {
+        return new \App\Controllers\errorController();
+    },
+];
+$app = new \Slim\App($c);
+
 $container = $app->getContainer();
 
 $container['phpErrorHandler'] = $container['errorHandler'] = function ($c) {
@@ -36,3 +47,5 @@ $app->group('/user', function () use ($app) {
     include ('src/App/Rotas/evolucao_route.php');
     $app->get('/logout', '\App\Controllers\user\userController:destroy');
 })->add($middleware->user());
+
+$app->run();

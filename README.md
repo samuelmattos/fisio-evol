@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aed1697a919242f09d72fb40f7f9a251)](https://app.codacy.com/app/muka/fisio-evol?utm_source=github.com&utm_medium=referral&utm_content=samuelmattos/fisio-evol&utm_campaign=Badge_Grade_Dashboard)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/fb66fa9b-f354-4637-b1b0-3a8dd635ef3e/mini.png)](https://insight.sensiolabs.com/projects/fb66fa9b-f354-4637-b1b0-3a8dd635ef3e)
 [![Build Status](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/build.png?b=master)](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/?branch=master)

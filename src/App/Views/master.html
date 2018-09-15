@@ -30,10 +30,7 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,
             maximum-scale=1.0">
-        <link rel="stylesheet" type="text/css"
-            href="{{constant('Config::HOST_APP')}}Assets/css/semantic.min.css">
-            <link rel="stylesheet" type="text/css"
-            href="{{constant('Config::HOST_APP')}}Assets/css/styles.css">
+       
         <title>FisioEvol {{ title}}</title>
     </head>
     <body>
@@ -57,9 +54,41 @@
                 {% endblock%}
             </div>
         </div>
-        <script type="text/javascript"
-            src="{{constant('Config::HOST_APP')}}Assets/js/semantic.min.js">
-        </script>
+        <link rel="stylesheet" type="text/css"
+        href="{{constant('Config::HOST_APP')}}Assets/css/semantic.min.css">
+        <link rel="stylesheet" type="text/css"
+        href="{{constant('Config::HOST_APP')}}Assets/css/styles.css">
+         <link rel="stylesheet" type="text/css"
+         href="{{constant('Config::HOST_APP')}}Assets/js/components/sidebar.min.css">
+         <script type="text/javascript"
+         src="{{constant('Config::HOST_APP')}}Assets/js/components/sidebar.min.js">        
+         </script>
+         
+<link rel="stylesheet" type="text/css"
+href="{{constant('Config::HOST_APP')}}Assets/js/components/dimmer.min.css">
+<script type="text/javascript"
+src="{{constant('Config::HOST_APP')}}Assets/js/components/dimmer.min.js">        
+</script>
+<link rel="stylesheet" type="text/css"
+href="{{constant('Config::HOST_APP')}}Assets/js/components/modal.min.css">
+<script type="text/javascript"
+src="{{constant('Config::HOST_APP')}}Assets/js/components/modal.min.js">        
+</script>
+         <link rel="stylesheet" type="text/css"
+         href="{{constant('Config::HOST_APP')}}Assets/js/components/sticky.min.css">
+         <script type="text/javascript"
+         src="{{constant('Config::HOST_APP')}}Assets/js/components/sticky.min.js">        
+         </script>
+         <link rel="stylesheet" type="text/css"
+         href="{{constant('Config::HOST_APP')}}Assets/js/components/dropdown.min.css">
+         <script type="text/javascript"
+         src="{{constant('Config::HOST_APP')}}Assets/js/components/dropdown.min.js">        
+         </script>
+          <link rel="stylesheet" type="text/css"
+          href="{{constant('Config::HOST_APP')}}Assets/js/components/transition.min.css">
+          <script type="text/javascript"
+          src="{{constant('Config::HOST_APP')}}Assets/js/components/transition.min.js">        
+          </script>
         <script>
             $('#left-menu').first()
             .sidebar('setting',  'transition', 'overlay')

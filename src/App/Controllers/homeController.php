@@ -16,9 +16,23 @@ class homeController extends Controller
         $this->view('home', ['title' => 'Inicio', 'dados' => 'Inicio']);
     }
 
+    public function sobre()
+    {
+        $this->view('sobre', ['title' => 'Sobre', 'dados' => 'Sobre']);
+    }
+
     public function fisioterapeutas($request, $response)
     {
-        $this->view('home', ['title' => 'Fisioterapeutas', 'dados' => 'Fisioterapeutas']);
+        $user = new User;
+        $users = $user->
+            select('nome,email,telefone')->            
+            busca('nome')->
+            orderBY('nome', 'DESC')->
+            paginate(5)->get();
+        $dados['users'] = $users;
+        $dados['title'] = 'Fisioterapeutas';
+        $dados['links'] = $user->links();
+        $this->view('fisioterapeutas', $dados);
     }
     
     public function remenber()

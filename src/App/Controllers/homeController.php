@@ -13,7 +13,12 @@ class homeController extends Controller
 {
     public function index($request, $response)
     {
-        $this->view('home', ['title' => 'home', 'dados' => 'home']);
+        $this->view('home', ['title' => 'Inicio', 'dados' => 'Inicio']);
+    }
+
+    public function fisioterapeutas($request, $response)
+    {
+        $this->view('home', ['title' => 'Fisioterapeutas', 'dados' => 'Fisioterapeutas']);
     }
     
     public function remenber()

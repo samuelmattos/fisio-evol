@@ -85,9 +85,9 @@ class evolucaoController extends Controller
     {
         $deleted = $this->evolucao->find('id_evolucao', $args['id'])->delete();
         if ($deleted) {
-            return json_encode(array('true'));
+            return $response->withJson(array('true'));
         } else {
-            return json_encode(array('false'));
+            return $response->withJson(array('false'));
         }
     }
 

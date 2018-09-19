@@ -30,10 +30,7 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,
             maximum-scale=1.0">
-        <link rel="stylesheet" type="text/css"
-            href="{{constant('Config::HOST_APP')}}Assets/css/semantic.min.css">
-            <link rel="stylesheet" type="text/css"
-            href="{{constant('Config::HOST_APP')}}Assets/css/styles.css">
+       
         <title>FisioEvol {{ title}}</title>
     </head>
     <body>
@@ -57,9 +54,14 @@
                 {% endblock%}
             </div>
         </div>
-        <script type="text/javascript"
-            src="{{constant('Config::HOST_APP')}}Assets/js/semantic.min.js">
-        </script>
+        <link rel="stylesheet" type="text/css"
+        href="{{constant('Config::HOST_APP')}}Assets/css/semantic.min.css">
+        <link rel="stylesheet" type="text/css"
+        href="{{constant('Config::HOST_APP')}}Assets/css/styles.css">         
+         <script type="text/javascript"
+         src="{{constant('Config::HOST_APP')}}Assets/js/semantic.min.js">        
+         </script>
+         
         <script>
             $('#left-menu').first()
             .sidebar('setting',  'transition', 'overlay')

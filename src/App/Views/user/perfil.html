@@ -1,6 +1,6 @@
 {% extends 'master.html' %}
 {% block master %}
-<form class="ui form" method="POST" action="perfil/update">
+<form enctype="multipart/form-data" class="ui form" method="POST" action="perfil/update">
     <div class="field">
         <label>Nome Completo</label>
         <input type="text" name="nome" value="{{user().nome}}" required
@@ -33,6 +33,10 @@
     <div class="field">
         <label>Confirmar senha</label>
         <input type="password" placeholder="Confirme a senha" id="confirm_password">
+    </div>
+    <div class="field">
+        <label>Foto</label>
+        <input type="file" name="photo" id="photo">
     </div>
     <button class="ui button green" type="submit">Atualizar</button>
     <p>

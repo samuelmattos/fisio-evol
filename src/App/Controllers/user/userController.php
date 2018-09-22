@@ -8,6 +8,7 @@ use App\Core\Password;
 use App\Core\Redirect;
 use App\Core\Validate;
 use App\Model\User;
+use App\Core\Image;
 
 class userController extends Controller
 {
@@ -95,7 +96,9 @@ class userController extends Controller
         $data = $validate->validate([
             'email' => 'required:email',
         ]);
-
+        $image = new Image('photo');
+        $image->size('user');
+        die();
         if ($validate->hasErrors()) {
             return back();
         }

@@ -10,7 +10,9 @@ class Image
     private $image;
     private $rename;
     private $resized = false;
-    
+    private $resizeWidth;
+    private $resizeHeigth;
+
     public function __construct($imageName)
     {
         $this->intervention = new ImageManager;
@@ -20,7 +22,7 @@ class Image
     private function rename()
     {
         $extension = pathinfo($this->image['name'], PATHINFO_EXTENSION);
-        $this->rename = md5(uniqid()).time().".{$extension}";
+        $this->rename = md5(uniqid()) . time() . ".{$extension}";
     }
 
     public function getName()
@@ -32,10 +34,10 @@ class Image
     {
         $size = $this->type($type);
         $target = getimagesize($this->image['tmp_name']);
-        $percent = ($target[0] > $target[1]) ? ($size/ $target[0]) : ($size/$target[1]);
+        $percent = ($target[0] > $target[1]) ? ($size / $target[0]) : ($size / $target[1]);
 
-        $resizeWidth= round($target[0] * $percent);
-        $resizeHeigth= round($target[1] * $percent);
+        $this->resizeWidth = round($target[0] * $percent);
+        $this->resizeHeigth = round($target[1] * $percent);
 
         $this->type = $type;
 
@@ -48,10 +50,10 @@ class Image
     {
         switch ($type) {
             case 'user':
-            $size = 200;
-                break;            
+                $size = 200;
+                break;
             default:
-            $size = 450;
+                $size = 450;
                 break;
         }
 
@@ -60,13 +62,28 @@ class Image
 
     private function doUpload()
     {
-        if(!$this->resized){
+        if (!$this->resized) {
             throw new Exception("Chame o método size, para redimensionar sua foto.");
+        }
+
+        $image = $this->intervention->make($this->image['tmp_name'])->resize($this->resizeWidth, $this->resizeHeigth, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
+
+        if ($this->type == 'user') {
+            $backgroud = $this->intervention->canvas(150, 150);
+            $backgroud->insert($image, 'center');
+            $backgroud->save("Assets/img/photos/{$this->rename}");
+        } else {
+            $image->save("Assets/img/photos/{$this->rename}");
         }
     }
 
     public function upload()
     {
-
+        $this->rename();
+        $this->doUpload();
+        return $this->rename;
     }
 }

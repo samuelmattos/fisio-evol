@@ -1,6 +1,7 @@
 {% extends 'master.html' %}
 {% block master %}
-<form enctype="multipart/form-data" class="ui form" method="POST" action="perfil/update">
+<form enctype="multipart/form-data" class="ui form" method="POST"
+    action="perfil/update">
     <div class="field">
         <label>Nome Completo</label>
         <input type="text" name="nome" value="{{user().nome}}" required
@@ -28,19 +29,27 @@
     </div>
     <div class="field">
         <label>Senha</label>
-        <input type="password" name="password" placeholder="Senha" id="password">
+        <input type="password" name="password" placeholder="Senha"
+            id="password">
     </div>
     <div class="field">
         <label>Confirmar senha</label>
-        <input type="password" placeholder="Confirme a senha" id="confirm_password">
+        <input type="password" placeholder="Confirme a senha"
+            id="confirm_password">
     </div>
-    <div class="field">
-        <label>Foto</label>
-        <input type="file" name="photo" id="photo">
+    <div class="two fields">
+        <div class="field">
+            <label>Foto</label>
+            <input type="file" name="photo" id="photo">
+        </div>
+        <div class="field">
+                <img src="/Assets/img/photos/{{user().photo}}"/>
+        </div>       
     </div>
     <button class="ui button green" type="submit">Atualizar</button>
     <p>
-        Em casos de dúvidas entre em contato pelo e-mail suporte@fisioevol.com.br
+        Em casos de dúvidas entre em contato pelo e-mail
+        suporte@fisioevol.com.br
     </p>
 </form>
 <script type="text/javascript"

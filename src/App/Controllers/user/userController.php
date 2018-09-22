@@ -95,10 +95,10 @@ class userController extends Controller
         $validate = new Validate;
         $data = $validate->validate([
             'email' => 'required:email',
+            'nome' => 'required',
         ]);
         $image = new Image('photo');
-        $image->size('user');
-        die();
+        $data->photo = $image->size('user')->upload();
         if ($validate->hasErrors()) {
             return back();
         }
@@ -107,7 +107,6 @@ class userController extends Controller
         $user = new User();
         $update = $user->find('id_user', $this->user->id_user)->update((array) $data, 'id_user');
         Redirect::redirect('user/perfil');
-        //return json_encode(array($update));
     }
 
     public function destroy()

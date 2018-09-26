@@ -97,13 +97,15 @@ class userController extends Controller
             'email' => 'required:email',
             'nome' => 'required',
         ]);
-        $image = new Image('photo');
-        $data->photo = $image->size('user')->upload();
+        if($data->photo != ''){
+            $image = new Image('photo');
+            $data->photo = $image->size('user')->upload();
+        }        
         if ($validate->hasErrors()) {
             return back();
         }
-        $old_pass = $data->password;
-        $data->password = Password::make($old_pass);
+        $old_pass = (($data->password != '') ? Password::make($data->password) : $this->user->password);
+        $data->password = $old_pass;
         $user = new User();
         $update = $user->find('id_user', $this->user->id_user)->update((array) $data, 'id_user');
         Redirect::redirect('user/perfil');

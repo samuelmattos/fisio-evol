@@ -24,9 +24,21 @@
   <div class="field">
     <div class="ui slider checkbox">
       <input type="checkbox" id="public" required>
-      <label for="public">Ao se inscrever, você concorda com os Termos de
-        Serviço e Política de Privacidade</label>
+      <label for="public">Ao se inscrever, você concorda com os
+        <a href="#"
+          onclick="politicas()">Termos de
+          Serviço e Política de Privacidade</a></label>
+      --
     </div>
+    <script>
+    politicas = function() {
+      axios.get('politica_privacidade.html').then((response) => {
+        popError('Termos de Serviço e Política de Privacidade',response.data);
+    }).catch(error => {
+        popError('Erro', error);
+    });
+    }
+    </script>
   </div>
   <button class="ui button blue" type="submit">Cadastrar</button>
 </form>

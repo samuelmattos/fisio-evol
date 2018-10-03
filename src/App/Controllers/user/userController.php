@@ -8,6 +8,7 @@ use App\Core\Password;
 use App\Core\Redirect;
 use App\Core\Validate;
 use App\Model\User;
+use App\Core\Image;
 
 class userController extends Controller
 {
@@ -94,17 +95,20 @@ class userController extends Controller
         $validate = new Validate;
         $data = $validate->validate([
             'email' => 'required:email',
+            'nome' => 'required',
         ]);
-
+        if($data->photo != ''){
+            $image = new Image('photo');
+            $data->photo = $image->size('user')->upload();
+        }        
         if ($validate->hasErrors()) {
             return back();
         }
-        $old_pass = $data->password;
-        $data->password = Password::make($old_pass);
+        $old_pass = (($data->password != '') ? Password::make($data->password) : $this->user->password);
+        $data->password = $old_pass;
         $user = new User();
         $update = $user->find('id_user', $this->user->id_user)->update((array) $data, 'id_user');
         Redirect::redirect('user/perfil');
-        //return json_encode(array($update));
     }
 
     public function destroy()

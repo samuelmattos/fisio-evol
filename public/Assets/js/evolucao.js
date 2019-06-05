@@ -2,7 +2,8 @@ var evolucoes_vue = new Vue({
     delimiters: ['%{', '}'],
     el: '#evolucoes_vue',
     data: {
-        evolucoes: []
+        evolucoes: [],
+        formulario: true
     }
 })
 
@@ -10,10 +11,12 @@ let nova_evolucao = document.querySelector('#nova_evolucao');
 nova_evolucao.onclick = function () {
     var id_paciente = $("#id_paciente").val();
     $("#nova_evolucao").addClass("loading");
-    axios.get('cadastrar/' + id_paciente + '/' + null).then((response) => {
-        popCadastro(response.data);
+    axios.get('cadastrar/' + id_paciente + '/' + null).then((response) => {       
+        evolucoes_vue.formulario = false;
         $("#nova_evolucao").removeClass("loading");
+        $("#form_cadastro").append(response.data)
     }).catch(error => {
+        evolucoes_vue.formulario = true;
         $("#nova_evolucao").removeClass("loading");
         popError('Erro', error);
     });

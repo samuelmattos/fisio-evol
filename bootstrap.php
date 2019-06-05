@@ -7,7 +7,6 @@ use App\Core\Middlewares;
 use Dopesong\Slim\Error\Whoops as WhoopsError;
 use App\Provider\Doctrine;
 use Slim\Container;
-// use App\Provider\Slim;
 
 define('APP_ROOT', __DIR__);
 if (!file_exists(APP_ROOT . '/settings.php')) {
@@ -16,11 +15,6 @@ if (!file_exists(APP_ROOT . '/settings.php')) {
 
 $middleware = new Middlewares;
 $c = new Container(require __DIR__ . '/settings.php'); //Create Your container
-// $c = [
-//     'notFoundHandler' => function ($c) {
-//         return new \App\Controllers\errorController();
-//     },
-// ];
 
 $c->register(new Doctrine());
 

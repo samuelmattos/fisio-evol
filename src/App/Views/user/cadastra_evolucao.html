@@ -22,8 +22,9 @@
             </div>
             <div class="actions">
                 <input class="ui submit blue button" value="{{acao}}"
-                    type="submit">
-                <a class="ui negative button yellow">Cancelar</a>
+                    type="submit"/>
+                <button type="button" class="ui negative button yellow" onclick="$('#form_cadastro').empty(); 
+                evolucoes_vue.formulario = true; ">Cancelar</button >
             </div>
         </form>
     </div>

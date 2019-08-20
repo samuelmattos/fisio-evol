@@ -32,6 +32,11 @@ class homeController extends Controller
         $dados['users'] = $users;
         $dados['title'] = 'Fisioterapeutas';
         $dados['links'] = $user->links();
+
+        // $payload = json_encode($dados);
+        // $response->getBody()->write($payload);
+        // return $response
+        //   ->withHeader('Content-Type', 'application/json');
         $this->view('fisioterapeutas', $dados);
     }
     
@@ -40,7 +45,7 @@ class homeController extends Controller
         $this->view('remenber');
     }
 
-    public function mail_send($request, $response, $args)
+    public function mail_send(ServerRequest $request, ServerRequestInterface $response, $args)
     {   
         $validate = new Validate;
         $data = $validate->validate([
@@ -69,6 +74,10 @@ class homeController extends Controller
             'fromEmail' => 'contato@fisioevol.com.br',
             'pass' => $nova_senha,
         ])->template(new Pass)->send();
-        return json_encode(['Verifique sua caixa de entrada.']);
+        $data = ['Verifique sua caixa de entrada.'];
+        $payload = json_encode($data);
+        $response->getBody()->write($payload);
+        return $response
+          ->withHeader('Content-Type', 'application/json');
     }
 }

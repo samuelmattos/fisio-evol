@@ -18,12 +18,12 @@ class Middlewares
     {
         $config = $this->config->login['admin'];
 
-        $admin = function ($request, $response, $next) use ($config) {
+        $admin = function ($request, $handler) use ($config) {
 
             if (!isset($_SESSION[$config['loggedIn']])) {
                 return $response->withRedirect(Config::HOST_APP.$config['redirect']);
             }
-            $response = $next($request, $response);
+            $response = $handler->handle($request);
             return $response;
         };
         return $admin;
@@ -33,14 +33,12 @@ class Middlewares
     {
         $config = $this->config->login['user'];
 
-        $admin = function ($request, $response, $next) use ($config) {
+        $admin = function ($request, $handler) use ($config) {
 
             if (!isset($_SESSION[$config['loggedIn']])) {
                 return $response->withRedirect(Config::HOST_APP.$config['redirect']);
             }
-
-            $response = $next($request, $response);
-
+            $response = $handler->handle($request);
             return $response;
         };
         return $admin;

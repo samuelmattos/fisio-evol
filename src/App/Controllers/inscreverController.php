@@ -8,6 +8,10 @@ class inscreverController
 {
     public function index($request, $response)
     {
-        echo json_encode('usuário se inscreveu');
+        $data = ['usuário se inscreveu'];
+        $payload = json_encode($data);
+        $response->getBody()->write($payload);
+        return $response
+          ->withHeader('Content-Type', 'application/json');
     }
 }

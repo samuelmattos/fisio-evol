@@ -38,10 +38,8 @@ class Login
 
         return false;
     }
-    public function logout() {
+    public function logout($request, $response) {
 		session_destroy();
-
-		return Redirect::redirect($this->config->redirect);
-
+		Redirect::redirect($this->config->redirect, $request, $response);
 	}
 }

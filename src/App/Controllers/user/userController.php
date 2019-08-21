@@ -29,7 +29,7 @@ class userController extends Controller
             );
     }
 
-    public function store()
+    public function store($request, $response)
     {
         $validate = new Validate;
 
@@ -48,14 +48,16 @@ class userController extends Controller
         if ($loggedIn) {
             Flash::add('form_error', '');
             Flash::add('form_error_msg', '');
-            Redirect::redirect('user/pacientes');
+            $target = 'user/pacientes';
+            return $response
+                ->withHeader('Location', $target)->withStatus(302);
         } else {
             Flash::add('form_error', 'error');
             Flash::add('form_error_msg', 'Usuário ou senha incorretos');
             back();
         }
     }
-    public function register()
+    public function register($request, $response)
     {
         $validate = new Validate;
 
@@ -76,18 +78,20 @@ class userController extends Controller
             $login = new Login('user');
             $loggedIn = $login->login($data, new User());
 
-            if ($loggedIn) {
-                Redirect::redirect('user/pacientes');
+            if ($loggedIn) {                
+                Redirect::redirect('user/pacientes', $request, $response);
             } else {
                 return back();
             }
         }
     }
 
-    public function perfil()
+    public function perfil($request, $response)
     {
         $login = new Login('user');
         $this->view('user.perfil', []);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function update($request, $response, $data)
@@ -111,9 +115,11 @@ class userController extends Controller
         Redirect::redirect('user/perfil');
     }
 
-    public function destroy()
+    public function destroy($request, $response)
     {
         $login = new Login('user');
-        return $login->logout();
+        $login->logout($request, $response);
+        $response->getBody()->write('');
+        return $response;
     }
 }

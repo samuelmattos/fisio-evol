@@ -14,11 +14,15 @@ class homeController extends Controller
     public function index($request, $response)
     {
         $this->view('home', ['title' => 'Inicio', 'dados' => 'Inicio']);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function sobre()
     {
         $this->view('sobre', ['title' => 'Sobre', 'dados' => 'Sobre']);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function fisioterapeutas($request, $response)
@@ -33,16 +37,16 @@ class homeController extends Controller
         $dados['title'] = 'Fisioterapeutas';
         $dados['links'] = $user->links();
 
-        // $payload = json_encode($dados);
-        // $response->getBody()->write($payload);
-        // return $response
-        //   ->withHeader('Content-Type', 'application/json');
         $this->view('fisioterapeutas', $dados);
+        $response->getBody()->write('');
+        return $response;
     }
     
     public function remenber()
     {
         $this->view('remenber');
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function mail_send(ServerRequest $request, ServerRequestInterface $response, $args)

@@ -16,23 +16,27 @@ class pacienteController extends Controller
         $this->paciente = new Pacientes;
     }
 
-    public function index()
+    public function index($request, $response)
     {
         $pacientes = $this->paciente->get_pacientes();
         $dados['pacientes'] = $pacientes;
         $dados['title'] = 'Pacientes';
         $dados['links'] = $this->paciente->links();
         $this->view('user.pacientes', $dados);
+        $response->getBody()->write('');
+        return $response;
     }
-    public function create()
+    public function create($request, $response)
     {
         $this->view('user.cadastra_paciente',
             ['title' => 'Cadastrar Paciente',
                 'form' => 'pacientes/cadastro',
                 'acao' => 'Cadastrar']);
+        $response->getBody()->write('');
+        return $response;
     }
 
-    public function store()
+    public function store($request, $response)
     {
         $validate = new Validate;
 
@@ -49,7 +53,9 @@ class pacienteController extends Controller
 
         if ($id_paciente) {
             $this->paciente->add_paciente_user($id_paciente);
-            Redirect::redirect('user/pacientes'); 
+            $target = '/user/pacientes';
+            return $response
+                ->withHeader('Location', $target)->withStatus(302);
         }
     }
 
@@ -64,7 +70,8 @@ class pacienteController extends Controller
             'acao' => 'Editar',
             'paciente' => $paciente,
         ]);
-
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function update($request, $response, $args)

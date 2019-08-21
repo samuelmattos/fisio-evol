@@ -36,7 +36,12 @@ class Middlewares
         $admin = function ($request, $handler) use ($config) {
 
             if (!isset($_SESSION[$config['loggedIn']])) {
-                return $response->withRedirect(Config::HOST_APP.$config['redirect']);
+                $response = $handler->handle($request);
+                $target = Config::HOST_APP.$config['redirect'];
+                return $response
+                    ->withHeader('Location', $target)
+                    ->withStatus(302);
+                // return $response->withRedirect(Config::HOST_APP.$config['redirect']);
             }
             $response = $handler->handle($request);
             return $response;

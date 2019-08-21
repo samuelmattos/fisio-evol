@@ -36,6 +36,8 @@ class evolucaoController extends Controller
         $dados['evolucoes'] = html_entity_decode($evolucoes, ENT_QUOTES, "utf-8");
         $dados['links'] = $this->evolucao->links();       
         $this->view('user.evolucao', $dados);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function create($request, $response, $args)
@@ -45,6 +47,8 @@ class evolucaoController extends Controller
         $args['id_paciente'] = $args['id_paciente'];
         $args['action'] = 'javascript:cadastrarEvolucao();';
         $this->view('user.cadastra_evolucao', $args);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function store($request, $response, $args)
@@ -69,7 +73,10 @@ class evolucaoController extends Controller
             $evolucao = $this->evolucao->findBy('id_evolucao', $evolucao);
             $evolucao->data = date('d/m/Y', strtotime($evolucao->data));
             $dados['evolucao'] = $evolucao;
-            return $response->withJson($dados);
+            $payload = json_encode($dados);
+            $response->getBody()->write($payload);
+            return $response
+              ->withHeader('Content-Type', 'application/json');
         }
     }
 

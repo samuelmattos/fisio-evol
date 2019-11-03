@@ -1,15 +1,16 @@
 <?php
 namespace App\Core;
 use Config;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class Redirect{
 
-    public static function redirect($target, $request, $response){
-        $target = Config::HOST_APP.$target;        
+    public static function redirect($target,Request $request, Response $response){
+        $target = Config::HOST_APP.$target;
+        $response->withStatus(302);
         return $response
-            ->withHeader('Location', $target)->withStatus(302);
+            ->withHeader('Location', $target);
     }
 
     public static function back(){       

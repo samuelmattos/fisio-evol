@@ -60,7 +60,7 @@ class evolucaoController extends Controller
         ]);
 
         if ($validate->hasErrors()) {
-            return $this->create();
+            return $this->create($request, $response, $args);
         }
         /**
          *Terminei a validação, agora estou pegando o id do usuário,

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Controllers;
-
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Controller;
 use App\Core\Email;
 use App\Model\User;
@@ -49,7 +50,7 @@ class homeController extends Controller
         return $response;
     }
 
-    public function mail_send(ServerRequest $request, ServerRequestInterface $response, $args)
+    public function mail_send(Request $request, Response $response, $args)
     {   
         $validate = new Validate;
         $data = $validate->validate([

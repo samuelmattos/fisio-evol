@@ -3,13 +3,7 @@ declare(strict_types=1);
 require_once  __DIR__ . '/config/Config.php';
 require_once  __DIR__ . '/vendor/autoload.php';
 
-use Dopesong\Slim\Error\Whoops as WhoopsError;
-use App\Provider\Doctrine;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
-use Slim\Routing\RouteCollectorProxy;
 use App\Core\Middlewares;
 
 define('APP_ROOT', __DIR__);

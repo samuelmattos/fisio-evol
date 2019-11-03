@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\user;
-
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Controller;
 use App\Core\Flash;
 use App\Core\Login;
@@ -94,14 +95,14 @@ class userController extends Controller
         return $response;
     }
 
-    public function update($request, $response, $data)
+    public function update(Request $request, Response $response, $data)
     {
         $validate = new Validate;
         $data = $validate->validate([
             'email' => 'required:email',
             'nome' => 'required',
         ]);
-        if($data->photo != ''){
+        if(isset($data->photo)){
             $image = new Image('photo');
             $data->photo = $image->size('user')->upload();
         }        
@@ -112,7 +113,7 @@ class userController extends Controller
         $data->password = $old_pass;
         $user = new User();
         $update = $user->find('id_user', $this->user->id_user)->update((array) $data, 'id_user');
-        Redirect::redirect('user/perfil');
+        Redirect::redirect('user/perfil', $request, $response);
     }
 
     public function destroy($request, $response)

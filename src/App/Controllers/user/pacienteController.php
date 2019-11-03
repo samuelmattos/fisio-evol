@@ -90,7 +90,7 @@ class pacienteController extends Controller
         $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data, 'id_paciente');
 
         if ($update) {
-            Redirect::redirect('user/pacientes'); 
+            Redirect::redirect('user/pacientes', $request, $response); 
         }
     }
 

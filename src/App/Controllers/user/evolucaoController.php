@@ -8,6 +8,8 @@ use App\Model\Evolucao;
 use App\Model\Pacientes;
 use App\Model\User;
 use Dompdf\Dompdf;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class evolucaoController extends Controller
 {
@@ -92,9 +94,15 @@ class evolucaoController extends Controller
     {
         $deleted = $this->evolucao->find('id_evolucao', $args['id'])->delete();
         if ($deleted) {
-            return $response->withJson(array('true'));
+            $payload = json_encode(array('true'));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json')
+                    ->withStatus(201);
         } else {
-            return $response->withJson(array('false'));
+            $payload = json_encode(array('false'));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json')
+                    ->withStatus(201);
         }
     }
 
@@ -110,7 +118,7 @@ class evolucaoController extends Controller
         ]);
     }
 
-    public function update($request, $response, $args)
+    public function update(Request $request, Response $response, $args)
     {
        
         $validate = new Validate;
@@ -125,7 +133,10 @@ class evolucaoController extends Controller
         $data->id_user = $this->user->id_user;
      
         $update = $this->evolucao->find('id_evolucao', $args['id'])->update((array) $data, 'id_evolucao');
-        return $response->withJson(array($update));
+        $payload = json_encode(array($update));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json')
+                ->withStatus(201);
     }
 
     public function rel($request, $response, $args)

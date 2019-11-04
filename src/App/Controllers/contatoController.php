@@ -35,6 +35,6 @@ class contatoController extends Controller
             'fromEmail' => $data->email,
             'mensagem' => $data->mensagem,
         ])->template(new Contato)->send();
-        Redirect::redirect('contato'); 
+        return Redirect::redirect('contato'); 
     }
 }

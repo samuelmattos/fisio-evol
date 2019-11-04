@@ -80,7 +80,7 @@ class userController extends Controller
             $loggedIn = $login->login($data, new User());
 
             if ($loggedIn) {                
-                Redirect::redirect('user/pacientes', $request, $response);
+                return Redirect::redirect('user/pacientes', $request, $response);
             } else {
                 return back();
             }
@@ -113,7 +113,7 @@ class userController extends Controller
         $data->password = $old_pass;
         $user = new User();
         $update = $user->find('id_user', $this->user->id_user)->update((array) $data, 'id_user');
-        Redirect::redirect('user/perfil', $request, $response);
+        return Redirect::redirect('user/perfil', $request, $response);
     }
 
     public function destroy($request, $response)

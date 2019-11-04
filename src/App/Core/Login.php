@@ -40,6 +40,6 @@ class Login
     }
     public function logout($request, $response) {
 		session_destroy();
-		Redirect::redirect($this->config->redirect, $request, $response);
+		return Redirect::redirect($this->config->redirect, $request, $response);
 	}
 }

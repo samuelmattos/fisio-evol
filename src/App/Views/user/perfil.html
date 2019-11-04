@@ -43,7 +43,11 @@
             <input type="file" name="photo" id="photo">
         </div>
         <div class="field">
+                {% if user().photo %}
                 <img src="/Assets/img/photos/{{user().photo}}"/>
+                {% else %}
+                Sem imagem
+                {% endif %}
         </div>       
     </div>
     <button class="ui button green" type="submit">Atualizar</button>

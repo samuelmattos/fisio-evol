@@ -6,6 +6,8 @@ use App\Core\Controller;
 use App\Core\Validate;
 use App\Model\Pacientes;
 use App\Core\Redirect;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 class pacienteController extends Controller
 {
 
@@ -74,24 +76,27 @@ class pacienteController extends Controller
         return $response;
     }
 
-    public function update($request, $response, $args)
+    public function update(Request $request, Response $response, $args)
     {
+       
         $validate = new Validate;
 
         $data = $validate->validate([
             'nome' => 'required',
             'telefone' => 'required:phone:max@14',
         ]);
-
+        
         if ($validate->hasErrors()) {
             return back();
         }
         
         $update = $this->paciente->find('id_paciente', $args['id'])->update((array) $data, 'id_paciente');
-
+        
         if ($update) {
-            Redirect::redirect('user/pacientes', $request, $response); 
+            return Redirect::redirect('user/pacientes', $request, $response); 
         }
+        return Redirect::redirect('user/pacientes', $request, $response); 
+        
     }
 
     public function destroy($request, $response, $args)

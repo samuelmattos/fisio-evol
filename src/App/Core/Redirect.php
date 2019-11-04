@@ -8,9 +8,9 @@ class Redirect{
 
     public static function redirect($target,Request $request, Response $response){
         $target = Config::HOST_APP.$target;
-        $response->withStatus(302);
         return $response
-            ->withHeader('Location', $target);
+            ->withHeader('Location', $target)
+            ->withStatus(302);
     }
 
     public static function back(){       

@@ -1,6 +1,7 @@
 <?php
 namespace App\Core;
-
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Config;
 
 class Middlewares
@@ -18,7 +19,7 @@ class Middlewares
     {
         $config = $this->config->login['admin'];
 
-        $admin = function ($request, $handler) use ($config) {
+        $admin = function (Request $request, $handler) use ($config) {
 
             if (!isset($_SESSION[$config['loggedIn']])) {
                 return $response->withRedirect(Config::HOST_APP.$config['redirect']);
@@ -33,7 +34,7 @@ class Middlewares
     {
         $config = $this->config->login['user'];
 
-        $admin = function ($request, $handler) use ($config) {
+        $admin = function (Request $request, $handler) use ($config) {
 
             if (!isset($_SESSION[$config['loggedIn']])) {
                 $response = $handler->handle($request);

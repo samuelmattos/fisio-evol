@@ -12,21 +12,21 @@ use App\Core\Password;
 
 class homeController extends Controller
 {
-    public function index($request, $response)
+    public function index(Request $request,Response $response)
     {
         $this->view('home', ['title' => 'Inicio', 'dados' => 'Inicio']);
         $response->getBody()->write('');
         return $response;
     }
 
-    public function sobre()
+    public function sobre(Request $request,Response $response)
     {
         $this->view('sobre', ['title' => 'Sobre', 'dados' => 'Sobre']);
         $response->getBody()->write('');
         return $response;
     }
 
-    public function fisioterapeutas($request, $response)
+    public function fisioterapeutas(Request $request,Response $response)
     {
         $user = new User;
         $users = $user->
@@ -43,7 +43,7 @@ class homeController extends Controller
         return $response;
     }
     
-    public function remenber()
+    public function remenber(Request $request, Response $response, $args)
     {
         $this->view('remenber');
         $response->getBody()->write('');

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require_once  __DIR__ . '/config/Config.php';
 require_once  __DIR__ . '/vendor/autoload.php';
-
+use DI\Container;
 use Slim\Factory\AppFactory;
 use App\Core\Middlewares;
 
@@ -12,10 +12,8 @@ if (!file_exists(APP_ROOT . '/settings.php')) {
 }
 
 $middleware = new Middlewares;
-// $c = new Container(require __DIR__ . '/settings.php'); //Create Your container
-
-// $c->register(new Doctrine());
-
+$container = new Container();
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 
 // Add Routing Middleware
@@ -38,19 +36,7 @@ $customErrorHandler = function (
     return $response;
 };
 
-// $customErrorHandler = new WhoopsError();
-// $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-// $errorMiddleware->setDefaultErrorHandler($customErrorHandler);
-
-// $container['phpErrorHandler'] = $container['errorHandler'] = function ($c) {
-//     return new WhoopsError($c->get('settings')['displayErrorDetails']);
-// };
 require 'routes.php';
-// $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
-//     // $response->getBody()->write("Caminho não especificado!");
-//     // return $response;
-//     return new \App\Controllers\errorController();
-// });
 $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', '\App\Controllers\errorController');
 
 $app->run();

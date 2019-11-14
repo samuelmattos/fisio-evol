@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Model;
 use App\Core\Password;
 use App\Model\Admin;
@@ -38,8 +40,9 @@ class Login
 
         return false;
     }
-    public function logout($request, $response) {
-		session_destroy();
-		return Redirect::redirect($this->config->redirect, $request, $response);
+    public function logout(Request $request,Response $response) {
+        session_destroy();
+        $target = $this->config->redirect;
+		return Redirect::redirect($target, $request, $response);
 	}
 }

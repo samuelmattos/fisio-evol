@@ -116,11 +116,9 @@ class userController extends Controller
         return Redirect::redirect('user/perfil', $request, $response);
     }
 
-    public function destroy($request, $response)
+    public function destroy(Request $request, Response $response)
     {
         $login = new Login('user');
-        $login->logout($request, $response);
-        $response->getBody()->write('');
-        return $response;
+        return $login->logout($request, $response);
     }
 }

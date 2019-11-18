@@ -21,7 +21,7 @@ class Pacientes extends Model
         $this->busca('p.nome,p.telefone');
         $this->orderBY('nome,id_paciente', 'ASC');
 
-        $this->paginate(5);
+        $this->paginate(20);
 
         return $this->get();
     }

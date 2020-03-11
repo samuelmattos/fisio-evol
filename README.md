@@ -5,6 +5,7 @@
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 # Fisio  Evol
 ![Logo Fisio Evol](https://raw.githubusercontent.com/samuelmattos/fisio-evol/develop/public/Assets/img/logo.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsamuelmattos%2Ffisio-evol.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsamuelmattos%2Ffisio-evol?ref=badge_shield)
 
 Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.
 ## Tecnologias
@@ -40,3 +41,6 @@ php -S localhost:8000 -t public
 #2D7DD2
 #292F36
 #23CE6B
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsamuelmattos%2Ffisio-evol.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsamuelmattos%2Ffisio-evol?ref=badge_large)

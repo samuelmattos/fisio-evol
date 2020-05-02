@@ -1,48 +1,34 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui center aligned grid">
-    <div class="eight column">
-        <h2 class="ui center aligned icon header">
-            <img src="Assets/img/logo.png">
-            <div class="content">
-                <div class="sub header"> Entrar usando sua conta</div>
-            </div>
-        </h2>
-        <form class="ui large form {{ message('form_error') | raw }}" action="userAccess" method="POST">
-            <div class="field">
-                <div class="ui left icon input">
-                    <i class="user icon"></i>
-                    <input type="text" name="email" required
-                        placeholder="Login">
-                </div>
-                {{ message('email') | raw }}
-            </div>
-            <div class="field">
-                <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    <input type="password" required name="password"
-                        placeholder="Senha">
-                </div>
-                {{ message('password') | raw }}
-            </div>
-            <div class="field">
-                <button class="field fluid ui orange submit button large"
-                    type="submit">Acessar</button>
-            </div>
-            <div class="ui error message">
-                <div class="header">Atenção</div>
-                <p>{{ message('form_error_msg') | raw }}</p>
-            </div>
-            <div class="ui two column very relaxed grid">
-                <a class="column vertical divider" href="remenber">
-                    Esqueci minha senha
-                </a>
-                <a class="column vertical divider" href="register">
-                    Registrar
-                </a>
-            </div>
-
-        </form>
+<h2 class="text-center">
+    <img  class="img-thumbnail" src="Assets/img/logo.png">
+    <div class="content">
+        <div class="sub header"> Entrar usando sua conta</div>
     </div>
-</div>
+</h2>
+<form action="userAccess" method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Endereço de email</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu email com mais ninguém.</small>
+        {{ message('email') | raw }}
+    </div>
+    <div class="form-group">
+        <label for="passInput">Senha</label>
+        <input type="password" name="password" class="form-control" id="passInput" required >
+        {{ message('password') | raw }}
+    </div>
+    <div class="field">
+        <button class="btn btn-primary" type="submit">Acessar</button>
+    </div>
+        <p>{{ message('form_error_msg') | raw }}</p>
+    <div class="ui two column very relaxed grid">
+        <a class="column vertical divider" href="remenber">
+            Esqueci minha senha
+        </a>
+        <a class="column vertical divider" href="register">
+            Registrar
+        </a>
+    </div>
+</form>
 {% endblock%}

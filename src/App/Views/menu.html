@@ -1,11 +1,72 @@
- <div class="ui left vertical sidebar menu" id="left-menu">
-  <a class="item" href="{{constant('Config::HOST_APP')}}home">
-    <i class="home icon"></i> Início
-  </a>
-  <a class="item" href="{{constant('Config::HOST_APP')}}fisioterapeutas">
-    <i class="users icon"></i> Fisioterapeutas
-  </a>
-  <a class="item" href="{{constant('Config::HOST_APP')}}contato">
-    <i class="envelope icon"></i> Fale Conosco
-  </a>
-</div>
+ <header>
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+    <a class="navbar-brand" href="{{constant('Config::HOST_APP')}}home">Início</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{constant('Config::HOST_APP')}}fisioterapeutas">
+              <i class="users icon"></i> Fisioterapeutas
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{constant('Config::HOST_APP')}}contato">
+              <i class="envelope icon"></i> Fale Conosco
+            </a>
+        </li>
+      </ul>
+      <div class="form-inline mt-2 mt-md-0">
+          {% if admin() == true %}
+          <div class="ui dropdown item">
+              {{admin().nome}}
+              <i class="large icon user circle"></i>
+              <div class="menu">
+                  <a
+                      href="{{constant('Config::HOST_APP')}}admin/painel"
+                      class="item">Usuários</a>
+                  <a
+                      href="{{constant('Config::HOST_APP')}}admin/painel"
+                      class="item">Perfil</a>
+                  <a
+                      href="{{constant('Config::HOST_APP')}}admin/logout"
+                      class="item">Sair</a>
+              </div>
+          </div>
+          {% endif %}
+          {% if user() == true %}
+          <div class="ui dropdown item">
+              {{user().nome}}
+              <i class="icon user md  circle"></i>
+              <div class="menu">
+                  <a
+                      href="{{constant('Config::HOST_APP')}}user/pacientes"
+                      class="item">Pacientes</a>
+                  <a
+                      href="{{constant('Config::HOST_APP')}}user/perfil"
+                      class="item">Perfil</a>
+                  <a
+                      href="{{constant('Config::HOST_APP')}}user/logoutu"
+                      class="item">Sair</a>
+              </div>
+          </div>
+          {% endif %}
+          {% if user() != true and admin() != true %}
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{constant('Config::HOST_APP')}}userLogin">
+                  Login
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{constant('Config::HOST_APP')}}register">
+                  Cadastrar
+                </a>
+            </li>
+          </ul>
+          {% endif %}
+      </div>
+    </div>
+   </nav>
+ </header>

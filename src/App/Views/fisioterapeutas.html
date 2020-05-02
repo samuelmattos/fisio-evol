@@ -1,15 +1,16 @@
 {% extends 'master.html' %}
 {% block master %}
 <h1>{{ title }}</h1>
-<table class="ui celled table">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th colspan="1"><div class="ui icon input">
+            <th colspan="1">
                     <form action="">
-                        <div class="ui action input">
-                            <input type="text" name="s" placeholder="Buscar...">
-                            <button class="ui button" type="submit"
-                                alt="Procurar">Procurar</button>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Nome do fisioterapeuta" required name="s" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+                            </div>
                         </div>
                     </form>
                 </th>

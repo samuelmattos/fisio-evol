@@ -4,7 +4,7 @@ use App\Core\Redirect;
 
 function dd($data)
 {
-    echo ($data);
+    var_dump($data);
     die();
 }
 
@@ -27,7 +27,9 @@ function flash($index, $message)
 
 function error($message)
 {
-    return "<div class=\"ui pointing red basic label\" style=\"color: #ffffff!important\"> * {$message} </div>";
+    return '<div class="alert alert-danger" role="alert">
+            *'. $message .'
+        </div>';
 }
 
 function success($message)

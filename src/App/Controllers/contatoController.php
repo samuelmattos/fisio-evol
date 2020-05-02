@@ -28,7 +28,7 @@ class contatoController extends Controller
         ]);
 
         if ($validate->hasErrors()) {
-            return $this->create();
+            return back();
         }
         $email = new Email;
         $email->data([

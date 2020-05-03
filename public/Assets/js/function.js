@@ -8,13 +8,13 @@ function getFormData($form) {
 }
 
 function popCadastro(body) {
-    $(".ui.modal").remove();
+    $(".modal").remove();
     $("body").append(body);
-    $('.ui.modal').modal('show');
+    $('.modal').modal('show');
 }
 
 function popError(title, message) {
-    $(".ui.modal").remove();
+    $(".modal").remove();
     var modal_b = '<div class="modal fade" tabindex="-1" role="dialog" id="myModal">'+
     '<div class="modal-dialog" role="document">'+
       '<div class="modal-content">'+

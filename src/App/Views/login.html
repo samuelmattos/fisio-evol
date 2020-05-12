@@ -1,33 +1,23 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui center aligned grid">
-    <div class="eight column">
-        <form class="ui large form" action="access" method="POST">
-            <div class="ui raised segment">
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="Login">                        
-                    </div>
-                    {{ message('email') | raw }}
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password"
-                            placeholder="Senha">                            
-                    </div>
-                    {{ message('password') | raw }}
-                </div>
-                <button class="ui fluid large blue submit button" type="submit">Acessar</button>
-            </div>
-            <div class="ui error message"></div>
-        </form>
-        <div class="ui message">
-            <a href="remenber">
-            Esqueci minha senha ?
-            </a>
+    <form action="access" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Endereço de email</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu email com mais ninguém.</small>
+            {{ message('email') | raw }}
         </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Endereço de email</label>
+            <input type="password" name="password" class="form-control" id="exampleInputEmail1" required >
+            {{ message('password') | raw }}
+        </div>
+            <button class="btn btn-primary" type="submit">Acessar</button>
+        <div class="ui error message"></div>
+    </form>
+    <div class="ui message">
+        <a href="remenber">
+        Esqueci minha senha ?
+        </a>
     </div>
-</div>
 {% endblock%}

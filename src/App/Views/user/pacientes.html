@@ -1,46 +1,51 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui grid">
-  <div class="left ten wide column">
-    <h2 class="ui large header">
+<div class="row">
+  <div class="col">
+    <h2 class="">
       {{title}}
     </h2>
   </div>
-  <div class="right floated six wide column">
-    <a class="ui right floated small primary labeled icon button"
-      href="paciente">
-      <i class="user icon"></i> Cadastrar Paciente
+  <div class="col ">
+    <a class="btn btn-primary float-right" href="paciente">
+      Cadastrar Paciente
     </a>
   </div>
 </div>
-<table class="ui celled table unstackable">
+<table class="table table-striped">
   <thead>
     <tr>
-      <th colspan="3"><div class="ui icon input">
+      <th><div class="ui icon input">
           <form action="">
-            <div class="ui action input">
-              <input type="text" name="s" placeholder="Buscar...">
-              <button class="ui button" type="submit" alt="Procurar">Procurar</button>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Busca.." required name="s" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit" id="button-addon2">Procurar</button>
+                </div>
             </div>
           </form>
         </th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       {% for paciente in pacientes %}
       <tr>
         <td> <i class="icon user circle"></i>{{paciente.nome}}</td>
-        <td><a href="https://wa.me/55{{paciente.telefone}}" target="_blank">
+        <td><a href=" https://api.whatsapp.com/send?phone=55{{paciente.telefone}}" target="_blank">
             <i class="icon phone circle"></i>{{paciente.telefone}}</a></td>
         <td class="right aligned">
-          <a class="ui icon button green" title="Evoluir"
-            href="evolucao/{{paciente.id_paciente}}">
-            <i class="chart line icon"></i> Evoluir
-          </a>
-          <a class="ui icon button orange" title="Editar"
-            href="pacientes/edit/{{paciente.id_paciente}}">
-            <i class="edit outline icon"></i> Editar
-          </a>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a title="Evoluir" class="btn btn-outline-primary btn-sm"
+              href="evolucao/{{paciente.id_paciente}}">
+              Evoluir
+            </a>
+            <a title="Editar" class="btn btn-outline-info btn-sm"
+              href="pacientes/edit/{{paciente.id_paciente}}">
+              Editar
+            </a>
+          </div>
         </td>
       </tr>
       {% endfor %}

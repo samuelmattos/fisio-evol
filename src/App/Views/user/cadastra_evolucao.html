@@ -1,30 +1,34 @@
-<div class="ui modal">
-    <div class="header">{{acao}} Evolução</div>
-    <div class="content">
-        <form class="ui form" method="POST" id="cad_evolucao"
-            action="{{action}}">
-            <input type="hidden" name="id_paciente" value="{{id_paciente}}">
-            <div class="field">
-                <input type="date" placeholder="Data da evolução"
-                    value="{{evolucao.data | date("Y-m-d" )}}" name="data"
-                    required>
-                {{ message('data') | raw }}
-            </div>
-            <div class="field">
-                <input type="number" name="eva" placeholder="Eva"
-                    value="{{evolucao.eva}}" max="10" min="0" required>
-                {{ message('eva') | raw }}
-            </div>
-            <div class="field">
-                <textarea rows="5" maxlength="1000" placeholder="Descrição da evolução"
-                    name="descricao" required>{{html_entity_decode(evolucao.descricao)}}</textarea>
-                {{ message('descricao') | raw }}
-            </div>
-            <div class="actions">
-                <input class="ui submit blue button" value="{{acao}}"
-                    type="submit">
-                <a class="ui negative button yellow">Cancelar</a>
-            </div>
-        </form>
-    </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">{{acao}}
+					Evolução</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form class="ui form" method="POST" id="cad_evolucao" action="{{action}}">
+					<input type="hidden" name="id_paciente" value="{{id_paciente}}">
+					<div class="field">
+						<input type="date" placeholder="Data da evolução" value="{{evolucao.data | date("Y-m-d" )}}" name="data" required>
+						{{ message('data') | raw }}
+					</div>
+					<div class="field">
+						<input type="number" name="eva" placeholder="Eva" value="{{evolucao.eva}}" max="10" min="0" required>
+						{{ message('eva') | raw }}
+					</div>
+					<div class="field">
+						<textarea rows="5" maxlength="1000" placeholder="Descrição da evolução" name="descricao" required>{{html_entity_decode(evolucao.descricao)}}</textarea>
+						{{ message('descricao') | raw }}
+					</div>
+					<div class="modal-footer">
+						<input class="ui submit blue button" value="{{acao}}" type="submit">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>

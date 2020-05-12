@@ -1,29 +1,26 @@
 {% extends 'master.html' %}
 {% block master %}
-<div class="ui center aligned grid">
-    <div class="eight column">
-        <h2 class="ui header">
-            <img src="Assets/img/icons/medical_info.svg">
-            <div class="content">
-                Atenção
-                <div class="sub header"> Enviaremos um e-mail com uma nova senha</div>
-            </div>
-        </h2>
-        <form class="ui large form" id="remember_form" action="javascript:remember();" method="POST">
-            <div class="field">
-                <div class="ui left icon input large">
-                    <i class="envelope icon"></i>
-                    <input type="text" name="email" placeholder="E-mail"
-                        required>
-                </div>
-                {{ message('email') | raw }}
-            </div>
-            <button class="ui fluid large green submit button"
-                type="submit">Enviar</button>
-            <div class="ui error message"></div>
-        </form>
+<h2 class="ui header">
+    <p class="text-center">
+        <img class="w-25 p-3"
+        src="Assets/img/icons/medical_info.svg">
+    </p>
+    <h3>
+        Atenção
+        <small class="text-muted">Enviaremos um e-mail com uma nova senha</small>
+    </h3>
+</h2>
+<form id="remember_form" action="javascript:remember();" method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Endereço de email</label>
+        <input type="text" name="email" placeholder="E-mail"  class="form-control"
+            required>
+        {{ message('email') | raw }}
     </div>
-</div>
+    <button class="btn btn-primary"
+        type="submit">Enviar</button>
+    <div class="ui error message"></div>
+</form>
 <script type="text/javascript"
     src="{{constant('Config::HOST_APP')}}Assets/js/home.js">
 </script>

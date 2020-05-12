@@ -1,48 +1,51 @@
 {% extends 'master.html' %}
 {% block master %}
-<form enctype="multipart/form-data" class="ui form" method="POST"
+<form enctype="multipart/form-data" method="POST"
     action="perfil/update">
-    <div class="field">
+    <div class="form-group">
         <label>Nome Completo</label>
-        <input type="text" name="nome" value="{{user().nome}}" required
-            placeholder="Nome">
+        <input type="text" name="nome" value="{{user().nome}}" required class="form-control" 
+        placeholder="Nome">
     </div>
-    <div class="field">
-        <label>E-mail</label>
-        <input type="text" name="email" value="{{user().email}}" required
-            placeholder="E-mail">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Endereço de email</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="{{user().email}}" required aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu email com mais ninguém.</small>
+        {{ message('email') | raw }}
     </div>
-    <div class="field">
+    <div class="form-group">
         <label>Crefito</label>
-        <input type="text" name="crefito" value="{{user().crefito}}"
-            placeholder="Crefito">
+        <input type="text" name="crefito" value="{{user().crefito}}" required class="form-control" 
+        placeholder="Crefito">
     </div>
-    <div class="field">
+    <div class="form-group">
         <label>Telefone</label>
-        <input type="text" name="telefone" value="{{user().telefone}}"
+        <input type="text" name="telefone" value="{{user().telefone}}" class="form-control" 
             placeholder="Telefone">
     </div>
-    <div class="field">
+    <div class="form-group">
         <label>Documento</label>
-        <input type="text" name="documento" value="{{user().documento}}"
+        <input type="text" name="documento" value="{{user().documento}}" class="form-control" 
             placeholder="Cpf ou RG">
     </div>
-    <div class="field">
+    <div class="form-group">
         <label>Senha</label>
-        <input type="password" name="password" placeholder="Senha"
+        <input type="password" name="password" placeholder="Senha" class="form-control" 
             id="password">
     </div>
-    <div class="field">
+    <div class="form-group">
         <label>Confirmar senha</label>
-        <input type="password" placeholder="Confirme a senha"
+        <input type="password" placeholder="Confirme a senha" class="form-control" 
             id="confirm_password">
     </div>
-    <div class="two fields">
-        <div class="field">
-            <label>Foto</label>
-            <input type="file" name="photo" id="photo">
+    <div class="form-row">
+        <div class="col">
+            <div class="custom-file">
+                <input type="file" name="photo" id="photo" class="custom-file-input"  lang="pt" >
+                <label class="custom-file-label" for="validatedCustomFile">Escolha uma imagem..</label>
+            </div>
         </div>
-        <div class="field">
+        <div class="col">
                 {% if user().photo %}
                 <img src="/Assets/img/photos/{{user().photo}}"/>
                 {% else %}
@@ -50,7 +53,9 @@
                 {% endif %}
         </div>       
     </div>
-    <button class="ui button green" type="submit">Atualizar</button>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Atualizar</button>
+    </div>    
     <p>
         Em casos de dúvidas entre em contato pelo e-mail
         suporte@fisioevol.com.br

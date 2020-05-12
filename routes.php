@@ -15,20 +15,20 @@ $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 
 $app->get('/login', '\App\Controllers\loginController:index');
 $app->post('/access', '\App\Controllers\admin\adminController:store');
-$app->group('/admin', function () use ($app) {
-    $app->get('/painel', '\App\Controllers\admin\painelController:index');
-    $app->get('/user/edit/{id}', '\App\Controllers\admin\adminController:userEdit');
-    $app->post('/user/update', '\App\Controllers\admin\adminController:userUpdate');
-    $app->get('/logout', '\App\Controllers\admin\adminController:destroy');
+$app->group('/admin', function ($group) {
+    $group->get('/painel', '\App\Controllers\admin\painelController:index');
+    $group->get('/user/edit/{id}', '\App\Controllers\admin\adminController:userEdit');
+    $group->post('/user/update', '\App\Controllers\admin\adminController:userUpdate');
+    $group->get('/logout', '\App\Controllers\admin\adminController:destroy');
 })->add($middleware->admin());
 
 $app->get('/userLogin', '\App\Controllers\loginController:user');
 $app->post('/userAccess', '\App\Controllers\user\userController:store');
 $app->post('/register', '\App\Controllers\user\userController:register');
-$app->group('/user', function () use ($app) {
-    $app->get('/perfil', '\App\Controllers\user\userController:perfil');
-    $app->post('/perfil/update', '\App\Controllers\user\userController:update');
+$app->group('/user',  function ($group) {
+    $group->get('/perfil', '\App\Controllers\user\userController:perfil');
+    $group->post('/perfil/update', '\App\Controllers\user\userController:update');
     include ('src/App/Rotas/paciente_route.php');
     include ('src/App/Rotas/evolucao_route.php');
-    $app->get('/logout', '\App\Controllers\user\userController:destroy');
+    $group->get('/logoutu', '\App\Controllers\user\userController:destroy');
 })->add($middleware->user());

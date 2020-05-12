@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Controller;
 use App\Core\Email;
 use App\Core\Validate;
@@ -9,12 +11,14 @@ use App\Templates\Contato;
 use App\Core\Redirect;
 class contatoController extends Controller
 {
-    public function index($request, $response)
-    {
+    public function index(Request $request, Response $response, $args)
+    {        
         $this->view('contato', ['title' => 'Contato', 'dados' => 'Fale Conosco']);
+        $response->getBody()->write('');
+        return $response;
     }
 
-    public function store($request, $response, $args)
+    public function store(Request $request,Response $response, $args)
     {
         $validate = new Validate;
         $data = $validate->validate([
@@ -24,7 +28,7 @@ class contatoController extends Controller
         ]);
 
         if ($validate->hasErrors()) {
-            return $this->create();
+            return back();
         }
         $email = new Email;
         $email->data([
@@ -35,6 +39,6 @@ class contatoController extends Controller
             'fromEmail' => $data->email,
             'mensagem' => $data->mensagem,
         ])->template(new Contato)->send();
-        Redirect::redirect('contato'); 
+        return Redirect::redirect('contato', $request, $response); 
     }
 }

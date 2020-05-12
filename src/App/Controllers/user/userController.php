@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\user;
-
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Controller;
 use App\Core\Flash;
 use App\Core\Login;
@@ -29,7 +30,7 @@ class userController extends Controller
             );
     }
 
-    public function store()
+    public function store($request, $response)
     {
         $validate = new Validate;
 
@@ -48,14 +49,16 @@ class userController extends Controller
         if ($loggedIn) {
             Flash::add('form_error', '');
             Flash::add('form_error_msg', '');
-            Redirect::redirect('user/pacientes');
+            $target = 'user/pacientes';
+            return $response
+                ->withHeader('Location', $target)->withStatus(302);
         } else {
             Flash::add('form_error', 'error');
             Flash::add('form_error_msg', 'Usuário ou senha incorretos');
             back();
         }
     }
-    public function register()
+    public function register($request, $response)
     {
         $validate = new Validate;
 
@@ -76,28 +79,30 @@ class userController extends Controller
             $login = new Login('user');
             $loggedIn = $login->login($data, new User());
 
-            if ($loggedIn) {
-                Redirect::redirect('user/pacientes');
+            if ($loggedIn) {                
+                return Redirect::redirect('user/pacientes', $request, $response);
             } else {
                 return back();
             }
         }
     }
 
-    public function perfil()
+    public function perfil($request, $response)
     {
         $login = new Login('user');
         $this->view('user.perfil', []);
+        $response->getBody()->write('');
+        return $response;
     }
 
-    public function update($request, $response, $data)
+    public function update(Request $request, Response $response, $data)
     {
         $validate = new Validate;
         $data = $validate->validate([
             'email' => 'required:email',
             'nome' => 'required',
         ]);
-        if($data->photo != ''){
+        if(isset($data->photo)){
             $image = new Image('photo');
             $data->photo = $image->size('user')->upload();
         }        
@@ -108,12 +113,12 @@ class userController extends Controller
         $data->password = $old_pass;
         $user = new User();
         $update = $user->find('id_user', $this->user->id_user)->update((array) $data, 'id_user');
-        Redirect::redirect('user/perfil');
+        return Redirect::redirect('user/perfil', $request, $response);
     }
 
-    public function destroy()
+    public function destroy(Request $request, Response $response)
     {
         $login = new Login('user');
-        return $login->logout();
+        return $login->logout($request, $response);
     }
 }

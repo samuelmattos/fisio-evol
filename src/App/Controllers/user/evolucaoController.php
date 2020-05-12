@@ -8,6 +8,8 @@ use App\Model\Evolucao;
 use App\Model\Pacientes;
 use App\Model\User;
 use Dompdf\Dompdf;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class evolucaoController extends Controller
 {
@@ -36,6 +38,8 @@ class evolucaoController extends Controller
         $dados['evolucoes'] = html_entity_decode($evolucoes, ENT_QUOTES, "utf-8");
         $dados['links'] = $this->evolucao->links();       
         $this->view('user.evolucao', $dados);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function create($request, $response, $args)
@@ -45,6 +49,8 @@ class evolucaoController extends Controller
         $args['id_paciente'] = $args['id_paciente'];
         $args['action'] = 'javascript:cadastrarEvolucao();';
         $this->view('user.cadastra_evolucao', $args);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function store($request, $response, $args)
@@ -56,7 +62,7 @@ class evolucaoController extends Controller
         ]);
 
         if ($validate->hasErrors()) {
-            return $this->create();
+            return $this->create($request, $response, $args);
         }
         /**
          *Terminei a validação, agora estou pegando o id do usuário,
@@ -69,7 +75,10 @@ class evolucaoController extends Controller
             $evolucao = $this->evolucao->findBy('id_evolucao', $evolucao);
             $evolucao->data = date('d/m/Y', strtotime($evolucao->data));
             $dados['evolucao'] = $evolucao;
-            return $response->withJson($dados);
+            $payload = json_encode($dados);
+            $response->getBody()->write($payload);
+            return $response
+              ->withHeader('Content-Type', 'application/json');
         }
     }
 
@@ -85,9 +94,15 @@ class evolucaoController extends Controller
     {
         $deleted = $this->evolucao->find('id_evolucao', $args['id'])->delete();
         if ($deleted) {
-            return $response->withJson(array('true'));
+            $payload = json_encode(array('true'));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json')
+                    ->withStatus(201);
         } else {
-            return $response->withJson(array('false'));
+            $payload = json_encode(array('false'));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json')
+                    ->withStatus(201);
         }
     }
 
@@ -103,7 +118,7 @@ class evolucaoController extends Controller
         ]);
     }
 
-    public function update($request, $response, $args)
+    public function update(Request $request, Response $response, $args)
     {
        
         $validate = new Validate;
@@ -118,7 +133,10 @@ class evolucaoController extends Controller
         $data->id_user = $this->user->id_user;
      
         $update = $this->evolucao->find('id_evolucao', $args['id'])->update((array) $data, 'id_evolucao');
-        return $response->withJson(array($update));
+        $payload = json_encode(array($update));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json')
+                ->withStatus(201);
     }
 
     public function rel($request, $response, $args)

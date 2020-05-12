@@ -8,26 +8,33 @@ function getFormData($form) {
 }
 
 function popCadastro(body) {
-    $(".ui.modal").remove();
+    $(".modal").remove();
     $("body").append(body);
-    $('.ui.modal').modal('show');
+    $('.modal').modal('show');
 }
 
 function popError(title, message) {
-    $(".ui.modal").remove();
-    var modal = '<div class="ui modal">' +
-        '  <div class="header">' +
-        title +
-        ' </div>' +
-        '       <div class="content">' +
+    $(".modal").remove();
+    var modal_b = '<div class="modal fade" tabindex="-1" role="dialog" id="myModal">'+
+    '<div class="modal-dialog" role="document">'+
+      '<div class="modal-content">'+
+        '<div class="modal-header">'+
+          '<h5 class="modal-title">'+title+'</h5>'+
+          '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
+            '<span aria-hidden="true">&times;</span>'+
+          '</button>'+
+       '</div>'+
+        '<div class="modal-body">'+
         message +
-        '        </div>' +
-        '        <div class="actions">' +
-        '           <div class="ui negative button">OK</div>' +
-        '       </div>' +
-        ' </div> ';
-    $("body").append(modal);
-    $('.ui.modal').modal('show');
+        '</div>'+
+        '<div class="modal-footer">'+
+          '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
+        '</div>'+
+      '</div>'+
+   '</div>'+
+  '</div>';
+    $("body").append(modal_b);
+    $('#myModal').modal('show');
 }
 
 function popRemove(title, message, acao) {

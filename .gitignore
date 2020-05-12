@@ -6,3 +6,5 @@ composer.phar
 config_fire.json
 config/Config.php
 settings.php
+composer.lock
+~/

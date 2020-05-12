@@ -2,12 +2,9 @@
 declare(strict_types=1);
 require_once  __DIR__ . '/config/Config.php';
 require_once  __DIR__ . '/vendor/autoload.php';
-
+use DI\Container;
+use Slim\Factory\AppFactory;
 use App\Core\Middlewares;
-use Dopesong\Slim\Error\Whoops as WhoopsError;
-use App\Provider\Doctrine;
-use Slim\Container;
-// use App\Provider\Slim;
 
 define('APP_ROOT', __DIR__);
 if (!file_exists(APP_ROOT . '/settings.php')) {
@@ -15,24 +12,31 @@ if (!file_exists(APP_ROOT . '/settings.php')) {
 }
 
 $middleware = new Middlewares;
-$c = new Container(require __DIR__ . '/settings.php'); //Create Your container
-// $c = [
-//     'notFoundHandler' => function ($c) {
-//         return new \App\Controllers\errorController();
-//     },
-// ];
+$container = new Container();
+AppFactory::setContainer($container);
+$app = AppFactory::create();
 
-$c->register(new Doctrine());
+// Add Routing Middleware
+$app->addRoutingMiddleware();
 
-$app = new \Slim\App($c);
+$customErrorHandler = function (
+    ServerRequestInterface $request,
+    Throwable $exception,
+    bool $displayErrorDetails,
+    bool $logErrors,
+    bool $logErrorDetails
+) use ($app) {
+    $payload = ['error' => $exception->getMessage()];
 
-$container = $app->getContainer();
+    $response = $app->getResponseFactory()->createResponse();
+    $response->getBody()->write(
+        json_encode($payload, JSON_UNESCAPED_UNICODE)
+    );
 
-$container['phpErrorHandler'] = $container['errorHandler'] = function ($c) {
-    return new WhoopsError($c->get('settings')['displayErrorDetails']);
+    return $response;
 };
-$container['notFoundHandler'] = function ($c) {
-    return new \App\Controllers\errorController();
-};
+
 require 'routes.php';
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', '\App\Controllers\errorController');
+
 $app->run();

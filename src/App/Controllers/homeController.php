@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Controllers;
-
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Controller;
 use App\Core\Email;
 use App\Model\User;
@@ -11,17 +12,21 @@ use App\Core\Password;
 
 class homeController extends Controller
 {
-    public function index($request, $response)
+    public function index(Request $request,Response $response)
     {
         $this->view('home', ['title' => 'Inicio', 'dados' => 'Inicio']);
+        $response->getBody()->write('');
+        return $response;
     }
 
-    public function sobre()
+    public function sobre(Request $request,Response $response)
     {
         $this->view('sobre', ['title' => 'Sobre', 'dados' => 'Sobre']);
+        $response->getBody()->write('');
+        return $response;
     }
 
-    public function fisioterapeutas($request, $response)
+    public function fisioterapeutas(Request $request,Response $response)
     {
         $user = new User;
         $users = $user->
@@ -32,15 +37,20 @@ class homeController extends Controller
         $dados['users'] = $users;
         $dados['title'] = 'Fisioterapeutas';
         $dados['links'] = $user->links();
+
         $this->view('fisioterapeutas', $dados);
+        $response->getBody()->write('');
+        return $response;
     }
     
-    public function remenber()
+    public function remenber(Request $request, Response $response, $args)
     {
         $this->view('remenber');
+        $response->getBody()->write('');
+        return $response;
     }
 
-    public function mail_send($request, $response, $args)
+    public function mail_send(Request $request, Response $response, $args)
     {   
         $validate = new Validate;
         $data = $validate->validate([
@@ -69,6 +79,10 @@ class homeController extends Controller
             'fromEmail' => 'contato@fisioevol.com.br',
             'pass' => $nova_senha,
         ])->template(new Pass)->send();
-        return json_encode(['Verifique sua caixa de entrada.']);
+        $data = ['Verifique sua caixa de entrada.'];
+        $payload = json_encode($data);
+        $response->getBody()->write($payload);
+        return $response
+          ->withHeader('Content-Type', 'application/json');
     }
 }

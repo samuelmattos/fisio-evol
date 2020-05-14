@@ -116,6 +116,8 @@ class evolucaoController extends Controller
             'action' => "javascript:editarEvolucao(" . $args['id'] . ", " . $args['index'] . ");",
             'evolucao' => $evolucao,
         ]);
+        $response->getBody()->write('');
+        return $response;
     }
 
     public function update(Request $request, Response $response, $args)

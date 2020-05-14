@@ -24,14 +24,12 @@ function cadastrarEvolucao() {
     $("#cad_evolucao").addClass("loading");
     axios.post('salvar', formData).then((response) => {
         $("#cad_evolucao").removeClass("loading");
-        $('.ui.modal').modal('hide');
-        $(".ui.modal").remove();
+        $('#myModal').modal('toggle');
         var avaliacao = response.data.evolucao;
         evolucoes_vue.evolucoes.push(avaliacao);
     }).catch(error => {
         $("#cad_evolucao").removeClass("loading");
-        $('.ui.modal').modal('hide');
-        $(".ui.modal").remove();
+        $('#myModal').modal('toggle');
         popError('Erro', error.response.data.error.message);
     });
 };
@@ -46,8 +44,7 @@ function editarEvolucao(id_evolucao, index) {
                 evol[key] = value;
             });
             evolucoes_vue.evolucoes.splice(index, 1, evol)
-            $('.ui.modal').modal('hide');
-            $(".ui.modal").remove();
+            $('#myModal').modal('toggle');
         }
         $("#cad_evolucao").removeClass("loading");
     }).catch(error => {
@@ -57,7 +54,7 @@ function editarEvolucao(id_evolucao, index) {
 };
 
 function confirmaRemocao(id, id_paciente) {
-    popRemove('Atenção', 'Deseja remover a evolução do sistema?', function () {
+    creat_popup('Atenção', 'Deseja remover a evolução do sistema?', function () {
         return removeEvolucao(id, id_paciente);
     });
 };

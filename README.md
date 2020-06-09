@@ -13,7 +13,7 @@ Aplicativo web com foco em fisioterapeutas para evolução dos pacientes.
 * Axios
 * Vue.js
 * MySQL
-* Semantic UI
+* Bootstrap 4
 ## Frameworks PHP
 * [Twig](https://twig.symfony.com/)
 * [Slim framework](https://www.slimframework.com/)

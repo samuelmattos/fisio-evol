@@ -42,7 +42,6 @@ class Middlewares
                 return $response
                     ->withHeader('Location', $target)
                     ->withStatus(302);
-                // return $response->withRedirect(Config::HOST_APP.$config['redirect']);
             }
             $response = $handler->handle($request);
             return $response;

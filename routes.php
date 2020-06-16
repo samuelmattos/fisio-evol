@@ -36,7 +36,7 @@ $app->post('/contato/store', '\App\Controllers\contatoController:store');
 $app->get('/register', '\App\Controllers\registerController:index');
 $app->post('/user/inscrever', '\App\Controllers\inscreverController:index');
 
-$app->get('/login', '\App\Controllers\loginController:index');
+$app->get('/fe-admin', '\App\Controllers\loginController:index');
 $app->post('/access', '\App\Controllers\admin\adminController:store');
 $app->group('/admin', function ($group) {
     $group->get('/painel', '\App\Controllers\admin\painelController:index');

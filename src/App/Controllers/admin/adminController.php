@@ -2,6 +2,8 @@
 namespace App\Controllers\admin;
 
 use App\Core\Controller;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Login;
 use App\Core\Redirect;
 use App\Core\Validate;
@@ -19,7 +21,7 @@ class adminController extends Controller
             );
     }
 
-    public function store()
+    public function store($request, $response)
     {
         $validate = new Validate;
 
@@ -36,7 +38,10 @@ class adminController extends Controller
         $loggedIn = $login->login($data, new Admin());
 
         if ($loggedIn) {
-            return Redirect::redirect('admin/painel');
+            $target = 'admin/painel';
+            return $response
+                ->withHeader('Location', $target)->withStatus(302);
+            // return Redirect::redirect('admin/painel', $request, $response);
         } else {
             return back();
         }
@@ -50,10 +55,10 @@ class adminController extends Controller
     {
 
     }
-    public function destroy()
+    public function destroy(Request $request, Response $response)
     {
         $login = new Login('admin');
-        return $login->logout();
+        return $login->logout($request, $response);
 
     }
 }

@@ -16,6 +16,22 @@ $container = new Container();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
+$app->add(new Tuupola\Middleware\JwtAuthentication([
+    "path" => ["/api"],
+    "regexp" => "/(.*)/",
+    "header" => "X-Token",
+    "ignore" => [
+        "/api/auth/login"
+    ],
+    "error" => function ($response, $arguments) {
+        $data["status"] = "error";
+        $data["message"] = $arguments["message"];
+        return $response
+            ->withHeader("Content-Type", "application/json")
+            ->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    },
+    "secret" => 'xxxxxx'
+]));
 // Add Routing Middleware
 $app->addRoutingMiddleware();
 

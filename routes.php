@@ -1,5 +1,28 @@
 <?php
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Firebase\JWT\JWT;
 
+$app->get('/api/auth/login', function (Request $request,Response $response, $args) {
+    $key = 'xxxxxx';
+    $token = array(
+        "user" => "@samuelmattos",
+        "twitter" => "https://twitter.com/samuelmattos",
+        "github" => "https://github.com/samuelmattos"
+    );
+    $jwt = JWT::encode($token, $key);
+    $payload = json_encode(["auth-jwt" => $jwt]);
+    $response->getBody()->write($payload);
+    return $response
+      ->withHeader('Content-Type', 'application/json');
+});
+$app->get('/api/teste', function (Request $request,Response $response, $args) {
+   
+    $payload = json_encode(["status" => "teste"]);
+    $response->getBody()->write($payload);
+    return $response
+      ->withHeader('Content-Type', 'application/json');
+});
 $app->get('/', '\App\Controllers\homeController:index');
 $app->get('/home', '\App\Controllers\homeController:index');
 $app->get('/remenber', '\App\Controllers\homeController:remenber');

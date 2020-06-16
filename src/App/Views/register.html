@@ -34,16 +34,7 @@
         onclick="politicas()">Termos de
         Serviço e Política de Privacidade</a>
   </label>
-  </div>
-    <script>
-    politicas = function() {
-      axios.get('politica_privacidade.html').then((response) => {
-        popError('Termos de Serviço e Política de Privacidade',response.data);
-    }).catch(error => {
-        popError('Erro', error);
-    });
-    }
-    </script>
+  </div>   
     <button class="btn btn-primary" type="submit">Cadastrar</button>
 </form>
 {% endblock%}

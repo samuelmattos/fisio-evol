@@ -1,0 +1,46 @@
+#!/usr/bin/php
+<?php
+
+if (php_sapi_name() !== 'cli') {
+    exit;
+}
+require_once  __DIR__ . '/config/Config.php';
+require __DIR__ . '/vendor/autoload.php';
+
+use App\Cli\Fisiocli;
+use App\Model\Admin;
+use App\Core\Password;
+
+$app = new Fisiocli();
+/**
+ * Register admin fisiocli register [ your-name ] [ your-email ] [ your-password ]
+ */
+$app->registerCommand('register', function (array $argv) use ($app) {
+    $data = array();
+    $data['nome'] = $argv[2];
+    if(isset($argv[2])){
+        $app->getPrinter()->display("usage: fisiocli register [ your-name ] [ your-email ] [ your-password ]");
+        return;
+    }
+    if(isset($argv[3])){
+        $app->getPrinter()->display("usage: fisiocli register [ your-name ] [ your-email ] [ your-password ]");
+        return;
+    }
+    if(isset($argv[4])){
+        $app->getPrinter()->display("usage: fisiocli register [ your-name ] [ your-email ] [ your-password ]");
+        return;
+    }
+    $data['email'] = $argv[3];
+    $pass = isset($argv[4]) ? $argv[4] : "123456";
+
+    $data['password'] = Password::make($pass);
+    $admin = new Admin();
+    $admin = $admin->create((array) $data);
+    $app->getPrinter()->display("Admin created!!!");
+});
+
+$app->registerCommand('help', function (array $argv) use ($app) {
+    $app->getPrinter()->display("usage: fisiocli register [ your-name ] [ your-email ] [ your-password ]");
+});
+
+$app->runCommand($argv);

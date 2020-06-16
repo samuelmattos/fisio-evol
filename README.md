@@ -30,6 +30,10 @@ composer update
 ```sh
 php -S localhost:8000 -t public
 ```
+5. Para criar um usuário administrador utilize o comando abaixo e acesse pela URL /fe-admin
+```sh
+php fisiocli [ your-name ] [ your-email ] [ your-password ]
+```
 ## Contribuição de imagem
 [Rasul Hasanov](https://www.iconfinder.com/rasulh)
 

@@ -12,26 +12,22 @@ class AdminMiddleware implements MiddlewareInterface
 
     private $config;
     private $responseFactory;
-    public function __construct(ResponseFactoryInterface $responseFactory)
+    public function __construct(ResponseFactoryInterface $responseFactory, $arr)
     {
-        $arr = Config::login_key();
-        $this->config = (object) $arr;
+        $this->config = $arr;
         $this->responseFactory = $responseFactory;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {       
-        $config = $this->config->login['admin'];
-
+        $config = $this->config;
         if (!isset($_SESSION[$config['loggedIn']])) {
-            // return $response->withRedirect(Config::HOST_APP.$config['redirect']);
             $response = $this->responseFactory->createResponse();
             $target = Config::HOST_APP.$config['redirect'];
             return $response
                 ->withHeader('Location', $target)
                 ->withStatus(302);
         }
-        $response = $handler->handle($request);
-        return $response;
+        return $handler->handle($request);
     }
 }

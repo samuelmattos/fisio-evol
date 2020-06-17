@@ -54,6 +54,6 @@ $app->addRoutingMiddleware();
 // };
 
 require 'routes.php';
-// $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', '\App\Controllers\errorController');
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', '\App\Controllers\errorController');
 
 $app->run();

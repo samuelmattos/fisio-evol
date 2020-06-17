@@ -19,25 +19,11 @@ class Middlewares
 
     public function admin()
     {
-        return new AdminMiddleware($this->responseFactory);      
+        return new AdminMiddleware($this->responseFactory, $this->config->login['admin']);      
     }
 
     public function user()
     {
-        $config = $this->config->login['user'];
-
-        $admin = function (Request $request, $handler) use ($config) {
-
-            if (!isset($_SESSION[$config['loggedIn']])) {
-                $response = $handler->handle($request);
-                $target = Config::HOST_APP.$config['redirect'];
-                return $response
-                    ->withHeader('Location', $target)
-                    ->withStatus(302);
-            }
-            $response = $handler->handle($request);
-            return $response;
-        };
-        return $admin;
+        return new AdminMiddleware($this->responseFactory, $this->config->login['user']);      
     }
 }

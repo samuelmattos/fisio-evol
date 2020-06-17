@@ -1,67 +1,62 @@
- 
-   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light border-bottom shadow-sm">
-    <a class="navbar-brand" href="{{constant('Config::HOST_APP')}}home">Início</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="{{constant('Config::HOST_APP')}}fisioterapeutas">
-              Fisioterapeutas
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{constant('Config::HOST_APP')}}contato">
-               Fale Conosco
-            </a>
-        </li>
-      </ul>
-      <div class="form-inline mt-2 mt-md-0">
-          {% if admin() == true %}
-          <div class="ui dropdown item">
-              {{admin().nome}}              
-              <div class="menu">
-                  <a
-                      href="{{constant('Config::HOST_APP')}}admin/painel"
-                      class="item">Usuários</a>
-                  <a
-                      href="{{constant('Config::HOST_APP')}}admin/painel"
-                      class="item">Perfil</a>
-                  <a
-                      href="{{constant('Config::HOST_APP')}}admin/logout"
-                      class="item">Sair</a>
-              </div>
-          </div>
-          {% endif %}
-          {% if user() == true %}
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{{constant('Config::HOST_APP')}}user/pacientes" >Pacientes</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{constant('Config::HOST_APP')}}user/perfil" class="nav-link">Perfil</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{constant('Config::HOST_APP')}}user/logoutu" class="nav-link">Sair</a>
-            </li>
-          </ul>
-          {% endif %}
-          {% if user() != true and admin() != true %}
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{{constant('Config::HOST_APP')}}userLogin">
-                  Login
-              </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{constant('Config::HOST_APP')}}register">
-                  Cadastrar
-                </a>
-            </li>
-          </ul>
-          {% endif %}
-      </div>
-    </div>
-   </nav>
- 
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light border-bottom shadow-sm">
+	<a class="navbar-brand" href="{{constant('Config::HOST_APP')}}home">Início</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{{constant('Config::HOST_APP')}}fisioterapeutas">
+					Fisioterapeutas
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{constant('Config::HOST_APP')}}contato">
+					Fale Conosco
+				</a>
+			</li>
+		</ul>
+		<div class="form-inline mt-2 mt-md-0">
+			{% if admin() == true %}
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a href="{{constant('Config::HOST_APP')}}admin/painel" class="nav-link">Usuários</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{constant('Config::HOST_APP')}}admin/painel" class="nav-link">Perfil</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{constant('Config::HOST_APP')}}admin/logout" class="nav-link">Sair</a>
+					</li>
+				</ul>
+			{% endif %}
+			{% if user() == true %}
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{{constant('Config::HOST_APP')}}user/pacientes">Pacientes</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{constant('Config::HOST_APP')}}user/perfil" class="nav-link">Perfil</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{constant('Config::HOST_APP')}}user/logoutu" class="nav-link">Sair</a>
+					</li>
+				</ul>
+			{% endif %}
+			{% if user() != true and admin() != true %}
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{{constant('Config::HOST_APP')}}userLogin">
+							Login
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{constant('Config::HOST_APP')}}register">
+							Cadastrar
+						</a>
+					</li>
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</nav>

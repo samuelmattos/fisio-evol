@@ -1,62 +1,63 @@
 {% extends 'master.html' %}
 {% block master %}
 <h1>{{ title }}</h1>
-<table class="ui celled table">
-    <thead>
-        <tr>
-            <th colspan="1"><div class="ui icon input">
-                    <form action="">
-                        <div class="ui action input">
-                            <input type="text" name="s" placeholder="Buscar...">
-                            <button class="ui button" type="submit"
-                                alt="Procurar">Procurar</button>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th colspan="1">
+					<form action="">
+						<div class="input-group">
+                            <input type="text" class="form-control" placeholder="Nome do fisioterapeuta" required name="s" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit" id="button-addon2">Procurar</button>
+                            </div>
                         </div>
-                    </form>
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Telefone
-                </th>
-                <th >
-                    Documento
-                </th>
-                <th colspan="2">
-                    Criado
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                <td> <i class="large icon user circle"></i>{{user.nome}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.telefone}}</td>
-                <td>{{user.documento}}</td>
-                <td>{{user.dt_criacao}}</td>
-                <td class="right aligned">
-                    <div class="ui buttons">
-                        <a class="ui icon button orange" title="Editar"
-                            href="user/edit/{{user.id_user}}">
-                            <i class="edit outline icon"></i>
-                        </a>
-                        <a class="ui icon button red" title="Remover"
-                            onclick="return false; "href="user/remove/{{user.id_user}}">
-                            <i class="ban icon"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr><th colspan="6">
-                    <div class="ui right floated pagination menu">
-                        {{links | raw}}
-                    </div>
-                </th>
-            </tr>
-        </tfoot>
-    </table>
-    {% endblock%}
+					</form>
+				</th>
+			</th>
+			<th>
+				Email
+			</th>
+			<th>
+				Telefone
+			</th>
+			<th>
+				Documento
+			</th>
+			<th colspan="2">
+				Data de criação
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for user in users %}
+			<tr>
+				<td>
+					<i class="large icon user circle"></i>
+					{{user.nome}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.telefone}}</td>
+				<td>{{user.documento}}</td>
+				<td>{{user.dt_criacao}}</td>
+				<td class="right aligned">
+					<div class="ui buttons">
+						<a class="ui icon button orange" title="Editar" href="user/edit/{{user.id_user}}">
+							<i class="edit outline icon"></i>
+						</a>
+						<a class="ui icon button red" title="Remover" onclick="return false; " href="user/remove/{{user.id_user}}">
+							<i class="ban icon"></i>
+						</a>
+					</div>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<th colspan="6">
+					{{links | raw}}
+			</th>
+		</tr>
+	</tfoot>
+</table>
+{% endblock%}

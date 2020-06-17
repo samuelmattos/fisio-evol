@@ -30,9 +30,9 @@ class homeController extends Controller
     {
         $user = new User;
         $users = $user->
-            select('nome,email,telefone')->            
+            select('nome,telefone')->            
             busca('nome')->
-            orderBY('nome', 'DESC')->
+            orderBY('nome', 'ASC')->
             paginate(5)->get();
         $dados['users'] = $users;
         $dados['title'] = 'Fisioterapeutas';

@@ -15,10 +15,7 @@
                     </form>
                 </th>
                 <th>
-                    Email
-                </th>
-                <th>
-                    Telefone
+                    Pessoal
                 </th>
             </tr>
         </thead>
@@ -26,16 +23,14 @@
             {% for user in users %}
             <tr>
                 <td> <i class="large icon user circle"></i>{{user.nome}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.telefone}}</td>
+                <td>{{user.nome}}</td>
             </tr>
             {% endfor %}
         </tbody>
         <tfoot>
-            <tr><th colspan="3">
-                    <div class="ui right floated pagination menu">
+            <tr>
+                <th colspan="1">
                         {{links | raw}}
-                    </div>
                 </th>
             </tr>
         </tfoot>

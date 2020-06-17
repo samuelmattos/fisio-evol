@@ -44,7 +44,7 @@
             <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <title>FisioEvol {{ title}}</title>
     </head>
-    <body>
+    <body class="bg-light">
         {% include 'menu.html' %}
         <script type="text/javascript"
             src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -60,32 +60,7 @@
             </div>
         </main>
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="container">
-               
-                <div class="row">
-                    <div class="col-12 col-md">
-                      <small class="d-block mb-3 text-muted">Todos os direitos reservardos FisioEvol</small>
-                    </div>
-                    <div class="col-6 col-md">
-                      <h5>Links</h5>
-                      <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="https://github.com/samuelmattos/fisio-evol" target="new_window">GitHub</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                      <h5>Recursos</h5>
-                      <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="/register">Registrar</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                      <h5>Sobre</h5>
-                      <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#" onclick="politicas()">Termos de Serviço e Política de Privacidade</a></li>
-                      </ul>
-                    </div>
-                  </div>
-            </div>            
+            {% include 'Footer.html' %}
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -41,7 +41,6 @@ class adminController extends Controller
             $target = 'admin/painel';
             return $response
                 ->withHeader('Location', $target)->withStatus(302);
-            // return Redirect::redirect('admin/painel', $request, $response);
         } else {
             return back();
         }
@@ -57,7 +56,7 @@ class adminController extends Controller
     }
     public function destroy(Request $request, Response $response)
     {
-        $login = new Login('admin');
+        $login = new Login('fe-admin');
         return $login->logout($request, $response);
 
     }

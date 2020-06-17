@@ -16,7 +16,7 @@ function popCadastro(body) {
 function popError(title, message) {
   $(".modal").remove();
   var modal_b = '<div class="modal fade" tabindex="-1" role="dialog" id="myModal">' +
-    '<div class="modal-dialog" role="document">' +
+    '<div class="modal-dialog modal-lg" role="document">' +
     '<div class="modal-content">' +
     '<div class="modal-header">' +
     '<h5 class="modal-title">' + title + '</h5>' +
@@ -40,7 +40,7 @@ function popError(title, message) {
 function creat_popup(title, message, callback) {
   $(".modal").remove();
   var modal_b = '<div class="modal fade" tabindex="-1" role="dialog" id="myModal">' +
-    '<div class="modal-dialog" role="document">' +
+    '<div class="modal-dialog modal-lg" role="document">' +
     '<div class="modal-content">' +
     '<div class="modal-header">' +
     '<h5 class="modal-title">' + title + '</h5>' +

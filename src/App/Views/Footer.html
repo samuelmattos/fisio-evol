@@ -31,7 +31,7 @@
 </div>
 <script>
 	politicas = function () {
-axios.get('politica_privacidade.html').then((response) => {
+axios.get('/politica_privacidade.html').then((response) => {
 popError('Termos de Serviço e Política de Privacidade', response.data);
 }).catch(error => {
 popError('Erro', error);

@@ -1,14 +1,14 @@
 {% extends 'master.html' %}
 {% block master %}
 <h2 class="text-center">
-    <img  class="img-thumbnail" src="Assets/img/logo.png">
+    <img src="Assets/img/logo.png">
     <div class="content">
-        <div class="sub header"> Entrar usando sua conta</div>
+        <small class="text-muted">Bem-vindo de volta!</small>
     </div>
 </h2>
 <form action="userAccess" method="POST">
     <div class="form-group">
-        <label for="exampleInputEmail1">Endereço de email</label>
+        <label for="exampleInputEmail1">Email</label>
         <input type="email" name="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp">
         {{ message('email') | raw }}
     </div>
@@ -17,15 +17,20 @@
         <input type="password" name="password" class="form-control" id="passInput" required >
         {{ message('password') | raw }}
     </div>
-        <button class="btn btn-primary" type="submit">Acessar</button>
-        <p>{{ message('form_error_msg') | raw }}</p>
-    <div class="ui two column very relaxed grid">
-        <a class="column vertical divider" href="remenber">
-            Esqueci minha senha
-        </a>
-        <a class="column vertical divider" href="register">
-            Registrar
-        </a>
-    </div>
+    <div class="row row-cols-2">
+        <div class="col">
+            <button class="btn btn-primary" type="submit">Entrar</button>
+        </div>
+        <div class="col">
+            <a class="" href="remenber">
+                Esqueci minha senha
+            </a>
+        </div>
+    </div>    
+    <p>{{ message('form_error_msg') | raw }}</p>
+    Ainda não possui conta? 
+    <a class="" href="register">
+        Cadastre-se
+    </a>
 </form>
 {% endblock%}

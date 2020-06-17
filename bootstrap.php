@@ -11,10 +11,11 @@ if (!file_exists(APP_ROOT . '/settings.php')) {
     copy(APP_ROOT . '/settings_devel.php', APP_ROOT . '/settings.php');
 }
 
-$middleware = new Middlewares;
+
 $container = new Container();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
+$middleware = new Middlewares($app->getResponseFactory());
 $app->addErrorMiddleware(true, true, true);
 $app->add(new Tuupola\Middleware\JwtAuthentication([
     "path" => ["/api"],

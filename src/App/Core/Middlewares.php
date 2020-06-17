@@ -1,38 +1,25 @@
 <?php
 namespace App\Core;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Config;
 
-class Middlewares
+class Middlewares 
 {
 
     private $config;
-
-    public function __construct()
+    private $responseFactory;
+    public function __construct(ResponseFactoryInterface $responseFactory)
     {
         $arr = Config::login_key();
         $this->config = (object) $arr;
+        $this->responseFactory = $responseFactory;
     }
 
     public function admin()
     {
-        $config = $this->config->login['admin'];
-
-        $admin = function (Request $request, $handler) use ($config) {
-
-            if (!isset($_SESSION[$config['loggedIn']])) {
-                // return $response->withRedirect(Config::HOST_APP.$config['redirect']);
-                $response = $handler->handle($request);
-                $target = Config::HOST_APP.$config['redirect'];
-                return $response
-                    ->withHeader('Location', $target)
-                    ->withStatus(302);
-            }
-            $response = $handler->handle($request);
-            return $response;
-        };
-        return $admin;
+        return new AdminMiddleware($this->responseFactory);      
     }
 
     public function user()

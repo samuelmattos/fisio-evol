@@ -8,6 +8,7 @@ class Config
     const PORT_DB = '3306';
     const USER_DB = 'user';
     const PASS_DB = '';
+    const DEBUG_APP = true;
     public static function login_key()
     {
         return [

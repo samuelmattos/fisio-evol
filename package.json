@@ -1,0 +1,41 @@
+{
+  "name": "fisio-evol",
+  "version": "1.0.0",
+  "description": "[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aed1697a919242f09d72fb40f7f9a251)](https://app.codacy.com/app/muka/fisio-evol?utm_source=github.com&utm_medium=referral&utm_content=samuelmattos/fisio-evol&utm_campaign=Badge_Grade_Dashboard)\r [![SensioLabsInsight](https://insight.sensiolabs.com/projects/fb66fa9b-f354-4637-b1b0-3a8dd635ef3e/mini.png)](https://insight.sensiolabs.com/projects/fb66fa9b-f354-4637-b1b0-3a8dd635ef3e)\r [![Build Status](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/build.png?b=master)](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/build-status/master)\r [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/?branch=master)\r [![Code Intelligence Status](https://scrutinizer-ci.com/g/samuelmattos/fisio-evol/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)\r # Fisio  Evol\r ![Logo Fisio Evol](https://raw.githubusercontent.com/samuelmattos/fisio-evol/develop/public/Assets/img/logo.png)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelmattos/fisio-evol.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samuelmattos/fisio-evol/issues"
+  },
+  "homepage": "https://github.com/samuelmattos/fisio-evol#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap": "^4.5.0",
+    "cross-env": "^7.0.2",
+    "jquery": "^3.5.1",
+    "laravel-mix": "^5.0.4",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.26.8",
+    "sass-loader": "^8.0.2",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

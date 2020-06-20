@@ -1,4 +1,4 @@
-function getFormData($form) {
+getFormData = function ($form) {
   var unindexed_array = $form.serializeArray();
   var formdata = new FormData();
   $.map(unindexed_array, function (n, i) {
@@ -7,13 +7,13 @@ function getFormData($form) {
   return formdata;
 }
 
-function popCadastro(body) {
+popCadastro = function (body) {
   $(".modal").remove();
   $("body").append(body);
   $('.modal').modal('show');
 }
 
-function popError(title, message) {
+popError = function (title, message) {
   $(".modal").remove();
   var modal_b = '<div class="modal fade" tabindex="-1" role="dialog" id="myModal">' +
     '<div class="modal-dialog modal-lg" role="document">' +
@@ -37,7 +37,7 @@ function popError(title, message) {
   $('#myModal').modal('show');
 }
 
-function creat_popup(title, message, callback) {
+creat_popup = function (title, message, callback) {
   $(".modal").remove();
   var modal_b = '<div class="modal fade" tabindex="-1" role="dialog" id="myModal">' +
     '<div class="modal-dialog modal-lg" role="document">' +

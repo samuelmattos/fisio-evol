@@ -23,42 +23,13 @@
 <h2 class="font-weight-light text-center text-muted py-3"> {{paciente.nome}}</h2>
 <div id="evolucoes_vue" class="container py-2">
   <!-- timeline item 1 -->
-  <div  class="row"  v-for="(evolucoes, index) in evolucoes">
-      <!-- timeline item 1 left dot -->
-      <div class="col-auto text-center flex-column d-none d-sm-flex">
-          <div class="row h-50">
-              <div class="col">&nbsp;</div>
-              <div class="col">&nbsp;</div>
-          </div>
-          <h5 class="m-2">
-              <span class="badge badge-pill bg-light border">&nbsp;</span>
-          </h5>
-          <div class="row h-50">
-              <div class="col">&nbsp;</div>
-              <div class="col">&nbsp;</div>
-          </div>
-      </div>
-      <!-- timeline item 1 event content -->
-      <div class="col py-2">
-          <div class="card">
-              <div class="card-body">
-                  <div class="float-right text-muted">%{ evolucoes.data }                 
-                  </div>
-                  <h4 class="card-title text-muted">Eva %{ evolucoes.eva }</h4>
-                  <p class="card-text">%{ evolucoes.descricao }                    
-                  </p>
-                    <a class="btn btn-warning btn-sm text-white"
-                    @click='viewEditEvolucao( evolucoes.id_evolucao, index)'>Editar </a>
-                   <a class="btn btn-danger btn-sm text-white"
-                     @click="confirmaRemocao(evolucoes.id_evolucao ,evolucoes.id_paciente,
-                     index)">Remover</a>
-              </div>
-          </div>
-      </div>
-  </div>
+  <evolution v-for="(evolution, index) in evolucoes" 
+    v-bind:key="evolution.id"
+    v-bind:evol="evolution"
+    v-bind:index="index" >
+  </evolution>
 </div>
 {% endblock%}
-
 {% block jsbefore %}
 <script type="text/javascript"
   src="{{constant('Config::HOST_APP')}}js/evolucao.js">

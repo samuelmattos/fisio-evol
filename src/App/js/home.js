@@ -1,4 +1,4 @@
-function remember() {
+remember = function () {
     var formData = getFormData($("#remember_form"));
     $("#remember_form").addClass("loading");
     axios.post('send_email', formData).then((response) => {

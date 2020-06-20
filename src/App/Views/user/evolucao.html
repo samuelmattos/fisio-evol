@@ -57,8 +57,11 @@
       </div>
   </div>
 </div>
+{% endblock%}
+
+{% block jsbefore %}
 <script type="text/javascript"
-  src="{{constant('Config::HOST_APP')}}Assets/js/evolucao.js">
+  src="{{constant('Config::HOST_APP')}}/js/evolucao.js">
 </script>
 <script>  	
   evolucoes_vue.evolucoes = {{ evolucoes| raw }};

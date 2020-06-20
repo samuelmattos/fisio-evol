@@ -1,43 +1,43 @@
 {% extends 'master.html' %}
 {% block master %}
 <div class="row">
-    <div class="col">
-        <h2 class="">
-            {{title}}
-        </h2>
-    </div>
-    <div class="col">
-        <a class="btn btn-warning text-white float-right"
-            href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
-            Voltar
-        </a>
-    </div>
+	<div class="col">
+		<h2 class="">
+			{{title}}
+		</h2>
+	</div>
+	<div class="col">
+		<a class="btn btn-warning text-white float-right" href="{{constant('Config::HOST_APP')}}user/pacientes" tabindex="0">
+			Voltar
+		</a>
+	</div>
 </div>
 <form class="" method="POST" action="{{form}}">
-    <div class="form-group">
-        <label for="inputnome">Nome</label>
-        <input type="text" name="nome" class="form-control" value="{{paciente.nome}}" id="inputnome" required aria-describedby="emailHelp">
-        {{ message('nome') | raw }}
-    </div>
-    <div class="form-group">
-        <label for="inputdocumento">Documento</label>
-        <input type="text" name="documento" class="form-control" value="{{paciente.documento}}" id="inputdocumento" placeholder="CPF/RG" aria-describedby="emailHelp">
-        {{ message('documento') | raw }}
-    </div>
-    <div class="form-group">
-        <label for="inputemail">Email</label>
-        <input type="email" name="email" class="form-control" value="{{paciente.email}}" id="inputemail"placeholder="email@fisioevol.com.br" aria-describedby="emailHelp">
-        {{ message('email') | raw }}
-    </div>
-    <div class="form-group">
-        <label for="inputtelefone">Telefone</label>
-        <input type="text" name="telefone" class="form-control" value="{{paciente.telefone}}" id="inputtelefone"  data-mask="(00)00000-0000" required placeholder="(XX)XXXXX-XXXX">
-        {{ message('telefone') | raw }}
-    </div>
-    <button class="btn btn-success" type="submit">{{acao}}</button>
+	<div class="form-group">
+		<label for="inputnome">Nome</label>
+		<input type="text" name="nome" class="form-control" value="{{paciente.nome}}" id="inputnome" required aria-describedby="emailHelp">
+		{{ message('nome') | raw }}
+	</div>
+	<div class="form-group">
+		<label for="inputdocumento">Documento</label>
+		<input type="text" name="documento" class="form-control" value="{{paciente.documento}}" id="inputdocumento" placeholder="CPF/RG" aria-describedby="emailHelp">
+		{{ message('documento') | raw }}
+	</div>
+	<div class="form-group">
+		<label for="inputemail">Email</label>
+		<input type="email" name="email" class="form-control" value="{{paciente.email}}" id="inputemail" placeholder="email@fisioevol.com.br" aria-describedby="emailHelp">
+		{{ message('email') | raw }}
+	</div>
+	<div class="form-group">
+		<label for="inputtelefone">Telefone</label>
+		<input type="text" name="telefone" class="form-control" value="{{paciente.telefone}}" id="inputtelefone" data-mask="(00)00000-0000" required placeholder="(XX)XXXXX-XXXX">
+		{{ message('telefone') | raw }}
+	</div>
+	<button class="btn btn-success" type="submit">{{acao}}</button>
 </form>
-<script type="text/javascript"
-    src="{{constant('Config::HOST_APP')}}Assets/js/jquery.mask.min.js"
-    /></script>
-<script type="text/javascript">$(".telefone").mask("(00)0000-00009");</script>
+<script type="text/javascript">
+	this.onload = function(){
+        $(".telefone").mask("(00)0000-00009");
+    }        
+</script>
 {% endblock%}

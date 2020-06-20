@@ -26,8 +26,12 @@
     "url": "https://github.com/samuelmattos/fisio-evol/issues"
   },
   "homepage": "https://github.com/samuelmattos/fisio-evol#readme",
-  "dependencies": {},
+  "dependencies": {
+    "jquery-mask-plugin": "^1.14.16",
+    "popper.js": "^1.16.1"
+  },
   "devDependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "cross-env": "^7.0.2",
     "jquery": "^3.5.1",

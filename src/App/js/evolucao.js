@@ -1,11 +1,10 @@
-var evolucoes_vue = new Vue({
+const evolucoes_vue = new Vue({
     delimiters: ['%{', '}'],
     el: '#evolucoes_vue',
     data: {
         evolucoes: []
     }
 })
-
 let nova_evolucao = document.querySelector('#nova_evolucao');
 nova_evolucao.onclick = function () {
     var id_paciente = $("#id_paciente").val();

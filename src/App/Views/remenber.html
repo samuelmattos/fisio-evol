@@ -21,7 +21,9 @@
         type="submit">Enviar</button>
     <div class="ui error message"></div>
 </form>
+{% endblock%}
+{% block jsbefore %}
 <script type="text/javascript"
-    src="{{constant('Config::HOST_APP')}}Assets/js/home.js">
+    src="{{constant('Config::HOST_APP')}}js/home.js">
 </script>
 {% endblock%}
